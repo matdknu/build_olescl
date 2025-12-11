@@ -1,6 +1,6 @@
-# Página Web para WordPress
+# Observatorio de Legitimidad - Sitio Web
 
-Esta es una página web moderna y responsive diseñada para ser integrada en WordPress.
+Sitio web del Observatorio de Legitimidad. Página moderna y responsive diseñada para WordPress o GitHub Pages.
 
 ## Características
 
@@ -62,10 +62,23 @@ Modifica el contenido HTML en `index.html` según tus necesidades:
 - ✅ Dispositivos móviles (iOS, Android)
 - ✅ Tablets y desktop
 
+## GitHub Pages
+
+Este sitio está configurado para GitHub Pages. Para activarlo:
+
+1. Ve a la configuración del repositorio en GitHub
+2. Navega a **Settings > Pages**
+3. En **Source**, selecciona la rama `main` y la carpeta `/ (root)`
+4. Guarda los cambios
+5. Tu sitio estará disponible en: `https://matdknu.github.io/build_olescl/`
+
+El archivo `.nojekyll` está incluido para asegurar que GitHub Pages sirva los archivos estáticos correctamente.
+
 ## Notas
 
 - El menú desplegable funciona con hover en desktop y con click en móvil
 - Las tabs son completamente funcionales y animadas
 - El diseño es responsive y se adapta automáticamente
 - Todos los enlaces están preparados para usar anchors (#) o URLs reales
+- Las imágenes usan Unsplash como placeholder y pueden ser reemplazadas
 
