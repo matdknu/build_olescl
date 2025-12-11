@@ -1,16 +1,16 @@
 ---
-title: "Camila Rojas"
+title: "Nicolás Tobar Jorquera"
 cargo: "Asistente de Investigación"
-email: "camila.rojas@universidad.cl"
-image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop"
+email: "nicolas.tobar@universidad.cl"
+image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
 areas-interes: 
-  - "Revisión bibliográfica"
-  - "Gestión de información"
+  - "Legitimidad institucional"
+  - "Metodologías de investigación"
 ---
 
 ## Descripción
 
-Camila Rojas es Asistente de Investigación del Observatorio, especializada en revisión bibliográfica y gestión de información. Estudiante de Ciencia Política, apoya al equipo en la revisión sistemática de literatura, organización de referencias bibliográficas y gestión de bases de datos documentales. Ha desarrollado sistemas eficientes para la organización y recuperación de información académica, facilitando el trabajo de investigación del Observatorio. Su trabajo incluye la actualización de bibliografías, búsqueda de literatura relevante y apoyo en la preparación de marcos teóricos para proyectos de investigación. Interesada en continuar estudios de postgrado en ciencia política.
+Nicolás Tobar Jorquera es Asistente de Investigación del Observatorio de Legitimidad. Colabora activamente en proyectos de investigación sobre legitimidad institucional, apoyando en la recolección de datos, análisis y procesamiento de información. Ha participado en investigaciones sobre legitimidad y justicia procedimental, contribuyendo al trabajo del Observatorio.
 
 ## Proyectos en los que Participa
 

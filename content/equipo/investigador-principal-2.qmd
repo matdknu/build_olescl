@@ -1,16 +1,18 @@
 ---
-title: "Dra. Ana Martínez"
-cargo: "Investigadora Principal"
-email: "ana.martinez@universidad.cl"
-image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop"
+title: "Cristóbal Moya"
+cargo: "Investigador Principal"
+email: "cristobal.moya@universidad.cl"
+image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop"
 areas-interes: 
-  - "Psicología social"
-  - "Confianza institucional"
+  - "Desigualdades sociales"
+  - "Justicia social"
+  - "Mercados laborales"
+  - "Conflictos políticos"
 ---
 
 ## Descripción
 
-Dra. Ana Martínez es Investigadora Principal especializada en psicología social y confianza institucional. Su investigación se enfoca en los procesos psicológicos que subyacen a la formación de confianza y legitimidad hacia las instituciones públicas. Ha desarrollado modelos teóricos innovadores sobre cómo los ciudadanos evalúan la justicia procedimental y cómo esto influye en su comportamiento político. Con formación en psicología social y ciencia política, combina perspectivas interdisciplinarias en su trabajo. Ha sido profesora invitada en universidades de Europa y América Latina.
+Cristóbal Moya es Investigador Principal del Observatorio de Legitimidad. Research Fellow de la Facultad de Sociología de Universität Bielefeld. Sociólogo de la Universidad de Chile. Sus líneas de interés están enfocadas en temas de desigualdades sociales, justicia social, mercados laborales y conflictos políticos. Tiene un fuerte interés en la investigación social cuantitativa, la inferencia causal y la sociología analítica. Su trabajo contribuye a comprender cómo las desigualdades sociales afectan las percepciones de legitimidad y justicia.
 
 ## Proyectos en Curso
 

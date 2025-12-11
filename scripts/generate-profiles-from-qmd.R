@@ -1,9 +1,100 @@
-<!DOCTYPE html>
+#!/usr/bin/env Rscript
+# Script para generar perfiles HTML desde archivos QMD
+
+library(yaml)
+library(rmarkdown)
+
+# Función para convertir markdown a HTML básico
+markdown_to_html <- function(md_text) {
+  # Convertir markdown básico a HTML
+  md_text <- gsub("^## (.+)$", "<h2>\\1</h2>", md_text, perl = TRUE)
+  md_text <- gsub("^### (.+)$", "<h3>\\1</h3>", md_text, perl = TRUE)
+  md_text <- gsub("^\\*\\* (.+)$", "<strong>\\1</strong>", md_text, perl = TRUE)
+  md_text <- gsub("^\\- (.+)$", "<li>\\1</li>", md_text, perl = TRUE)
+  md_text <- gsub("\\[([^\\]]+)\\]\\(([^)]+)\\)", "<a href=\"\\2\">\\1</a>", md_text, perl = TRUE)
+  md_text <- gsub("\n\n", "</p><p>", md_text)
+  md_text <- paste0("<p>", md_text, "</p>")
+  return(md_text)
+}
+
+# Función para generar HTML de perfil
+generate_profile_html <- function(qmd_file) {
+  # Leer el archivo QMD
+  content <- readLines(qmd_file, warn = FALSE)
+  
+  # Separar YAML y contenido
+  yaml_start <- which(grepl("^---$", content))[1]
+  yaml_end <- which(grepl("^---$", content))[2]
+  
+  if (is.na(yaml_start) || is.na(yaml_end)) {
+    cat("Error: No se encontró YAML en", qmd_file, "\n")
+    return(NULL)
+  }
+  
+  yaml_content <- paste(content[(yaml_start+1):(yaml_end-1)], collapse = "\n")
+  md_content <- paste(content[(yaml_end+1):length(content)], collapse = "\n")
+  
+  # Parsear YAML
+  metadata <- yaml.load(yaml_content)
+  
+  # Generar nombre de archivo
+  name_slug <- tolower(gsub(" ", "-", metadata$title))
+  name_slug <- gsub("[áàäâ]", "a", name_slug)
+  name_slug <- gsub("[éèëê]", "e", name_slug)
+  name_slug <- gsub("[íìïî]", "i", name_slug)
+  name_slug <- gsub("[óòöô]", "o", name_slug)
+  name_slug <- gsub("[úùüû]", "u", name_slug)
+  name_slug <- gsub("ñ", "n", name_slug)
+  name_slug <- gsub("[^a-z0-9-]", "", name_slug)
+  
+  output_file <- paste0("equipo/", name_slug, ".html")
+  
+  # Convertir markdown a HTML básico
+  html_content <- md_content
+  # Convertir encabezados
+  html_content <- gsub("^## (.+)$", "<h2>\\1</h2>", html_content, perl = TRUE, useBytes = TRUE)
+  html_content <- gsub("^### (.+)$", "<h3>\\1</h3>", html_content, perl = TRUE, useBytes = TRUE)
+  # Convertir negritas
+  html_content <- gsub("\\*\\*([^*]+)\\*\\*", "<strong>\\1</strong>", html_content, perl = TRUE)
+  # Convertir listas
+  html_content <- gsub("^\\- (.+)$", "<li>\\1</li>", html_content, perl = TRUE, useBytes = TRUE)
+  # Convertir enlaces
+  html_content <- gsub("\\[([^\\]]+)\\]\\(([^)]+)\\)", "<a href=\"\\2\">\\1</a>", html_content, perl = TRUE)
+  # Convertir párrafos (líneas que no son encabezados ni listas)
+  lines <- strsplit(html_content, "\n")[[1]]
+  html_lines <- character()
+  in_list <- FALSE
+  for (line in lines) {
+    if (grepl("^<h[23]>", line) || grepl("^<li>", line)) {
+      if (in_list && !grepl("^<li>", line)) {
+        html_lines <- c(html_lines, "</ul>")
+        in_list <- FALSE
+      }
+      if (grepl("^<li>", line) && !in_list) {
+        html_lines <- c(html_lines, "<ul>")
+        in_list <- TRUE
+      }
+      html_lines <- c(html_lines, line)
+    } else if (nchar(trimws(line)) > 0) {
+      if (in_list) {
+        html_lines <- c(html_lines, "</ul>")
+        in_list <- FALSE
+      }
+      html_lines <- c(html_lines, paste0("<p>", line, "</p>"))
+    }
+  }
+  if (in_list) {
+    html_lines <- c(html_lines, "</ul>")
+  }
+  html_content <- paste(html_lines, collapse = "\n")
+  
+  # Generar HTML completo
+  html_template <- paste0('<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juanito Pérez - Observatorio de Legitimidad</title>
+    <title>', metadata$title, ' - Observatorio de Legitimidad</title>
     <link rel="stylesheet" href="../style.css">
     <style>
         .perfil-container {
@@ -157,38 +248,40 @@
     <section class="perfil-container">
         <div class="perfil-header">
             <div class="perfil-imagen">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" alt="Juanito Pérez">
+                <img src="', metadata$image, '" alt="', metadata$title, '">
             </div>
             <div class="perfil-info">
-                <h1 class="perfil-nombre">Juanito Pérez</h1>
-                <p class="perfil-cargo">Asistente de Investigación</p>
+                <h1 class="perfil-nombre">', metadata$title, '</h1>
+                <p class="perfil-cargo">', metadata$cargo, '</p>
                 
                 <div class="perfil-contacto">
-                    <p><strong>Email:</strong> <a href="mailto:juanito.perez@universidad.cl">juanito.perez@universidad.cl</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:', metadata$email, '">', metadata$email, '</a></p>
                 </div>
 
-                <div class="perfil-enlaces">                </div>
+                <div class="perfil-enlaces">',
+  if (!is.null(metadata$`pagina-personal`) && metadata$`pagina-personal` != "") {
+    paste0('<a href="', metadata$`pagina-personal`, '" class="perfil-enlace" target="_blank">
+                        <span>📄</span> Página personal
+                    </a>')
+  } else "",
+  if (!is.null(metadata$`google-scholar`) && metadata$`google-scholar` != "") {
+    paste0('<a href="', metadata$`google-scholar`, '" class="perfil-enlace" target="_blank">
+                        <span>🔬</span> Google Scholar
+                    </a>')
+  } else "",
+'                </div>
 
                 <div class="perfil-areas">
                     <h3>Áreas de interés:</h3>
-                    <ul>                        <li>Legitimidad institucional</li>
-                        <li>Metodologías cuantitativas</li>
-                        <li>Análisis de datos</li>                    </ul>
+                    <ul>',
+  paste0('                        <li>', metadata$`areas-interes`, '</li>', collapse = "\n"),
+'                    </ul>
                 </div>
             </div>
         </div>
 
         <div class="perfil-descripcion">
-            <p>## Descripción</p>
-<p>Juanito Pérez es Asistente de Investigación en el Observatorio de Legitimidad. Estudiante avanzado de Sociología, colabora activamente en proyectos de investigación sobre legitimidad institucional, con especial interés en análisis de datos y metodologías cuantitativas. Ha participado en la recolección y procesamiento de datos para encuestas sobre legitimidad, desarrollando habilidades en análisis estadístico y manejo de bases de datos. Su trabajo incluye apoyo en la preparación de instrumentos de investigación, codificación de datos y análisis preliminares. Aspira a continuar sus estudios de postgrado enfocándose en metodologías de investigación social.</p>
-<p>## Proyectos en los que Participa</p>
-<p>### Legitimidad Institucional en Chile 2020-2025</p>
-<p><strong>Rol</strong>: Asistente de Investigación  </p>
-<p><strong>Período</strong>: 2024 - Presente</p>
-<p>Colabora en el análisis de datos y procesamiento de información para el proyecto de legitimidad institucional.</p>
-<p>## Otras Actividades</p>
-<p>- Asistente de investigación en proyectos del Observatorio</p>
-<p>- Participación en actividades académicas</p>
+            ', html_content, '
         </div>
     </section>
 
@@ -217,4 +310,26 @@
         </div>
     </footer>
 </body>
-</html>
+</html>')
+  
+  # Escribir archivo
+  writeLines(html_template, output_file)
+  cat("✓ Generado:", output_file, "\n")
+}
+
+# Procesar todos los QMD en content/equipo
+qmd_files <- list.files("content/equipo", pattern = "\\.qmd$", full.names = TRUE)
+
+cat("Generando perfiles HTML desde QMD...\n\n")
+for (qmd_file in qmd_files) {
+  if (basename(qmd_file) != "perfil-template.qmd") {
+    tryCatch({
+      generate_profile_html(qmd_file)
+    }, error = function(e) {
+      cat("✗ Error procesando", qmd_file, ":", e$message, "\n")
+    })
+  }
+}
+
+cat("\n✓ Proceso completado!\n")
+

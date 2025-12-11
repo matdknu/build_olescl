@@ -1,16 +1,17 @@
 ---
-title: "Dr. Carlos Rodríguez"
+title: "Claudio Fuentes"
 cargo: "Investigador Principal"
-email: "carlos.rodriguez@universidad.cl"
+email: "claudio.fuentes@udp.cl"
 image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop"
 areas-interes: 
-  - "Sociología política"
-  - "Legitimidad democrática"
+  - "Multiculturalismo"
+  - "Plurinacionalidad"
+  - "Cambio institucional"
 ---
 
 ## Descripción
 
-Dr. Carlos Rodríguez es Investigador Principal del Observatorio de Legitimidad, especializado en sociología política y legitimidad democrática. Con más de 15 años de experiencia en investigación, ha desarrollado estudios sobre la relación entre instituciones democráticas y ciudadanía en América Latina. Su trabajo combina análisis teóricos con investigación empírica, utilizando tanto metodologías cuantitativas como cualitativas. Ha sido consultor para organismos internacionales y ha publicado extensamente sobre legitimidad democrática y participación política.
+Claudio Fuentes es Investigador Principal del Observatorio de Legitimidad. Es profesor titular de la Escuela de Ciencia Política de la Universidad Diego Portales. Doctor en Ciencia Política de la Universidad de Carolina del Norte (Chapel Hill). Sus intereses académicos se han orientado al estudio de los procesos políticos en Chile y América Latina, focalizándose en los últimos años en el estudio de las dinámicas del cambio institucional. Entre otros reconocimientos, obtuvo el premio a la mejor tesis de doctorado otorgado por la Asociación Americana de Ciencia Política (APSA) y es Luksic Fellow de la Universidad de Harvard (2011). Integró el Consejo Asesor Presidencial anti-corrupción (2015). Es investigador asociado del Centro de Estudios Interculturales e Indígenas (CIIR) y coordina el Laboratorio Constitucional en la UDP.
 
 ## Proyectos en Curso
 

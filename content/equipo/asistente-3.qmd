@@ -1,16 +1,16 @@
 ---
-title: "Miguel Castro"
+title: "Matías Deneken"
 cargo: "Asistente de Investigación"
-email: "miguel.castro@universidad.cl"
+email: "matias.deneken@universidad.cl"
 image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop"
 areas-interes: 
-  - "Recolección de datos"
-  - "Entrevistas"
+  - "Investigación cualitativa"
+  - "Análisis de datos"
 ---
 
 ## Descripción
 
-Miguel Castro es Asistente de Investigación del Observatorio, colaborando en la recolección de datos y realización de entrevistas. Estudiante de Sociología, se especializa en metodologías cualitativas y trabajo de campo. Ha participado en múltiples proyectos de investigación, realizando entrevistas en profundidad y grupos focales sobre legitimidad institucional. Su experiencia incluye trabajo en diferentes contextos urbanos y rurales, lo que le ha permitido desarrollar habilidades en investigación cualitativa y comprensión de diversos contextos sociales. Contribuye también a la transcripción y análisis preliminar de datos cualitativos.
+Matías Deneken es Asistente de Investigación del Observatorio de Legitimidad. Colabora en proyectos de investigación sobre legitimidad institucional, apoyando en la recolección y análisis de datos. Ha desarrollado habilidades en metodologías de investigación social y contribuye activamente a los proyectos del Observatorio.
 
 ## Proyectos en los que Participa
 

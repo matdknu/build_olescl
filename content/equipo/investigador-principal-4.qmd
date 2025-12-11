@@ -1,16 +1,17 @@
 ---
-title: "Dra. Patricia López"
+title: "Loreto Quiroz"
 cargo: "Investigadora Principal"
-email: "patricia.lopez@universidad.cl"
+email: "loreto.quiroz@universidad.cl"
 image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop"
 areas-interes: 
-  - "Metodologías cuantitativas"
-  - "Análisis de datos"
+  - "Sociología del derecho"
+  - "Violencia y legitimidad"
+  - "Relaciones intergrupales"
 ---
 
 ## Descripción
 
-Dra. Patricia López es Investigadora Principal especializada en metodologías cuantitativas y análisis de datos. Con formación en estadística y ciencias sociales, desarrolla métodos avanzados para el análisis de datos sobre legitimidad institucional. Ha creado modelos estadísticos innovadores para estudiar la confianza ciudadana y ha capacitado a numerosos investigadores en técnicas cuantitativas. Su trabajo ha contribuido significativamente al desarrollo metodológico del campo, publicando sobre análisis multinivel, modelos de ecuaciones estructurales y análisis longitudinal.
+Loreto Quiroz es Investigadora Principal del Observatorio de Legitimidad. Investigadora adjunta de COES y profesora de la Universidad. Su investigación se enfoca en sociología del derecho, violencia y legitimidad, y relaciones intergrupales. Ha desarrollado estudios sobre linchamientos y derecho, contribuyendo a la comprensión de las dinámicas de violencia y legitimidad en contextos sociales complejos.
 
 ## Proyectos en Curso
 

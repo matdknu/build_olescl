@@ -1,0 +1,38 @@
+---
+title: "Joaquín Bahamondes"
+cargo: "Subdirector"
+email: "joaquin.bahamondes@ucn.cl"
+pagina-personal: ""
+google-scholar: ""
+image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
+areas-interes: 
+  - "Ideología política y bienestar psicológico"
+  - "Bienestar psicológico en minorías sociales"
+  - "Percepción de justicia/injusticia"
+  - "Prejuicio y discriminación"
+  - "Relaciones intergrupales"
+---
+
+## Descripción
+
+Joaquín Bahamondes es Subdirector del Observatorio de Legitimidad. Académico de la Escuela de Psicología de la Universidad Católica del Norte. Psicólogo de la Universidad Católica del Norte y Doctor en psicología por la University of Auckland, Nueva Zelanda. Investigador principal del proyecto FONDECYT #11230903 "Percepción de legitimidad y bienestar psicológico: Avanzando la teoría sobre el efecto paliativo de las creencias ideológicas". Investigador colaborador en el NZAVS lab, y co-investigador en el Proyecto Exploración #13220187 "Legitimidad de las policías en chile: el efecto causal de la violencia y la corrupción desde una perspectiva multi-actor, longitudinal y multimétodos". Sus principales líneas de investigación se enmarcan en la psicología social y política, específicamente en comprender cómo diversas formas de ideología impactan las percepciones de justicia/injusticia, con particular interés en sus efectos sobre el bienestar psicológico de minorías sociales.
+
+## Formación
+
+- **Ph.D. in Psychology**: University of Auckland, Nueva Zelanda, 2021
+- **Master en Psicología Social**: Universidad Católica del Norte, 2016
+- **Licenciatura en Psicología**: Universidad Católica del Norte, 2014
+
+## Proyectos en Curso
+
+### Percepción de legitimidad y bienestar psicológico
+
+**Rol**: Investigador Principal  
+**Período**: 2023 - Presente  
+**Financiamiento**: FONDECYT #11230903
+
+## Otras Actividades
+
+- Académico de la Escuela de Psicología UCN
+- Investigador colaborador en el NZAVS lab
+

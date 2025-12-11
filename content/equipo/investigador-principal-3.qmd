@@ -1,16 +1,18 @@
 ---
-title: "Dr. Luis Fernández"
+title: "Ismael Puga"
 cargo: "Investigador Principal"
-email: "luis.fernandez@universidad.cl"
+email: "ismael.puga@ucentral.cl"
 image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop"
 areas-interes: 
-  - "Ciencia política"
-  - "Análisis institucional"
+  - "Acción Colectiva"
+  - "Legitimación de desigualdades"
+  - "Ideología"
+  - "Cambio social"
 ---
 
 ## Descripción
 
-Dr. Luis Fernández es Investigador Principal especializado en ciencia política y análisis institucional. Su trabajo se centra en el estudio comparado de instituciones políticas y su impacto en la legitimidad democrática. Ha realizado investigaciones en múltiples países de América Latina, analizando cómo diferentes diseños institucionales afectan la confianza ciudadana. Es experto en análisis de políticas públicas y evaluación de programas gubernamentales. Sus investigaciones han sido financiadas por agencias nacionales e internacionales y ha publicado en las principales revistas de ciencia política.
+Ismael Puga es Investigador Principal del Observatorio de Legitimidad. Profesor Asociado de la Universidad Central. Doctor en Sociología de la Universidad Humboldt de Berlín, Alemania. Sociólogo de la Universidad Alberto Hurtado. Maestría en Ciencias Sociales en FLACSO. Su investigación se enfoca en acción colectiva, legitimación de desigualdades, ideología y cambio social. Ha desarrollado estudios sobre cómo las ideologías justifican las desigualdades y cómo esto afecta la acción colectiva y la legitimidad institucional.
 
 ## Proyectos en Curso
 

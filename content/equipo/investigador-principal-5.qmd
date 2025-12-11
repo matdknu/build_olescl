@@ -1,22 +1,26 @@
 ---
-title: "Dr. Roberto Sánchez"
-cargo: "Investigador Principal"
-email: "roberto.sanchez@universidad.cl"
-image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop"
+title: "Paz Irarrázabal González"
+cargo: "Investigadora Principal"
+email: "paz.irarrazabal@universidad.cl"
+image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop"
 areas-interes: 
-  - "Estudios cualitativos"
-  - "Etnografía"
+  - "Legitimidad institucional"
+  - "Psicología política"
 ---
 
 ## Descripción
 
-Dr. Roberto Sánchez es Investigador Principal especializado en estudios cualitativos y etnografía. Su investigación utiliza metodologías etnográficas y de observación participante para comprender cómo los ciudadanos experimentan y negocian la legitimidad institucional en su vida cotidiana. Ha realizado trabajo de campo extensivo en diferentes contextos urbanos y rurales de Chile, documentando las narrativas y prácticas ciudadanas respecto a las instituciones. Su enfoque metodológico innovador ha sido reconocido internacionalmente y ha publicado sobre etnografía institucional y métodos cualitativos.
+Paz Irarrázabal González es Investigadora Principal del Observatorio de Legitimidad. Su investigación se enfoca en legitimidad institucional y psicología política, contribuyendo al estudio de las percepciones ciudadanas sobre instituciones públicas.
+
+## Formación
+
+- **Doctorado**: Universidad
+- **Magíster**: Universidad
 
 ## Proyectos en Curso
 
-Investigación cualitativa sobre legitimidad institucional.
+Proyectos sobre legitimidad institucional y psicología política.
 
 ## Otras Actividades
 
-Investigador Principal desde 2023.
-
+Investigadora Principal del Observatorio de Legitimidad.

@@ -1,19 +1,21 @@
 ---
-title: "María González"
+title: "Ana Figueiredo"
 cargo: "Subdirectora"
-email: "maria.gonzalez@universidad.cl"
+email: "ana.figueiredo@uoh.cl"
 pagina-personal: ""
 google-scholar: ""
 image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop"
 areas-interes: 
-  - "Legitimidad institucional"
-  - "Políticas públicas"
-  - "Metodologías mixtas"
+  - "Representaciones de la historia"
+  - "Relaciones intergrupales e interculturalidad"
+  - "Conflictos social, violencia y legitimidad"
+  - "Ideologías postcoloniales"
+  - "Psicología política"
 ---
 
 ## Descripción
 
-María González es Subdirectora del Observatorio de Legitimidad. Doctora en Ciencias Sociales con amplia experiencia en investigación sobre legitimidad institucional y políticas públicas. Su trabajo se centra en el análisis de las relaciones entre instituciones públicas y ciudadanía, con especial énfasis en metodologías mixtas de investigación. Ha publicado numerosos artículos en revistas indexadas y participado en proyectos de investigación nacionales e internacionales. Antes de asumir como Subdirectora, fue Investigadora Principal en el Observatorio durante cinco años, donde lideró proyectos sobre confianza institucional y participación ciudadana.
+Ana Figueiredo es Subdirectora del Observatorio de Legitimidad. Profesora Asociada del Instituto de Ciencias Sociales de la Universidad de O'Higgins (Rancagua) e investigadora asociada de la línea Interacciones Grupales e Individuales de COES. Psicóloga, Magíster en Psicología Social y Doctora en Psicología Social por la Universidad de Coimbra (Portugal) en conjunto con la Universidad de Amsterdam. Actualmente es investigadora principal del Fondecyt de Iniciación Nº11201211, "Ideologías poscoloniales, políticas de reconocimiento y reparación, y relaciones intergrupales actuales: Los Mapuche en Chile" y es coinvestigadora en dos proyectos de investigación Fondecyt Regular sobre violencia y legitimidad, y movilización social. Desde 2021, Ana es miembro del Governing Council de la International Society of Social Psychology (ISPP).
 
 ## Proyectos en Curso
 
