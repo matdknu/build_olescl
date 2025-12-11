@@ -26,14 +26,32 @@ generate_noticias_index <- function() {
   noticias <- map(qmd_files, function(file) {
     meta <- read_qmd_metadata(file)
     if (!is.null(meta)) {
+      # Determinar tipo desde tags
+      tags <- meta$tags %||% ""
+      tipo <- if (grepl("\\[Evento\\]", tags, ignore.case = TRUE)) {
+        "evento"
+      } else if (grepl("\\[Noticia\\]", tags, ignore.case = TRUE)) {
+        "noticia"
+      } else {
+        meta$tipo %||% "noticia"
+      }
+      
+      # Verificar si es destacado
+      es_destacado <- isTRUE(meta$destacado) || grepl("\\[Destacado\\]", tags, ignore.case = TRUE)
+      
       list(
         title = meta$title %||% "Sin título",
         date = meta$date %||% "",
         image = meta$image %||% "",
+        tipo = tipo,
+        destacado = es_destacado,
         file = basename(file)
       )
     }
   }) %>% compact()
+  
+  # Filtrar solo las que tienen título válido (no son plantillas vacías)
+  noticias <- Filter(function(x) !grepl("^Título de", x$title), noticias)
   
   # Ordenar por fecha (más recientes primero)
   noticias <- noticias[order(sapply(noticias, function(x) x$date), decreasing = TRUE)]
@@ -42,14 +60,27 @@ generate_noticias_index <- function() {
   html <- c(
     '<div class="noticias-grid">',
     map_chr(noticias, function(noticia) {
+      # Determinar clase según tipo
+      clase_card <- if (noticia$tipo == "evento") "noticia-card evento" else "noticia-card"
+      
+      # Agregar badge de destacado si aplica
+      badge_destacado <- if (noticia$destacado) {
+        '<span class="badge-destacado" style="position: absolute; top: 10px; right: 10px; background: var(--primary-color); color: white; padding: 0.25rem 0.75rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 600;">Destacado</span>'
+      } else {
+        ''
+      }
+      
       sprintf(
-        '<article class="noticia-card">
+        '<article class="%s" style="position: relative;">
+          %s
           <div class="noticia-imagen">
             <img src="%s" alt="%s">
           </div>
           <div class="noticia-fecha">%s</div>
-          <h3><a href="content/noticias/%s">%s</a></h3>
+          <h3><a href="../content/noticias/%s" style="text-decoration: none; color: inherit;">%s</a></h3>
         </article>',
+        clase_card,
+        badge_destacado,
         noticia$image,
         noticia$title,
         noticia$date,
@@ -62,6 +93,35 @@ generate_noticias_index <- function() {
   
   writeLines(html, "content/noticias/index-generated.html")
   cat("✓ Índice de noticias generado\n")
+  
+  # Generar también las últimas 3 noticias para el index principal
+  noticias_recientes <- noticias[1:min(3, length(noticias))]
+  html_recientes <- c(
+    '<div class="noticias-grid">',
+    map_chr(noticias_recientes, function(noticia) {
+      clase_card <- if (noticia$tipo == "evento") "noticia-card evento" else "noticia-card"
+      
+      sprintf(
+        '<article class="%s">
+          <div class="noticia-imagen">
+            <img src="%s" alt="%s">
+          </div>
+          <div class="noticia-fecha">%s</div>
+          <h3><a href="content/noticias/%s" style="text-decoration: none; color: inherit;">%s</a></h3>
+        </article>',
+        clase_card,
+        noticia$image,
+        noticia$title,
+        noticia$date,
+        gsub("\\.qmd$", ".html", noticia$file),
+        noticia$title
+      )
+    }),
+    '</div>'
+  )
+  
+  writeLines(html_recientes, "content/noticias/recientes-generated.html")
+  cat("✓ Noticias recientes generadas\n")
 }
 
 # Generar índice de eventos
@@ -175,30 +235,51 @@ generate_destacados <- function() {
   # Procesar noticias
   for (file in noticias_qmd) {
     meta <- read_qmd_metadata(file)
-    if (!is.null(meta) && isTRUE(meta$destacado)) {
-      destacados[[length(destacados) + 1]] <- list(
-        title = meta$title %||% "Sin título",
-        date = meta$date %||% "",
-        image = meta$image %||% "",
-        tipo = meta$tipo %||% "noticia",
-        file = basename(file),
-        source = "noticias"
-      )
+    if (!is.null(meta)) {
+      # Verificar si es destacado por el campo destacado o por tags
+      es_destacado <- isTRUE(meta$destacado) || 
+                     (grepl("\\[Destacado\\]", meta$tags %||% "", ignore.case = TRUE))
+      
+      if (es_destacado) {
+        # Determinar tipo desde tags o tipo
+        tipo <- if (grepl("\\[Evento\\]", meta$tags %||% "", ignore.case = TRUE)) {
+          "evento"
+        } else if (grepl("\\[Noticia\\]", meta$tags %||% "", ignore.case = TRUE)) {
+          "noticia"
+        } else {
+          meta$tipo %||% "noticia"
+        }
+        
+        destacados[[length(destacados) + 1]] <- list(
+          title = meta$title %||% "Sin título",
+          date = meta$date %||% "",
+          image = meta$image %||% "",
+          tipo = tipo,
+          file = basename(file),
+          source = "noticias"
+        )
+      }
     }
   }
   
   # Procesar eventos
   for (file in eventos_qmd) {
     meta <- read_qmd_metadata(file)
-    if (!is.null(meta) && isTRUE(meta$destacado)) {
-      destacados[[length(destacados) + 1]] <- list(
-        title = meta$title %||% "Sin título",
-        date = meta$date %||% "",
-        image = meta$image %||% "",
-        tipo = meta$tipo %||% "evento",
-        file = basename(file),
-        source = "eventos"
-      )
+    if (!is.null(meta)) {
+      # Verificar si es destacado por el campo destacado o por tags
+      es_destacado <- isTRUE(meta$destacado) || 
+                     (grepl("\\[Destacado\\]", meta$tags %||% "", ignore.case = TRUE))
+      
+      if (es_destacado) {
+        destacados[[length(destacados) + 1]] <- list(
+          title = meta$title %||% "Sin título",
+          date = meta$date %||% "",
+          image = meta$image %||% "",
+          tipo = meta$tipo %||% "evento",
+          file = basename(file),
+          source = "eventos"
+        )
+      }
     }
   }
   

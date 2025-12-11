@@ -238,3 +238,22 @@ if (document.getElementById('destacados-container')) {
     loadDestacados();
 }
 
+// Load recent news (last 3)
+async function loadRecentNews() {
+    try {
+        const response = await fetch('content/noticias/recientes-generated.html');
+        const html = await response.text();
+        const container = document.getElementById('noticias-recientes-container');
+        if (container) {
+            container.innerHTML = html;
+        }
+    } catch (error) {
+        console.error('Error loading recent news:', error);
+    }
+}
+
+// Load recent news when page loads
+if (document.getElementById('noticias-recientes-container')) {
+    loadRecentNews();
+}
+

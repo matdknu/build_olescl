@@ -3,6 +3,7 @@ title: "Investigador asistente es editor de libro sobre las relaciones intercult
 date: "6 Noviembre 2025"
 image: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=1200&h=600&fit=crop"
 author: "Equipo OLES"
+tags: "[Destacado] & [Noticia]"
 destacado: true
 tipo: "noticia"
 ---
