@@ -1,0 +1,27 @@
+---
+title: "Dr. Fernando Torres"
+cargo: "Investigador Asociado"
+email: "fernando.torres@universidad.cl"
+image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
+areas-interes: 
+  - "Análisis de políticas"
+  - "Evaluación de programas"
+---
+
+## Descripción
+
+Dr. Fernando Torres es Investigador Asociado del Observatorio, especializado en análisis de políticas y evaluación de programas.
+
+## Formación
+
+- **Doctorado**: Universidad, 2020
+- **Magíster**: Universidad, 2016
+
+## Proyectos en Curso
+
+Evaluación de políticas públicas relacionadas con legitimidad.
+
+## Otras Actividades
+
+Investigador Asociado desde 2021.
+

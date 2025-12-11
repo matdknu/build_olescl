@@ -1,0 +1,26 @@
+---
+title: "Camila Rojas"
+cargo: "Asistente de Investigación"
+email: "camila.rojas@universidad.cl"
+image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop"
+areas-interes: 
+  - "Revisión bibliográfica"
+  - "Gestión de información"
+---
+
+## Descripción
+
+Camila Rojas es Asistente de Investigación del Observatorio, especializada en revisión bibliográfica y gestión de información.
+
+## Formación
+
+- **Pregrado**: Universidad (en curso)
+
+## Proyectos en los que Participa
+
+Colabora en proyectos de revisión bibliográfica y gestión documental.
+
+## Otras Actividades
+
+Asistente de Investigación desde 2024.
+

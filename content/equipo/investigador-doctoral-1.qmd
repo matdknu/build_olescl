@@ -1,0 +1,28 @@
+---
+title: "Andrés Vargas"
+cargo: "Investigador Doctoral"
+email: "andres.vargas@universidad.cl"
+image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
+areas-interes: 
+  - "Legitimidad policial"
+  - "Metodologías experimentales"
+---
+
+## Descripción
+
+Andrés Vargas es Investigador Doctoral del Observatorio, actualmente cursando su doctorado en Ciencias Sociales.
+
+## Formación
+
+- **Doctorado**: Universidad (en curso)
+- **Magíster**: Universidad, 2022
+- **Pregrado**: Universidad, 2020
+
+## Proyectos en los que Participa
+
+Colabora en proyectos sobre legitimidad policial y metodologías experimentales.
+
+## Otras Actividades
+
+Investigador Doctoral desde 2023.
+

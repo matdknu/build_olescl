@@ -1,0 +1,26 @@
+---
+title: "Miguel Castro"
+cargo: "Asistente de Investigación"
+email: "miguel.castro@universidad.cl"
+image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop"
+areas-interes: 
+  - "Recolección de datos"
+  - "Entrevistas"
+---
+
+## Descripción
+
+Miguel Castro es Asistente de Investigación del Observatorio, colaborando en la recolección de datos y realización de entrevistas.
+
+## Formación
+
+- **Pregrado**: Universidad (en curso)
+
+## Proyectos en los que Participa
+
+Participa en proyectos de recolección de datos cualitativos.
+
+## Otras Actividades
+
+Asistente de Investigación desde 2024.
+

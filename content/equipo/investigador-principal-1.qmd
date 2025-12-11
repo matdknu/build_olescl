@@ -1,0 +1,27 @@
+---
+title: "Dr. Carlos Rodríguez"
+cargo: "Investigador Principal"
+email: "carlos.rodriguez@universidad.cl"
+image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop"
+areas-interes: 
+  - "Sociología política"
+  - "Legitimidad democrática"
+---
+
+## Descripción
+
+Dr. Carlos Rodríguez es Investigador Principal del Observatorio de Legitimidad, especializado en sociología política y legitimidad democrática.
+
+## Formación
+
+- **Doctorado**: Universidad, 2015
+- **Magíster**: Universidad, 2010
+
+## Proyectos en Curso
+
+Proyectos de investigación sobre legitimidad democrática.
+
+## Otras Actividades
+
+Investigador Principal desde 2020.
+

@@ -1,0 +1,27 @@
+---
+title: "Dra. Carmen Silva"
+cargo: "Investigadora Asociada"
+email: "carmen.silva@universidad.cl"
+image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop"
+areas-interes: 
+  - "Estudios de género"
+  - "Desigualdades sociales"
+---
+
+## Descripción
+
+Dra. Carmen Silva es Investigadora Asociada especializada en estudios de género y desigualdades sociales.
+
+## Formación
+
+- **Doctorado**: Universidad, 2021
+- **Magíster**: Universidad, 2017
+
+## Proyectos en Curso
+
+Investigación sobre género y legitimidad institucional.
+
+## Otras Actividades
+
+Investigadora Asociada desde 2022.
+

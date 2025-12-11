@@ -1,0 +1,27 @@
+---
+title: "Dra. Isabel Ramírez"
+cargo: "Investigadora Asociada"
+email: "isabel.ramirez@universidad.cl"
+image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop"
+areas-interes: 
+  - "Estadística aplicada"
+  - "Modelos estadísticos"
+---
+
+## Descripción
+
+Dra. Isabel Ramírez es Investigadora Asociada especializada en estadística aplicada y modelos estadísticos.
+
+## Formación
+
+- **Doctorado**: Universidad, 2021
+- **Magíster**: Universidad, 2017
+
+## Proyectos en Curso
+
+Desarrollo de modelos estadísticos para legitimidad.
+
+## Otras Actividades
+
+Investigadora Asociada desde 2022.
+

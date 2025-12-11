@@ -1,0 +1,27 @@
+---
+title: "Dr. Luis Fernández"
+cargo: "Investigador Principal"
+email: "luis.fernandez@universidad.cl"
+image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop"
+areas-interes: 
+  - "Ciencia política"
+  - "Análisis institucional"
+---
+
+## Descripción
+
+Dr. Luis Fernández es Investigador Principal especializado en ciencia política y análisis institucional.
+
+## Formación
+
+- **Doctorado**: Universidad, 2017
+- **Magíster**: Universidad, 2013
+
+## Proyectos en Curso
+
+Análisis de instituciones y su legitimidad.
+
+## Otras Actividades
+
+Investigador Principal desde 2020.
+

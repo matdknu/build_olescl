@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentina Herrera - Observatorio de Legitimidad</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .perfil-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 20px;
+        }
+        .perfil-header {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+        .perfil-imagen {
+            flex-shrink: 0;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--lavender-light), var(--lavender-medium));
+            box-shadow: var(--shadow-lg);
+        }
+        .perfil-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .perfil-info {
+            flex: 1;
+        }
+        .perfil-nombre {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        .perfil-cargo {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .perfil-contacto {
+            margin-bottom: 1.5rem;
+        }
+        .perfil-contacto p {
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+        .perfil-contacto a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .perfil-contacto a:hover {
+            text-decoration: underline;
+        }
+        .perfil-descripcion {
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        @media (max-width: 768px) {
+            .perfil-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .perfil-imagen {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><a href="../index.html" style="color: white; text-decoration: none;">Observatorio de Legitimidad</a></h1>
+            </div>
+            <nav class="nav">
+                <ul class="nav-menu">
+                    <li><a href="../index.html#inicio">Inicio</a></li>
+                    <li><a href="../index.html#proyectos">Proyectos</a></li>
+                    <li><a href="../index.html#nosotros">Nosotros</a></li>
+                    <li><a href="../index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="perfil-container">
+        <div class="perfil-header">
+            <div class="perfil-imagen">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop" alt="Valentina Herrera">
+            </div>
+            <div class="perfil-info">
+                <h1 class="perfil-nombre">Valentina Herrera</h1>
+                <p class="perfil-cargo">Investigadora Doctoral</p>
+                
+                <div class="perfil-contacto">
+                    <p><strong>Email:</strong> <a href="mailto:valentina.herrera@universidad.cl">valentina.herrera@universidad.cl</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="perfil-descripcion">
+            <p>Información detallada disponible próximamente.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="../index.html#inicio">Inicio</a></li>
+                        <li><a href="../index.html#noticias">Noticias</a></li>
+                        <li><a href="../index.html#proyectos">Proyectos</a></li>
+                        <li><a href="../index.html#nosotros">Nosotros</a></li>
+                        <li><a href="../index.html#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>Email: observatorio@universidad.cl</p>
+                    <p>Teléfono: +56 2 2676 8479</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Observatorio de Legitimidad. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

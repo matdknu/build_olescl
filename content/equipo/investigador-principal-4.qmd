@@ -1,0 +1,27 @@
+---
+title: "Dra. Patricia López"
+cargo: "Investigadora Principal"
+email: "patricia.lopez@universidad.cl"
+image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop"
+areas-interes: 
+  - "Metodologías cuantitativas"
+  - "Análisis de datos"
+---
+
+## Descripción
+
+Dra. Patricia López es Investigadora Principal especializada en metodologías cuantitativas y análisis de datos.
+
+## Formación
+
+- **Doctorado**: Universidad, 2018
+- **Magíster**: Universidad, 2014
+
+## Proyectos en Curso
+
+Desarrollo de metodologías para el estudio de legitimidad.
+
+## Otras Actividades
+
+Investigadora Principal desde 2022.
+

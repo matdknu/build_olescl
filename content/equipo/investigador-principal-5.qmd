@@ -1,0 +1,27 @@
+---
+title: "Dr. Roberto Sánchez"
+cargo: "Investigador Principal"
+email: "roberto.sanchez@universidad.cl"
+image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop"
+areas-interes: 
+  - "Estudios cualitativos"
+  - "Etnografía"
+---
+
+## Descripción
+
+Dr. Roberto Sánchez es Investigador Principal especializado en estudios cualitativos y etnografía.
+
+## Formación
+
+- **Doctorado**: Universidad, 2019
+- **Magíster**: Universidad, 2015
+
+## Proyectos en Curso
+
+Investigación cualitativa sobre legitimidad institucional.
+
+## Otras Actividades
+
+Investigador Principal desde 2023.
+

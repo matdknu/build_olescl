@@ -1,0 +1,28 @@
+---
+title: "Valentina Herrera"
+cargo: "Investigadora Doctoral"
+email: "valentina.herrera@universidad.cl"
+image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop"
+areas-interes: 
+  - "Justicia procedimental"
+  - "Estudios longitudinales"
+---
+
+## Descripción
+
+Valentina Herrera es Investigadora Doctoral del Observatorio, especializándose en justicia procedimental y estudios longitudinales.
+
+## Formación
+
+- **Doctorado**: Universidad (en curso)
+- **Magíster**: Universidad, 2023
+- **Pregrado**: Universidad, 2021
+
+## Proyectos en los que Participa
+
+Participa en estudios longitudinales sobre justicia procedimental.
+
+## Otras Actividades
+
+Investigadora Doctoral desde 2024.
+

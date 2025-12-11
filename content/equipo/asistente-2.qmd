@@ -1,0 +1,26 @@
+---
+title: "Sofía Mendoza"
+cargo: "Asistente de Investigación"
+email: "sofia.mendoza@universidad.cl"
+image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop"
+areas-interes: 
+  - "Análisis de datos"
+  - "Visualización de datos"
+---
+
+## Descripción
+
+Sofía Mendoza es Asistente de Investigación en el Observatorio de Legitimidad, especializada en análisis y visualización de datos.
+
+## Formación
+
+- **Pregrado**: Universidad (en curso)
+
+## Proyectos en los que Participa
+
+Colabora en proyectos de análisis de datos y visualización.
+
+## Otras Actividades
+
+Asistente de Investigación desde 2024.
+

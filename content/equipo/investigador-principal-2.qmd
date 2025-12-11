@@ -1,0 +1,27 @@
+---
+title: "Dra. Ana Martínez"
+cargo: "Investigadora Principal"
+email: "ana.martinez@universidad.cl"
+image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop"
+areas-interes: 
+  - "Psicología social"
+  - "Confianza institucional"
+---
+
+## Descripción
+
+Dra. Ana Martínez es Investigadora Principal especializada en psicología social y confianza institucional.
+
+## Formación
+
+- **Doctorado**: Universidad, 2016
+- **Magíster**: Universidad, 2012
+
+## Proyectos en Curso
+
+Investigación sobre confianza institucional y legitimidad.
+
+## Otras Actividades
+
+Investigadora Principal desde 2021.
+
