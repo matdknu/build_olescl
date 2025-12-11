@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicaciones - Observatorio de Legitimidad</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <!-- Header con Menú -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><a href="../index.html" style="color: white; text-decoration: none;">Observatorio de Legitimidad</a></h1>
+            </div>
+            <nav class="nav">
+                <ul class="nav-menu">
+                    <li><a href="../index.html#inicio">Inicio</a></li>
+                    <li class="dropdown">
+                        <a href="../index.html#nosotros" class="dropdown-toggle">Acerca del Observatorio <span class="arrow">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../index.html#mision">Misión</a></li>
+                            <li><a href="../index.html#equipo">Equipo</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#publicaciones" class="dropdown-toggle">Investigación <span class="arrow">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../index.html#proyectos">Proyectos</a></li>
+                            <li><a href="index.html">Publicaciones</a></li>
+                            <li><a href="../index.html#tesis">Tesis y Prácticas</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../index.html#noticias">Noticias</a></li>
+                    <li class="dropdown">
+                        <a href="../index.html#biblioteca" class="dropdown-toggle">Biblioteca <span class="arrow">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../index.html#videos">Videos</a></li>
+                            <li><a href="../index.html#entrevistas">Entrevistas</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../index.html#blog">Blog</a></li>
+                    <li><a href="../index.html#contacto">Contacto</a></li>
+                </ul>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Publicaciones Section -->
+    <section id="publicaciones" class="publicaciones-section" style="padding-top: 4rem;">
+        <div class="container">
+            <h1 class="section-title">Publicaciones</h1>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; color: var(--text-light); font-size: 1.1rem;">
+                Publicaciones académicas del equipo del Observatorio de Legitimidad. Haz clic en el nombre de cualquier investigador para ver su perfil completo y todas sus publicaciones.
+            </p>
+            <div id="publicaciones-container">
+                <!-- Las publicaciones se cargarán dinámicamente desde data/publicaciones.json -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="../index.html#inicio">Inicio</a></li>
+                        <li><a href="../index.html#noticias">Noticias</a></li>
+                        <li><a href="../index.html#proyectos">Proyectos</a></li>
+                        <li><a href="../index.html#nosotros">Nosotros</a></li>
+                        <li><a href="../index.html#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section" id="contacto">
+                    <h4>Contacto</h4>
+                    <p>Email: observatorio@universidad.cl</p>
+                    <p>Teléfono: +56 2 2676 8479</p>
+                    <p>Dirección: Avenida Ejército #333, Santiago, Chile</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Investigación</h4>
+                    <ul>
+                        <li><a href="../index.html#proyectos">Proyectos</a></li>
+                        <li><a href="index.html">Publicaciones</a></li>
+                        <li><a href="../index.html#tesis">Tesis y Prácticas</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Observatorio de Legitimidad. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Load publications when page loads
+        if (document.getElementById('publicaciones-container')) {
+            loadPublications();
+        }
+    </script>
+</body>
+</html>
+

@@ -186,7 +186,9 @@ async function loadPublications() {
                 const autoresHtml = pub.authors.map(author => {
                     const slug = investigadoresMap[author];
                     if (slug) {
-                        return `<a href="equipo/${slug}.html" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">${author}</a>`;
+                        // Determinar la ruta correcta según dónde estemos
+                        const basePath = window.location.pathname.includes('/publicaciones/') ? '../' : '';
+                        return `<a href="${basePath}equipo/${slug}.html" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">${author}</a>`;
                     }
                     return author;
                 }).join(', ');
@@ -210,7 +212,7 @@ async function loadPublications() {
     }
 }
 
-// Load publications when page loads
+// Load publications when page loads (only if container exists)
 if (document.getElementById('publicaciones-container')) {
     loadPublications();
 }
