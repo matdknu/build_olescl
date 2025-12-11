@@ -10,7 +10,7 @@ tipo: "noticia"
 
 ## Resumen
 
-Nuestro investigador asistente, **Matías Deneken**, se desempeñó como editor del libro _[Re]configuraciones interculturales: Un estudio longitudinal de las relaciones entre indígenas y no indígenas_, publicado por Editorial Catalonia.
+Nuestro investigador asistente, **Matías Deneken**, se desempeñó como editor del libro _[Re]configuraciones interculturales: Un estudio longitudinal de las relaciones entre indígenas y no indígenas_, publicado por Editorial Catalonia. El volumen fue editado junto con **Eduardo Valenzuela**.
 
 ## Contenido Principal
 
@@ -26,7 +26,5 @@ En la **Universidad Mayor**, en un encuentro ampliamente concurrido, **Mayarí C
 
 En ambas instancias, las y los comentaristas **subrayaron la relevancia del libro para comprender las relaciones interétnicas en Chile y su pertinencia en el marco del proceso constituyente**.
 
-## Sobre el Editor
-
-**Matías Deneken** es Sociólogo, Magíster en Sociología y candidato a Magíster en Data Science. Actualmente desempeña labores en investigación social aplicada en el Centro CIIR y OLES, con temáticas vinculadas a interculturalidad y violencia. Dentro de sus méritos académicos fue Premio Universidad de Concepción, Becario ANID - Magíster Nacional y es beneficiario del programa Fulbright para iniciar un PhD en Estados Unidos.
+_Créditos: CentroCIIR._
 
