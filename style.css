@@ -20,7 +20,7 @@ Tags: custom, responsive, modern, research, academic
 
 :root {
     --primary-color: #4E4976;
-    --secondary-color: #3F3351;
+    --secondary-color: #453958;
     --accent-color: #998AAF;
     --text-color: #220223;
     --text-light: #6b7280;
@@ -49,7 +49,7 @@ body {
 
 /* Header */
 .header {
-    background: #3F3351;
+    background: #453958;
     color: white;
     padding: 1rem 0;
     position: sticky;
