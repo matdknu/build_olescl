@@ -28,11 +28,11 @@ render_folder <- function(folder, output_format = "html") {
 cat("=== Renderizando Noticias ===\n")
 render_folder("content/noticias")
 
-cat("\n=== Renderizando Publicaciones ===\n")
-render_folder("content/publicaciones")
+cat("\n=== Renderizando Eventos ===\n")
+render_folder("content/eventos")
 
-cat("\n=== Renderizando Equipo ===\n")
-render_folder("content/equipo")
+cat("\n=== Renderizando Proyectos ===\n")
+render_folder("content/proyectos")
 
 cat("\n✓ Proceso completado!\n")
 

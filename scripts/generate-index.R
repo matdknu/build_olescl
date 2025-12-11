@@ -64,48 +64,104 @@ generate_noticias_index <- function() {
   cat("✓ Índice de noticias generado\n")
 }
 
-# Generar índice de publicaciones
-generate_publicaciones_index <- function() {
-  qmd_files <- list.files("content/publicaciones", pattern = "\\.qmd$", full.names = TRUE)
+# Generar índice de eventos
+generate_eventos_index <- function() {
+  qmd_files <- list.files("content/eventos", pattern = "\\.qmd$", full.names = TRUE)
   
-  publicaciones <- map(qmd_files, function(file) {
+  eventos <- map(qmd_files, function(file) {
     meta <- read_qmd_metadata(file)
     if (!is.null(meta)) {
       list(
         title = meta$title %||% "Sin título",
-        authors = paste(meta$authors %||% "", collapse = ", "),
-        journal = meta$journal %||% "",
-        year = meta$date %||% "",
+        date = meta$date %||% "",
+        hora = meta$hora %||% "",
+        lugar = meta$lugar %||% "",
+        tipo = meta$tipo %||% "Evento",
+        image = meta$image %||% "",
         file = basename(file)
       )
     }
   }) %>% compact()
   
-  # Ordenar por año (más recientes primero)
-  publicaciones <- publicaciones[order(sapply(publicaciones, function(x) x$year), decreasing = TRUE)]
+  # Ordenar por fecha (más recientes primero)
+  eventos <- eventos[order(sapply(eventos, function(x) x$date), decreasing = TRUE)]
   
   # Generar HTML
   html <- c(
-    '<div class="publicaciones-grid">',
-    map_chr(publicaciones, function(pub) {
+    '<div class="agenda-grid">',
+    map_chr(eventos, function(evento) {
       sprintf(
-        '<div class="publicacion-item">
-          <h4><a href="content/publicaciones/%s">%s</a></h4>
-          <p><strong>Autores:</strong> %s</p>
-          <p><em>%s</em> (%s)</p>
-        </div>',
-        gsub("\\.qmd$", ".html", pub$file),
-        pub$title,
-        pub$authors,
-        pub$journal,
-        pub$year
+        '<article class="agenda-item">
+          <div class="agenda-fecha">
+            <div class="agenda-dia">%s</div>
+            <div class="agenda-mes">%s</div>
+          </div>
+          <div class="agenda-content">
+            <h3><a href="content/eventos/%s">%s</a></h3>
+            <p class="agenda-lugar">%s</p>
+            <p class="agenda-hora">%s</p>
+          </div>
+        </article>',
+        strsplit(evento$date, " ")[[1]][1],  # día
+        tolower(strsplit(evento$date, " ")[[1]][2]),  # mes
+        gsub("\\.qmd$", ".html", evento$file),
+        evento$title,
+        evento$lugar,
+        evento$hora
       )
     }),
     '</div>'
   )
   
-  writeLines(html, "content/publicaciones/index-generated.html")
-  cat("✓ Índice de publicaciones generado\n")
+  writeLines(html, "content/eventos/index-generated.html")
+  cat("✓ Índice de eventos generado\n")
+}
+
+# Generar índice de proyectos
+generate_proyectos_index <- function() {
+  qmd_files <- list.files("content/proyectos", pattern = "\\.qmd$", full.names = TRUE)
+  
+  proyectos <- map(qmd_files, function(file) {
+    meta <- read_qmd_metadata(file)
+    if (!is.null(meta)) {
+      list(
+        title = meta$title %||% "Sin título",
+        tipo = meta$tipo %||% "",
+        estado = meta$estado %||% "",
+        fecha_inicio = meta$`fecha-inicio` %||% "",
+        fecha_fin = meta$`fecha-fin` %||% "",
+        file = basename(file)
+      )
+    }
+  }) %>% compact()
+  
+  # Generar HTML
+  html <- c(
+    '<div class="proyectos-grid">',
+    map_chr(proyectos, function(proyecto) {
+      sprintf(
+        '<div class="proyecto-card">
+          <h3><a href="content/proyectos/%s">%s</a></h3>
+          <p>Tipo: %s</p>
+          <div class="proyecto-meta">
+            <span class="proyecto-estado estado-%s">%s</span>
+            <span class="proyecto-fecha">%s - %s</span>
+          </div>
+        </div>',
+        gsub("\\.qmd$", ".html", proyecto$file),
+        proyecto$title,
+        proyecto$tipo,
+        tolower(gsub(" ", "-", proyecto$estado)),
+        proyecto$estado,
+        proyecto$fecha_inicio,
+        proyecto$fecha_fin
+      )
+    }),
+    '</div>'
+  )
+  
+  writeLines(html, "content/proyectos/index-generated.html")
+  cat("✓ Índice de proyectos generado\n")
 }
 
 # Generar índice de equipo
@@ -153,7 +209,7 @@ generate_equipo_index <- function() {
 # Ejecutar generación
 cat("=== Generando índices ===\n")
 generate_noticias_index()
-generate_publicaciones_index()
-generate_equipo_index()
+generate_eventos_index()
+generate_proyectos_index()
 cat("\n✓ Todos los índices generados!\n")
 
