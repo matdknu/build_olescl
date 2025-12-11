@@ -64,7 +64,6 @@
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
-            margin-bottom: 1.5rem;
         }
         .perfil-enlace {
             display: inline-flex;
@@ -107,24 +106,116 @@
             color: var(--text-light);
             font-size: 1.1rem;
         }
-        .perfil-descripcion h2 {
-            font-size: 1.75rem;
+        .perfil-tabs {
             margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: var(--text-color);
         }
-        .perfil-descripcion h3 {
-            font-size: 1.5rem;
-            margin-top: 1.5rem;
+        .perfil-tab-buttons {
+            display: flex;
+            gap: 1rem;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .perfil-tab-button {
+            background: none;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-light);
+            cursor: pointer;
+            position: relative;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+        .perfil-tab-button:hover {
+            color: var(--primary-color);
+        }
+        .perfil-tab-button.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+        .perfil-tab-content {
+            min-height: 400px;
+        }
+        .perfil-tab-pane {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        .perfil-tab-pane.active {
+            display: block;
+        }
+        .publicacion-item {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary-color);
+        }
+        .publicacion-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+            line-height: 1.4;
+        }
+        .publicacion-item p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+        }
+        .publicacion-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .publicacion-item a:hover {
+            text-decoration: underline;
+        }
+        .proyecto-item {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+        }
+        .proyecto-item h4 {
+            font-size: 1.25rem;
             margin-bottom: 0.75rem;
             color: var(--text-color);
         }
-        .perfil-descripcion ul {
-            margin-left: 1.5rem;
+        .proyecto-item p {
+            color: var(--text-light);
+            line-height: 1.7;
             margin-bottom: 1rem;
         }
-        .perfil-descripcion li {
+        .proyecto-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+        .proyecto-meta span {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+        .actividad-item {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+        }
+        .actividad-item h4 {
+            font-size: 1.25rem;
             margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        .actividad-item p {
+            color: var(--text-light);
+            line-height: 1.7;
         }
         @media (max-width: 768px) {
             .perfil-header {
@@ -133,6 +224,13 @@
             }
             .perfil-imagen {
                 margin: 0 auto;
+            }
+            .perfil-tab-buttons {
+                flex-direction: column;
+            }
+            .perfil-tab-button {
+                width: 100%;
+                text-align: left;
             }
         }
     </style>
@@ -150,6 +248,11 @@
                     <li><a href="../index.html#nosotros">Nosotros</a></li>
                     <li><a href="../index.html#contacto">Contacto</a></li>
                 </ul>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </nav>
         </div>
     </header>
@@ -178,14 +281,28 @@
         </div>
 
         <div class="perfil-descripcion">
-            <p>## Descripción</p>
-<p>Bruno Rojas es Asistente de Investigación en el Observatorio de Legitimidad. Colabora activamente en proyectos de investigación, apoyando en el análisis de datos y procesamiento de información sobre legitimidad institucional. Ha desarrollado habilidades en análisis estadístico y contribuye a la preparación de reportes y visualizaciones de datos para los proyectos del Observatorio.</p>
-<p>## Proyectos en los que Participa</p>
-<p>Colabora en proyectos de análisis de datos y visualización.</p>
-<p>## Otras Actividades</p>
-<p>Asistente de Investigación desde 2024.</p>
+            <p>
+Bruno Rojas es Asistente de Investigación en el Observatorio de Legitimidad. Colabora activamente en proyectos de investigación, apoyando en el análisis de datos y procesamiento de información sobre legitimidad institucional. Ha desarrollado habilidades en análisis estadístico y contribuye a la preparación de reportes y visualizaciones de datos para los proyectos del Observatorio.
+</p>
         </div>
-    </section>
+
+        <div class="perfil-tabs">
+            <div class="perfil-tab-buttons"><button class="perfil-tab-button active" data-tab="proyectos">Proyectos en curso</button><button class="perfil-tab-button" data-tab="actividades">Otras actividades</button>            </div>
+
+            <div class="perfil-tab-content"><div class="perfil-tab-pane active" id="proyectos">
+                    <div class="proyecto-item">
+                        <p>
+Colabora en proyectos de análisis de datos y visualización.
+</p>
+                    </div>
+                </div><div class="perfil-tab-pane" id="actividades">
+                    <div class="actividad-item">
+                        <p>
+Asistente de Investigación desde 2024.
+</p>
+                    </div>
+                </div>            </div>
+        </div>    </section>
 
     <footer class="footer">
         <div class="container">
@@ -200,10 +317,19 @@
                         <li><a href="../index.html#contacto">Contacto</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
+                <div class="footer-section" id="contacto">
                     <h4>Contacto</h4>
                     <p>Email: observatorio@universidad.cl</p>
                     <p>Teléfono: +56 2 2676 8479</p>
+                    <p>Dirección: Avenida Ejército #333, Santiago, Chile</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Investigación</h4>
+                    <ul>
+                        <li><a href="../index.html#proyectos">Proyectos</a></li>
+                        <li><a href="#publicaciones">Publicaciones</a></li>
+                        <li><a href="#tesis">Tesis y Prácticas</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -211,5 +337,46 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Tabs functionality
+        const perfilTabButtons = document.querySelectorAll(".perfil-tab-button");
+        const perfilTabPanes = document.querySelectorAll(".perfil-tab-pane");
+
+        perfilTabButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                const targetTab = button.getAttribute("data-tab");
+                
+                // Remove active class from all buttons and panes
+                perfilTabButtons.forEach(btn => btn.classList.remove("active"));
+                perfilTabPanes.forEach(pane => pane.classList.remove("active"));
+                
+                // Add active class to clicked button and corresponding pane
+                button.classList.add("active");
+                document.getElementById(targetTab).classList.add("active");
+            });
+        });
+
+        // Mobile menu
+        const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+        const navMenu = document.querySelector(".nav-menu");
+
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener("click", () => {
+                navMenu.classList.toggle("active");
+                
+                const spans = mobileMenuToggle.querySelectorAll("span");
+                if (navMenu.classList.contains("active")) {
+                    spans[0].style.transform = "rotate(45deg) translateY(8px)";
+                    spans[1].style.opacity = "0";
+                    spans[2].style.transform = "rotate(-45deg) translateY(-8px)";
+                } else {
+                    spans[0].style.transform = "none";
+                    spans[1].style.opacity = "1";
+                    spans[2].style.transform = "none";
+                }
+            });
+        }
+    </script>
 </body>
 </html>

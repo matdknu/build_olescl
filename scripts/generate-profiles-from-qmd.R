@@ -1,28 +1,123 @@
 #!/usr/bin/env Rscript
-# Script para generar perfiles HTML desde archivos QMD
+# Script para generar perfiles HTML desde archivos QMD con estructura completa como monica-gerber.html
 
 library(yaml)
-library(rmarkdown)
 
-# Función para convertir markdown a HTML básico
-markdown_to_html <- function(md_text) {
-  # Convertir markdown básico a HTML
-  md_text <- gsub("^## (.+)$", "<h2>\\1</h2>", md_text, perl = TRUE)
-  md_text <- gsub("^### (.+)$", "<h3>\\1</h3>", md_text, perl = TRUE)
-  md_text <- gsub("^\\*\\* (.+)$", "<strong>\\1</strong>", md_text, perl = TRUE)
-  md_text <- gsub("^\\- (.+)$", "<li>\\1</li>", md_text, perl = TRUE)
-  md_text <- gsub("\\[([^\\]]+)\\]\\(([^)]+)\\)", "<a href=\"\\2\">\\1</a>", md_text, perl = TRUE)
-  md_text <- gsub("\n\n", "</p><p>", md_text)
-  md_text <- paste0("<p>", md_text, "</p>")
-  return(md_text)
+# Función para extraer secciones del markdown
+extract_sections <- function(md_content) {
+  sections <- list(
+    descripcion = "",
+    publicaciones = "",
+    proyectos = "",
+    actividades = ""
+  )
+  
+  lines <- strsplit(md_content, "\n")[[1]]
+  current_section <- "descripcion"
+  current_content <- character()
+  
+  for (line in lines) {
+    # Detectar secciones
+    if (grepl("^## Descripción", line, ignore.case = TRUE)) {
+      if (length(current_content) > 0) {
+        sections[[current_section]] <- paste(current_content, collapse = "\n")
+      }
+      current_section <- "descripcion"
+      current_content <- character()
+    } else if (grepl("^## (Publicaciones|Últimas Publicaciones|Publicaciones Recientes)", line, ignore.case = TRUE)) {
+      if (length(current_content) > 0) {
+        sections[[current_section]] <- paste(current_content, collapse = "\n")
+      }
+      current_section <- "publicaciones"
+      current_content <- character()
+    } else if (grepl("^## (Proyectos|Proyectos en Curso|Proyectos en los que Participa)", line, ignore.case = TRUE)) {
+      if (length(current_content) > 0) {
+        sections[[current_section]] <- paste(current_content, collapse = "\n")
+      }
+      current_section <- "proyectos"
+      current_content <- character()
+    } else if (grepl("^## (Otras Actividades|Actividades)", line, ignore.case = TRUE)) {
+      if (length(current_content) > 0) {
+        sections[[current_section]] <- paste(current_content, collapse = "\n")
+      }
+      current_section <- "actividades"
+      current_content <- character()
+    } else {
+      current_content <- c(current_content, line)
+    }
+  }
+  
+  # Guardar última sección
+  if (length(current_content) > 0) {
+    sections[[current_section]] <- paste(current_content, collapse = "\n")
+  }
+  
+  return(sections)
 }
 
-# Función para generar HTML de perfil
-generate_profile_html <- function(qmd_file) {
-  # Leer el archivo QMD
-  content <- readLines(qmd_file, warn = FALSE)
+# Función para convertir markdown a HTML
+markdown_to_html <- function(md_text) {
+  if (nchar(trimws(md_text)) == 0) return("")
   
-  # Separar YAML y contenido
+  # Convertir encabezados
+  md_text <- gsub("^### (.+)$", "<h4>\\1</h4>", md_text, perl = TRUE, useBytes = TRUE)
+  # Convertir negritas
+  md_text <- gsub("\\*\\*([^*]+)\\*\\*", "<strong>\\1</strong>", md_text, perl = TRUE)
+  # Convertir listas
+  md_text <- gsub("^\\- (.+)$", "<li>\\1</li>", md_text, perl = TRUE, useBytes = TRUE)
+  # Convertir enlaces
+  md_text <- gsub("\\[([^\\]]+)\\]\\(([^)]+)\\)", "<a href=\"\\2\" target=\"_blank\">\\1</a>", md_text, perl = TRUE)
+  
+  # Procesar líneas
+  lines <- strsplit(md_text, "\n")[[1]]
+  html_lines <- character()
+  in_list <- FALSE
+  in_paragraph <- FALSE
+  
+  for (line in lines) {
+    trimmed <- trimws(line)
+    
+    if (grepl("^<h4>", line) || grepl("^<li>", line)) {
+      if (in_paragraph) {
+        html_lines <- c(html_lines, "</p>")
+        in_paragraph <- FALSE
+      }
+      if (grepl("^<li>", line)) {
+        if (!in_list) {
+          html_lines <- c(html_lines, "<ul>")
+          in_list <- TRUE
+        }
+        html_lines <- c(html_lines, line)
+      } else {
+        if (in_list) {
+          html_lines <- c(html_lines, "</ul>")
+          in_list <- FALSE
+        }
+        html_lines <- c(html_lines, line)
+      }
+    } else if (nchar(trimmed) > 0) {
+      if (in_list) {
+        html_lines <- c(html_lines, "</ul>")
+        in_list <- FALSE
+      }
+      if (!in_paragraph) {
+        html_lines <- c(html_lines, "<p>")
+        in_paragraph <- TRUE
+      }
+      html_lines <- c(html_lines, trimmed)
+    }
+  }
+  
+  if (in_list) html_lines <- c(html_lines, "</ul>")
+  if (in_paragraph) html_lines <- c(html_lines, "</p>")
+  
+  return(paste(html_lines, collapse = "\n"))
+}
+
+# Función para generar HTML de perfil completo
+generate_profile_html <- function(qmd_file) {
+  content <- readLines(qmd_file, warn = FALSE, encoding = "UTF-8")
+  
   yaml_start <- which(grepl("^---$", content))[1]
   yaml_end <- which(grepl("^---$", content))[2]
   
@@ -34,8 +129,10 @@ generate_profile_html <- function(qmd_file) {
   yaml_content <- paste(content[(yaml_start+1):(yaml_end-1)], collapse = "\n")
   md_content <- paste(content[(yaml_end+1):length(content)], collapse = "\n")
   
-  # Parsear YAML
   metadata <- yaml.load(yaml_content)
+  
+  # Extraer secciones
+  sections <- extract_sections(md_content)
   
   # Generar nombre de archivo
   name_slug <- tolower(gsub(" ", "-", metadata$title))
@@ -49,46 +146,18 @@ generate_profile_html <- function(qmd_file) {
   
   output_file <- paste0("equipo/", name_slug, ".html")
   
-  # Convertir markdown a HTML básico
-  html_content <- md_content
-  # Convertir encabezados
-  html_content <- gsub("^## (.+)$", "<h2>\\1</h2>", html_content, perl = TRUE, useBytes = TRUE)
-  html_content <- gsub("^### (.+)$", "<h3>\\1</h3>", html_content, perl = TRUE, useBytes = TRUE)
-  # Convertir negritas
-  html_content <- gsub("\\*\\*([^*]+)\\*\\*", "<strong>\\1</strong>", html_content, perl = TRUE)
-  # Convertir listas
-  html_content <- gsub("^\\- (.+)$", "<li>\\1</li>", html_content, perl = TRUE, useBytes = TRUE)
-  # Convertir enlaces
-  html_content <- gsub("\\[([^\\]]+)\\]\\(([^)]+)\\)", "<a href=\"\\2\">\\1</a>", html_content, perl = TRUE)
-  # Convertir párrafos (líneas que no son encabezados ni listas)
-  lines <- strsplit(html_content, "\n")[[1]]
-  html_lines <- character()
-  in_list <- FALSE
-  for (line in lines) {
-    if (grepl("^<h[23]>", line) || grepl("^<li>", line)) {
-      if (in_list && !grepl("^<li>", line)) {
-        html_lines <- c(html_lines, "</ul>")
-        in_list <- FALSE
-      }
-      if (grepl("^<li>", line) && !in_list) {
-        html_lines <- c(html_lines, "<ul>")
-        in_list <- TRUE
-      }
-      html_lines <- c(html_lines, line)
-    } else if (nchar(trimws(line)) > 0) {
-      if (in_list) {
-        html_lines <- c(html_lines, "</ul>")
-        in_list <- FALSE
-      }
-      html_lines <- c(html_lines, paste0("<p>", line, "</p>"))
-    }
-  }
-  if (in_list) {
-    html_lines <- c(html_lines, "</ul>")
-  }
-  html_content <- paste(html_lines, collapse = "\n")
+  # Convertir secciones a HTML
+  descripcion_html <- markdown_to_html(sections$descripcion)
+  publicaciones_html <- markdown_to_html(sections$publicaciones)
+  proyectos_html <- markdown_to_html(sections$proyectos)
+  actividades_html <- markdown_to_html(sections$actividades)
   
-  # Generar HTML completo
+  # Determinar qué tabs mostrar
+  has_publicaciones <- nchar(trimws(publicaciones_html)) > 0
+  has_proyectos <- nchar(trimws(proyectos_html)) > 0
+  has_actividades <- nchar(trimws(actividades_html)) > 0
+  
+  # Generar HTML completo con estructura de monica-gerber.html
   html_template <- paste0('<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -155,7 +224,6 @@ generate_profile_html <- function(qmd_file) {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
-            margin-bottom: 1.5rem;
         }
         .perfil-enlace {
             display: inline-flex;
@@ -198,24 +266,116 @@ generate_profile_html <- function(qmd_file) {
             color: var(--text-light);
             font-size: 1.1rem;
         }
-        .perfil-descripcion h2 {
-            font-size: 1.75rem;
+        .perfil-tabs {
             margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: var(--text-color);
         }
-        .perfil-descripcion h3 {
-            font-size: 1.5rem;
-            margin-top: 1.5rem;
+        .perfil-tab-buttons {
+            display: flex;
+            gap: 1rem;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .perfil-tab-button {
+            background: none;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-light);
+            cursor: pointer;
+            position: relative;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+        .perfil-tab-button:hover {
+            color: var(--primary-color);
+        }
+        .perfil-tab-button.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+        .perfil-tab-content {
+            min-height: 400px;
+        }
+        .perfil-tab-pane {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        .perfil-tab-pane.active {
+            display: block;
+        }
+        .publicacion-item {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary-color);
+        }
+        .publicacion-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+            line-height: 1.4;
+        }
+        .publicacion-item p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+        }
+        .publicacion-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .publicacion-item a:hover {
+            text-decoration: underline;
+        }
+        .proyecto-item {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+        }
+        .proyecto-item h4 {
+            font-size: 1.25rem;
             margin-bottom: 0.75rem;
             color: var(--text-color);
         }
-        .perfil-descripcion ul {
-            margin-left: 1.5rem;
+        .proyecto-item p {
+            color: var(--text-light);
+            line-height: 1.7;
             margin-bottom: 1rem;
         }
-        .perfil-descripcion li {
+        .proyecto-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+        .proyecto-meta span {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+        .actividad-item {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+        }
+        .actividad-item h4 {
+            font-size: 1.25rem;
             margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        .actividad-item p {
+            color: var(--text-light);
+            line-height: 1.7;
         }
         @media (max-width: 768px) {
             .perfil-header {
@@ -224,6 +384,13 @@ generate_profile_html <- function(qmd_file) {
             }
             .perfil-imagen {
                 margin: 0 auto;
+            }
+            .perfil-tab-buttons {
+                flex-direction: column;
+            }
+            .perfil-tab-button {
+                width: 100%;
+                text-align: left;
             }
         }
     </style>
@@ -241,6 +408,11 @@ generate_profile_html <- function(qmd_file) {
                     <li><a href="../index.html#nosotros">Nosotros</a></li>
                     <li><a href="../index.html#contacto">Contacto</a></li>
                 </ul>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </nav>
         </div>
     </header>
@@ -259,12 +431,12 @@ generate_profile_html <- function(qmd_file) {
                 </div>
 
                 <div class="perfil-enlaces">',
-  if (!is.null(metadata$`pagina-personal`) && metadata$`pagina-personal` != "") {
+  if (!is.null(metadata$`pagina-personal`) && metadata$`pagina-personal` != "" && metadata$`pagina-personal` != "#") {
     paste0('<a href="', metadata$`pagina-personal`, '" class="perfil-enlace" target="_blank">
                         <span>📄</span> Página personal
                     </a>')
   } else "",
-  if (!is.null(metadata$`google-scholar`) && metadata$`google-scholar` != "") {
+  if (!is.null(metadata$`google-scholar`) && metadata$`google-scholar` != "" && metadata$`google-scholar` != "#") {
     paste0('<a href="', metadata$`google-scholar`, '" class="perfil-enlace" target="_blank">
                         <span>🔬</span> Google Scholar
                     </a>')
@@ -281,9 +453,37 @@ generate_profile_html <- function(qmd_file) {
         </div>
 
         <div class="perfil-descripcion">
-            ', html_content, '
+            ', descripcion_html, '
         </div>
-    </section>
+
+        ', if (has_publicaciones || has_proyectos || has_actividades) {
+          paste0('<div class="perfil-tabs">
+            <div class="perfil-tab-buttons">',
+            if (has_publicaciones) '<button class="perfil-tab-button active" data-tab="publicaciones">Últimas Publicaciones</button>',
+            if (has_proyectos) paste0('<button class="perfil-tab-button', if (!has_publicaciones) ' active', '" data-tab="proyectos">Proyectos en curso</button>'),
+            if (has_actividades) paste0('<button class="perfil-tab-button', if (!has_publicaciones && !has_proyectos) ' active', '" data-tab="actividades">Otras actividades</button>'),
+'            </div>
+
+            <div class="perfil-tab-content">',
+            if (has_publicaciones) paste0('<div class="perfil-tab-pane', if (has_publicaciones) ' active', '" id="publicaciones">
+                    <div class="publicacion-item">
+                        ', publicaciones_html, '
+                    </div>
+                </div>'),
+            if (has_proyectos) paste0('<div class="perfil-tab-pane', if (!has_publicaciones) ' active', '" id="proyectos">
+                    <div class="proyecto-item">
+                        ', proyectos_html, '
+                    </div>
+                </div>'),
+            if (has_actividades) paste0('<div class="perfil-tab-pane', if (!has_publicaciones && !has_proyectos) ' active', '" id="actividades">
+                    <div class="actividad-item">
+                        ', actividades_html, '
+                    </div>
+                </div>'),
+'            </div>
+        </div>')
+        } else "",
+'    </section>
 
     <footer class="footer">
         <div class="container">
@@ -298,10 +498,19 @@ generate_profile_html <- function(qmd_file) {
                         <li><a href="../index.html#contacto">Contacto</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
+                <div class="footer-section" id="contacto">
                     <h4>Contacto</h4>
                     <p>Email: observatorio@universidad.cl</p>
                     <p>Teléfono: +56 2 2676 8479</p>
+                    <p>Dirección: Avenida Ejército #333, Santiago, Chile</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Investigación</h4>
+                    <ul>
+                        <li><a href="../index.html#proyectos">Proyectos</a></li>
+                        <li><a href="#publicaciones">Publicaciones</a></li>
+                        <li><a href="#tesis">Tesis y Prácticas</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -309,10 +518,50 @@ generate_profile_html <- function(qmd_file) {
             </div>
         </div>
     </footer>
+
+    <script>
+        // Tabs functionality
+        const perfilTabButtons = document.querySelectorAll(".perfil-tab-button");
+        const perfilTabPanes = document.querySelectorAll(".perfil-tab-pane");
+
+        perfilTabButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                const targetTab = button.getAttribute("data-tab");
+                
+                // Remove active class from all buttons and panes
+                perfilTabButtons.forEach(btn => btn.classList.remove("active"));
+                perfilTabPanes.forEach(pane => pane.classList.remove("active"));
+                
+                // Add active class to clicked button and corresponding pane
+                button.classList.add("active");
+                document.getElementById(targetTab).classList.add("active");
+            });
+        });
+
+        // Mobile menu
+        const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+        const navMenu = document.querySelector(".nav-menu");
+
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener("click", () => {
+                navMenu.classList.toggle("active");
+                
+                const spans = mobileMenuToggle.querySelectorAll("span");
+                if (navMenu.classList.contains("active")) {
+                    spans[0].style.transform = "rotate(45deg) translateY(8px)";
+                    spans[1].style.opacity = "0";
+                    spans[2].style.transform = "rotate(-45deg) translateY(-8px)";
+                } else {
+                    spans[0].style.transform = "none";
+                    spans[1].style.opacity = "1";
+                    spans[2].style.transform = "none";
+                }
+            });
+        }
+    </script>
 </body>
 </html>')
   
-  # Escribir archivo
   writeLines(html_template, output_file)
   cat("✓ Generado:", output_file, "\n")
 }
@@ -332,4 +581,3 @@ for (qmd_file in qmd_files) {
 }
 
 cat("\n✓ Proceso completado!\n")
-
