@@ -133,4 +133,85 @@ window.addEventListener('scroll', () => {
     });
 });
 
+// Load and display publications
+async function loadPublications() {
+    try {
+        const response = await fetch('data/publicaciones.json');
+        const publicaciones = await response.json();
+        
+        // Mapeo de nombres de investigadores a sus slugs de perfil
+        const investigadoresMap = {
+            'Luciano Sáez Fuentealba': 'luciano-saez-fuentealba',
+            'Luciano Sáez': 'luciano-saez-fuentealba',
+            'Mónica Gerber': 'monica-gerber',
+            'Monica Gerber': 'monica-gerber',
+            'Mónica Gerber Plüss': 'monica-gerber',
+            'Ana Figueiredo': 'ana-figueiredo',
+            'Ana Figueiredo Mateus': 'ana-figueiredo',
+            'Macarena Orchard': 'macarena-orchard',
+            'Macarena Orchard Rieiro': 'macarena-orchard',
+            'Joaquín Bahamondes': 'joaquin-bahamondes',
+            'Cristóbal Moya': 'cristobal-moya',
+            'Cristobal Moya': 'cristobal-moya',
+            'Ismael Puga': 'ismael-puga',
+            'Loreto Quiroz': 'loreto-quiroz',
+            'Paz Irarrázabal González': 'paz-irarrazabal-gonzalez'
+        };
+        
+        const container = document.getElementById('publicaciones-container');
+        if (!container) return;
+        
+        // Agrupar por año
+        const porAno = {};
+        publicaciones.forEach(pub => {
+            if (!porAno[pub.year]) {
+                porAno[pub.year] = [];
+            }
+            porAno[pub.year].push(pub);
+        });
+        
+        // Ordenar años descendente
+        const anos = Object.keys(porAno).sort((a, b) => b - a);
+        
+        anos.forEach(ano => {
+            const anoSection = document.createElement('div');
+            anoSection.className = 'publicaciones-ano';
+            anoSection.innerHTML = `<h3 style="font-size: 1.75rem; margin: 2rem 0 1rem; color: var(--primary-color); border-bottom: 2px solid var(--primary-color); padding-bottom: 0.5rem;">${ano}</h3>`;
+            
+            porAno[ano].forEach(pub => {
+                const pubItem = document.createElement('div');
+                pubItem.className = 'publicacion-item-main';
+                
+                // Crear lista de autores con enlaces
+                const autoresHtml = pub.authors.map(author => {
+                    const slug = investigadoresMap[author];
+                    if (slug) {
+                        return `<a href="equipo/${slug}.html" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">${author}</a>`;
+                    }
+                    return author;
+                }).join(', ');
+                
+                pubItem.innerHTML = `
+                    <p style="margin-bottom: 0.5rem; line-height: 1.6;">
+                        ${autoresHtml} (${pub.year}). ${pub.title}.
+                        ${pub.journal ? `<em>${pub.journal}</em>.` : ''}
+                        ${pub.doi ? `<a href="${pub.doi}" target="_blank" style="color: var(--primary-color); text-decoration: none; margin-left: 0.5rem;">DOI</a>` : ''}
+                        ${pub.pdf ? `<a href="${pub.pdf}" target="_blank" style="color: var(--primary-color); text-decoration: none; margin-left: 0.5rem;">PDF</a>` : ''}
+                    </p>
+                `;
+                
+                anoSection.appendChild(pubItem);
+            });
+            
+            container.appendChild(anoSection);
+        });
+    } catch (error) {
+        console.error('Error loading publications:', error);
+    }
+}
+
+// Load publications when page loads
+if (document.getElementById('publicaciones-container')) {
+    loadPublications();
+}
 

@@ -1140,3 +1140,42 @@ body {
     }
 }
 
+/* Publicaciones Section */
+.publicaciones-section {
+    padding: 4rem 0;
+    background-color: var(--bg-color);
+}
+
+.publicaciones-ano {
+    margin-bottom: 3rem;
+}
+
+.publicacion-item-main {
+    padding: 1.5rem;
+    background: white;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--primary-color);
+    transition: var(--transition);
+}
+
+.publicacion-item-main:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateX(5px);
+}
+
+.publicacion-item-main p {
+    color: var(--text-color);
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+.publicacion-item-main a {
+    transition: var(--transition);
+}
+
+.publicacion-item-main a:hover {
+    text-decoration: underline;
+}
+
