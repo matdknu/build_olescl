@@ -301,8 +301,10 @@ generate_destacados <- function() {
         href <- paste0("noticias/", slug, ".html")
       }
       
-      # Usar ruta absoluta desde la raíz
-      href_absoluto <- if (startsWith(href, "/")) href else paste0("/", href)
+      # Usar ruta relativa que funcione tanto en local como en GitHub Pages
+      # En GitHub Pages, el repositorio está en /build_olescl/, así que necesitamos rutas relativas
+      # Como este HTML se carga desde index.html, las rutas relativas funcionarán correctamente
+      href_absoluto <- href
       
       sprintf(
         '<article class="destacado-card %s">
