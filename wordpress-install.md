@@ -113,3 +113,4 @@ Si tienes problemas con la instalación:
 3. Revisa la consola del navegador para errores de JavaScript
 4. Verifica que el CSS no esté siendo sobrescrito por el tema activo
 
+

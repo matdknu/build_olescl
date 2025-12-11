@@ -1,0 +1,25 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Observatorio de Legitimidad"
+  navbar:
+    left:
+      - href: index.html
+        text: Inicio
+      - href: content/noticias/index.html
+        text: Noticias
+      - href: content/publicaciones/index.html
+        text: Publicaciones
+      - href: content/equipo/index.html
+        text: Equipo
+
+format:
+  html:
+    theme: 
+      - default
+    css: style.css
+    toc: false
+    code-fold: false
+

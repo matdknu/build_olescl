@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}} - Observatorio de Legitimidad</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><a href="../../index.html" style="color: white; text-decoration: none;">Observatorio de Legitimidad</a></h1>
+            </div>
+            <nav class="nav">
+                <ul class="nav-menu">
+                    <li><a href="../../index.html#inicio">Inicio</a></li>
+                    <li><a href="../../index.html#noticias">Noticias</a></li>
+                    <li><a href="../../index.html#proyectos">Proyectos</a></li>
+                    <li><a href="../../index.html#nosotros">Nosotros</a></li>
+                    <li><a href="../../index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="noticias-section" style="padding-top: 2rem;">
+        <div class="container">
+            <article class="noticia-completa" style="max-width: 900px; margin: 0 auto; background: white; padding: 3rem; border-radius: 1rem; box-shadow: var(--shadow);">
+                <div class="noticia-fecha">{{date}}</div>
+                <h1 style="font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--text-color);">{{title}}</h1>
+                {{#if image}}
+                <div class="noticia-imagen" style="width: 100%; height: 400px; overflow: hidden; border-radius: 0.5rem; margin-bottom: 2rem;">
+                    <img src="{{image}}" alt="{{title}}" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                {{/if}}
+                <div class="noticia-contenido" style="line-height: 1.8; color: var(--text-color); font-size: 1.1rem;">
+                    {{{body}}}
+                </div>
+                <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                    <a href="../../index.html#noticias" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">← Volver a Noticias</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="../../index.html#inicio">Inicio</a></li>
+                        <li><a href="../../index.html#noticias">Noticias</a></li>
+                        <li><a href="../../index.html#proyectos">Proyectos</a></li>
+                        <li><a href="../../index.html#nosotros">Nosotros</a></li>
+                        <li><a href="../../index.html#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>Email: observatorio@universidad.cl</p>
+                    <p>Teléfono: +56 2 2676 8479</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Observatorio de Legitimidad. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+

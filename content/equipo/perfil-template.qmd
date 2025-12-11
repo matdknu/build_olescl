@@ -1,0 +1,52 @@
+---
+title: "Nombre Completo"
+cargo: "Cargo en el Observatorio"
+email: "email@universidad.cl"
+pagina-personal: "https://..."
+google-scholar: "https://..."
+image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop"
+areas-interes: 
+  - "Área de interés 1"
+  - "Área de interés 2"
+  - "Área de interés 3"
+---
+
+## Descripción
+
+Texto descriptivo sobre la persona, su formación, experiencia y rol en el Observatorio.
+
+## Formación
+
+- **Doctorado**: Universidad, Año
+- **Magíster**: Universidad, Año
+- **Pregrado**: Universidad, Año
+
+## Publicaciones Recientes
+
+### 2025
+
+**Título de la publicación**  
+Autores (2025). *Revista*, Volumen, páginas.  
+DOI: [link]
+
+### 2024
+
+**Título de la publicación**  
+Autores (2024). *Revista*, Volumen, páginas.  
+DOI: [link]
+
+## Proyectos en Curso
+
+### Nombre del Proyecto
+
+**Rol**: Investigadora Principal  
+**Período**: 2023 - Presente  
+**Financiamiento**: FONDECYT Regular N. 1234567
+
+Descripción del proyecto.
+
+## Otras Actividades
+
+- **Cargo 1**: Institución (2020 - Presente)
+- **Cargo 2**: Institución (2018 - 2022)
+
