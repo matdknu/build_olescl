@@ -77,7 +77,7 @@ generate_noticias_index <- function() {
             <img src="%s" alt="%s">
           </div>
           <div class="noticia-fecha">%s</div>
-          <h3><a href="../content/noticias/%s" style="text-decoration: none; color: inherit;">%s</a></h3>
+          <h3><a href="../noticias/%s" style="text-decoration: none; color: inherit;">%s</a></h3>
         </article>',
         clase_card,
         badge_destacado,
@@ -107,7 +107,7 @@ generate_noticias_index <- function() {
             <img src="%s" alt="%s">
           </div>
           <div class="noticia-fecha">%s</div>
-          <h3><a href="content/noticias/%s" style="text-decoration: none; color: inherit;">%s</a></h3>
+          <h3><a href="noticias/%s" style="text-decoration: none; color: inherit;">%s</a></h3>
         </article>',
         clase_card,
         noticia$image,

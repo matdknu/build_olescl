@@ -34,5 +34,9 @@ render_folder("content/eventos")
 cat("\n=== Renderizando Proyectos ===\n")
 render_folder("content/proyectos")
 
+# Generar HTMLs simples para noticias
+cat("\n=== Generando HTMLs simples de noticias ===\n")
+source("scripts/generate-news-html.R")
+
 cat("\n✓ Proceso completado!\n")
 
