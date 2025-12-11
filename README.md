@@ -64,15 +64,30 @@ Modifica el contenido HTML en `index.html` según tus necesidades:
 
 ## GitHub Pages
 
-Este sitio está configurado para GitHub Pages. Para activarlo:
+Este sitio está configurado para desplegarse automáticamente en GitHub Pages. Para activarlo:
 
-1. Ve a la configuración del repositorio en GitHub
-2. Navega a **Settings > Pages**
-3. En **Source**, selecciona la rama `main` y la carpeta `/ (root)`
-4. Guarda los cambios
-5. Tu sitio estará disponible en: `https://matdknu.github.io/build_olescl/`
+### Opción 1: GitHub Actions (Recomendado - ya configurado)
 
-El archivo `.nojekyll` está incluido para asegurar que GitHub Pages sirva los archivos estáticos correctamente.
+1. Ve a: https://github.com/matdknu/build_olescl/settings/pages
+2. En **Source**, selecciona: **GitHub Actions**
+3. Guarda los cambios
+4. El workflow se ejecutará automáticamente en cada push a `main`
+5. Tu sitio estará disponible en: **https://matdknu.github.io/build_olescl/**
+
+### Opción 2: Deploy from a branch
+
+1. Ve a: https://github.com/matdknu/build_olescl/settings/pages
+2. En **Source**, selecciona:
+   - Branch: `main`
+   - Folder: `/ (root)`
+3. Guarda los cambios
+4. Tu sitio estará disponible en: **https://matdknu.github.io/build_olescl/**
+
+### Notas
+
+- El archivo `.nojekyll` está incluido para asegurar que GitHub Pages sirva los archivos estáticos correctamente
+- El workflow de GitHub Actions está configurado en `.github/workflows/pages.yml`
+- Los cambios se despliegan automáticamente después de cada push a `main`
 
 ## Notas
 
