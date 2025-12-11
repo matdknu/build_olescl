@@ -230,7 +230,7 @@ generate_news_html <- function(qmd_file) {
         <div class="container">
             <div class="logo">
                 <a href="../index.html" style="display: flex; align-items: center; text-decoration: none;">
-                    <img src="../logos/logo.png" alt="Observatorio de Legitimidad" style="height: 60px; width: auto; object-fit: contain; filter: brightness(1.1);">
+                    <img src="../logos/logo.png" alt="Observatorio de Legitimidad" style="height: 70px; width: auto; object-fit: contain; filter: brightness(1.1);">
                 </a>
             </div>
             <nav class="nav">
