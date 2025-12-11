@@ -129,6 +129,9 @@ generate_news_html <- function(qmd_file) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#3F3451">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#3F3451">
+    <meta name="msapplication-navbutton-color" content="#3F3451">
     <title>', metadata$title, ' - Observatorio de Legitimidad</title>
     <link rel="icon" type="image/png" href="../logos/icon.png">
     <link rel="stylesheet" href="../style.css">
