@@ -8,23 +8,7 @@ library(rmarkdown)
 markdown_to_html <- function(md_text) {
   if (nchar(trimws(md_text)) == 0) return("")
   
-  # Convertir encabezados
-  md_text <- gsub("^## (.+)$", "<h2>\\1</h2>", md_text, perl = TRUE, useBytes = TRUE)
-  md_text <- gsub("^### (.+)$", "<h3>\\1</h3>", md_text, perl = TRUE, useBytes = TRUE)
-  
-  # Convertir negritas
-  md_text <- gsub("\\*\\*([^*]+)\\*\\*", "<strong>\\1</strong>", md_text, perl = TRUE)
-  
-  # Convertir cursivas
-  md_text <- gsub("_([^_]+)_", "<em>\\1</em>", md_text, perl = TRUE)
-  
-  # Convertir listas
-  md_text <- gsub("^\\- (.+)$", "<li>\\1</li>", md_text, perl = TRUE, useBytes = TRUE)
-  
-  # Convertir enlaces
-  md_text <- gsub("\\[([^\\]]+)\\]\\(([^)]+)\\)", "<a href=\"\\2\" target=\"_blank\" style=\"color: var(--primary-color); text-decoration: none;\">\\1</a>", md_text, perl = TRUE)
-  
-  # Procesar líneas
+  # Procesar línea por línea
   lines <- strsplit(md_text, "\n")[[1]]
   html_lines <- character()
   in_list <- FALSE
@@ -33,25 +17,46 @@ markdown_to_html <- function(md_text) {
   for (line in lines) {
     trimmed <- trimws(line)
     
-    if (grepl("^<h[23]>", line) || grepl("^<li>", line)) {
+    # Detectar encabezados
+    if (grepl("^## ", trimmed)) {
       if (in_paragraph) {
         html_lines <- c(html_lines, "</p>")
         in_paragraph <- FALSE
       }
-      if (grepl("^<li>", line)) {
-        if (!in_list) {
-          html_lines <- c(html_lines, "<ul>")
-          in_list <- TRUE
-        }
-        html_lines <- c(html_lines, line)
-      } else {
-        if (in_list) {
-          html_lines <- c(html_lines, "</ul>")
-          in_list <- FALSE
-        }
-        html_lines <- c(html_lines, line)
+      if (in_list) {
+        html_lines <- c(html_lines, "</ul>")
+        in_list <- FALSE
       }
+      texto <- gsub("^## ", "", trimmed)
+      html_lines <- c(html_lines, paste0("<h2>", texto, "</h2>"))
+    } else if (grepl("^### ", trimmed)) {
+      if (in_paragraph) {
+        html_lines <- c(html_lines, "</p>")
+        in_paragraph <- FALSE
+      }
+      if (in_list) {
+        html_lines <- c(html_lines, "</ul>")
+        in_list <- FALSE
+      }
+      texto <- gsub("^### ", "", trimmed)
+      html_lines <- c(html_lines, paste0("<h3>", texto, "</h3>"))
+    } else if (grepl("^\\- ", trimmed)) {
+      # Lista
+      if (in_paragraph) {
+        html_lines <- c(html_lines, "</p>")
+        in_paragraph <- FALSE
+      }
+      if (!in_list) {
+        html_lines <- c(html_lines, "<ul>")
+        in_list <- TRUE
+      }
+      texto <- gsub("^\\- ", "", trimmed)
+      # Procesar negritas y cursivas en el item
+      texto <- gsub("\\*\\*([^*]+)\\*\\*", "<strong>\\1</strong>", texto, perl = TRUE)
+      texto <- gsub("_([^_]+)_", "<em>\\1</em>", texto, perl = TRUE)
+      html_lines <- c(html_lines, paste0("<li>", texto, "</li>"))
     } else if (nchar(trimmed) > 0) {
+      # Párrafo normal
       if (in_list) {
         html_lines <- c(html_lines, "</ul>")
         in_list <- FALSE
@@ -60,10 +65,26 @@ markdown_to_html <- function(md_text) {
         html_lines <- c(html_lines, "<p>")
         in_paragraph <- TRUE
       }
-      html_lines <- c(html_lines, trimmed)
+      # Procesar negritas, cursivas y enlaces
+      texto <- trimmed
+      texto <- gsub("\\*\\*([^*]+)\\*\\*", "<strong>\\1</strong>", texto, perl = TRUE)
+      texto <- gsub("_([^_]+)_", "<em>\\1</em>", texto, perl = TRUE)
+      texto <- gsub("\\[([^\\]]+)\\]\\(([^)]+)\\)", "<a href=\"\\2\" target=\"_blank\" style=\"color: var(--primary-color); text-decoration: none;\">\\1</a>", texto, perl = TRUE)
+      html_lines <- c(html_lines, texto)
+    } else {
+      # Línea vacía - cerrar párrafo o lista
+      if (in_paragraph) {
+        html_lines <- c(html_lines, "</p>")
+        in_paragraph <- FALSE
+      }
+      if (in_list) {
+        html_lines <- c(html_lines, "</ul>")
+        in_list <- FALSE
+      }
     }
   }
   
+  # Cerrar elementos abiertos
   if (in_list) html_lines <- c(html_lines, "</ul>")
   if (in_paragraph) html_lines <- c(html_lines, "</p>")
   
