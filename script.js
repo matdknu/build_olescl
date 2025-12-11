@@ -223,9 +223,14 @@ if (document.getElementById('publicaciones-container')) {
 async function loadDestacados() {
     try {
         const response = await fetch('content/destacados-generated.html');
-        const html = await response.text();
+        let html = await response.text();
         const container = document.getElementById('destacados-container');
         if (container) {
+            // Corregir rutas: las rutas relativas deben ser desde la raíz, no desde content/
+            // Reemplazar href="noticias/ por href que funcione desde index.html
+            // Si estamos en GitHub Pages con prefijo, las rutas relativas funcionarán correctamente
+            // Si estamos en local, también funcionarán porque index.html está en la raíz
+            html = html.replace(/href="noticias\//g, 'href="noticias/');
             container.innerHTML = html;
         }
     } catch (error) {
