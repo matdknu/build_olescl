@@ -301,6 +301,9 @@ generate_destacados <- function() {
         href <- paste0("noticias/", slug, ".html")
       }
       
+      # Usar ruta absoluta desde la raíz
+      href_absoluto <- if (startsWith(href, "/")) href else paste0("/", href)
+      
       sprintf(
         '<article class="destacado-card %s">
           <a href="%s" style="text-decoration: none; color: inherit; display: block;">
@@ -313,7 +316,7 @@ generate_destacados <- function() {
           </a>
         </article>',
         item$tipo,
-        href,
+        href_absoluto,
         item$image,
         item$title,
         if (item$tipo == "evento") "Evento" else "Noticia",
