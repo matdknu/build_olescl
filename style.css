@@ -49,7 +49,7 @@ body {
 
 /* Header */
 .header {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: #3F3351;
     color: white;
     padding: 1rem 0;
     position: sticky;
