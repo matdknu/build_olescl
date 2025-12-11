@@ -1,3 +1,16 @@
+/*
+Theme Name: Observatorio de Legitimidad
+Theme URI: https://github.com/matdknu/build_olescl
+Author: Observatorio de Legitimidad
+Author URI: https://github.com/matdknu/build_olescl
+Description: Tema personalizado para el Observatorio de Legitimidad. Diseño moderno y responsive con menús desplegables, tabs interactivas y secciones para noticias, proyectos y más.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: observatorio-legitimidad
+Tags: custom, responsive, modern, research, academic
+*/
+
 /* Reset y Variables */
 * {
     margin: 0;
