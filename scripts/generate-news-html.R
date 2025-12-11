@@ -130,6 +130,7 @@ generate_news_html <- function(qmd_file) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>', metadata$title, ' - Observatorio de Legitimidad</title>
+    <link rel="icon" type="image/png" href="../logos/icon.png">
     <link rel="stylesheet" href="../style.css">
     <style>
         .noticia-detalle {
@@ -225,7 +226,10 @@ generate_news_html <- function(qmd_file) {
     <header class="header">
         <div class="container">
             <div class="logo">
-                <h1><a href="../index.html" style="color: white; text-decoration: none;">Observatorio de Legitimidad</a></h1>
+                <a href="../index.html" style="display: flex; align-items: center; gap: 1rem; text-decoration: none; color: white;">
+                    <img src="../logos/logo.png" alt="Observatorio de Legitimidad" style="height: 50px; width: auto;">
+                    <h1 style="margin: 0; font-size: 1.5rem;">Observatorio de Legitimidad</h1>
+                </a>
             </div>
             <nav class="nav">
                 <ul class="nav-menu">
