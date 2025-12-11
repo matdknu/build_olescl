@@ -136,7 +136,9 @@ window.addEventListener('scroll', () => {
 // Load and display publications
 async function loadPublications() {
     try {
-        const response = await fetch('data/publicaciones.json');
+        // Determinar la ruta correcta según dónde estemos
+        const basePath = window.location.pathname.includes('/publicaciones/') ? '../' : '';
+        const response = await fetch(`${basePath}data/publicaciones.json`);
         const publicaciones = await response.json();
         
         // Mapeo de nombres de investigadores a sus slugs de perfil
