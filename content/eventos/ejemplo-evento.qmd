@@ -1,0 +1,35 @@
+---
+title: "Seminario sobre Legitimidad Institucional"
+date: "15 Diciembre 2025"
+hora: "9:00 a 12:30 hrs"
+lugar: "Sala Taller T202, Facultad de Ciencias Sociales"
+image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&h=600&fit=crop"
+tipo: "Seminario"
+---
+
+## Descripción del Evento
+
+El Observatorio de Legitimidad organiza un seminario sobre legitimidad institucional que reunirá a destacados investigadores y académicos.
+
+## Programa
+
+### 9:00 - 10:30 | Panel 1: Legitimidad Policial
+
+- **Ponente 1**: Título de la ponencia
+- **Ponente 2**: Título de la ponencia
+
+### 10:30 - 11:00 | Coffee Break
+
+### 11:00 - 12:30 | Panel 2: Confianza Institucional
+
+- **Ponente 3**: Título de la ponencia
+- **Ponente 4**: Título de la ponencia
+
+## Inscripciones
+
+Para inscribirte, envía un email a: observatorio@universidad.cl
+
+## Organizadores
+
+Este evento es organizado por el Observatorio de Legitimidad en colaboración con...
+

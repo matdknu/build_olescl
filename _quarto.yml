@@ -10,10 +10,10 @@ website:
         text: Inicio
       - href: content/noticias/index.html
         text: Noticias
-      - href: content/publicaciones/index.html
-        text: Publicaciones
-      - href: content/equipo/index.html
-        text: Equipo
+      - href: content/eventos/index.html
+        text: Eventos
+      - href: content/proyectos/index.html
+        text: Proyectos
 
 format:
   html:

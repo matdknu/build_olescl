@@ -1,0 +1,53 @@
+---
+title: "Legitimidad Institucional en Chile 2020-2025"
+tipo: "Estudios de Encuesta"
+estado: "En curso"
+fecha-inicio: "2020"
+fecha-fin: "Presente"
+investigadores:
+  - "Mónica Gerber"
+  - "Investigador 2"
+  - "Investigador 3"
+financiamiento: "FONDECYT Regular N. 1234567"
+image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=600&fit=crop"
+---
+
+## Descripción del Proyecto
+
+Análisis longitudinal de la percepción de legitimidad de las instituciones públicas en Chile durante el período post-estallido social.
+
+## Objetivos
+
+1. **Objetivo Principal**: Analizar las percepciones ciudadanas sobre legitimidad institucional
+
+2. **Objetivos Específicos**:
+   - Identificar factores que influyen en la legitimidad
+   - Comparar percepciones entre diferentes grupos sociales
+   - Analizar cambios temporales en las percepciones
+
+## Metodología
+
+Este proyecto utiliza una metodología cuantitativa basada en encuestas representativas a nivel nacional.
+
+### Diseño
+
+- **Tipo**: Longitudinal
+- **Muestra**: 2000 participantes
+- **Período**: 2020 - Presente
+
+## Resultados Esperados
+
+Los resultados de este proyecto contribuirán a:
+
+- Comprender mejor los factores de legitimidad institucional
+- Informar políticas públicas basadas en evidencia
+- Contribuir al debate académico sobre legitimidad
+
+## Publicaciones Relacionadas
+
+- Gerber, M.M. (2023). "Legitimidad y Justicia en Chile". *Revista Psykhe*.
+
+## Contacto
+
+Para más información sobre este proyecto, contacta a: mgerber@uc.cl
+
