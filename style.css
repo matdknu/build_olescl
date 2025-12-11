@@ -126,9 +126,13 @@ body {
     gap: 0.5rem;
 }
 
-.nav-menu a:hover,
+.nav-menu a:hover {
+    background-color: rgba(69, 57, 88, 0.1);
+}
+
 .nav-menu a.active {
-    background-color: rgba(255, 255, 255, 0.2);
+    background: #453958;
+    color: white;
 }
 
 /* Dropdown Menu */
@@ -517,7 +521,7 @@ body {
     }
 
     .dropdown-menu a {
-        color: white;
+        color: #453958;
     }
 
     .hero h2 {
