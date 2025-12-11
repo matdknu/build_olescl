@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juanito Pérez - Observatorio de Legitimidad</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .perfil-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 20px;
+        }
+        .perfil-header {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+        .perfil-imagen {
+            flex-shrink: 0;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--lavender-light), var(--lavender-medium));
+            box-shadow: var(--shadow-lg);
+        }
+        .perfil-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .perfil-info {
+            flex: 1;
+        }
+        .perfil-nombre {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        .perfil-cargo {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .perfil-contacto {
+            margin-bottom: 1.5rem;
+        }
+        .perfil-contacto p {
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+        .perfil-contacto a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .perfil-contacto a:hover {
+            text-decoration: underline;
+        }
+        .perfil-enlaces {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .perfil-enlace {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-light);
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+        .perfil-enlace:hover {
+            background: var(--lavender-light);
+            color: var(--primary-color);
+        }
+        .perfil-areas {
+            margin-top: 1.5rem;
+        }
+        .perfil-areas h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        .perfil-areas ul {
+            list-style: none;
+            padding: 0;
+        }
+        .perfil-areas li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .perfil-areas li:last-child {
+            border-bottom: none;
+        }
+        .perfil-descripcion {
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        .perfil-tabs {
+            margin-top: 2rem;
+        }
+        .perfil-tab-buttons {
+            display: flex;
+            gap: 1rem;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .perfil-tab-button {
+            background: none;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-light);
+            cursor: pointer;
+            position: relative;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+        .perfil-tab-button:hover {
+            color: var(--primary-color);
+        }
+        .perfil-tab-button.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+        .perfil-tab-content {
+            min-height: 400px;
+        }
+        .perfil-tab-pane {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        .perfil-tab-pane.active {
+            display: block;
+        }
+        .proyecto-item {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+        }
+        .proyecto-item h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+        }
+        .proyecto-item p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .proyecto-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+        .proyecto-meta span {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+        .actividad-item {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+        }
+        .actividad-item h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        .actividad-item p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        @media (max-width: 768px) {
+            .perfil-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .perfil-imagen {
+                margin: 0 auto;
+            }
+            .perfil-tab-buttons {
+                flex-direction: column;
+            }
+            .perfil-tab-button {
+                width: 100%;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><a href="../index.html" style="color: white; text-decoration: none;">Observatorio de Legitimidad</a></h1>
+            </div>
+            <nav class="nav">
+                <ul class="nav-menu">
+                    <li><a href="../index.html#inicio">Inicio</a></li>
+                    <li><a href="../index.html#proyectos">Proyectos</a></li>
+                    <li><a href="../index.html#nosotros">Nosotros</a></li>
+                    <li><a href="../index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="perfil-container">
+        <div class="perfil-header">
+            <div class="perfil-imagen">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" alt="Juanito Pérez">
+            </div>
+            <div class="perfil-info">
+                <h1 class="perfil-nombre">Juanito Pérez</h1>
+                <p class="perfil-cargo">Asistente de Investigación</p>
+                
+                <div class="perfil-contacto">
+                    <p><strong>Email:</strong> <a href="mailto:juanito.perez@universidad.cl">juanito.perez@universidad.cl</a></p>
+                </div>
+
+                <div class="perfil-areas">
+                    <h3>Áreas de interés:</h3>
+                    <ul>
+                        <li>Legitimidad institucional</li>
+                        <li>Metodologías cuantitativas</li>
+                        <li>Análisis de datos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="perfil-descripcion">
+            <p>
+                Juanito Pérez es Asistente de Investigación en el Observatorio de Legitimidad. Actualmente está cursando estudios de pregrado/postgrado y colabora activamente en proyectos de investigación sobre legitimidad institucional.
+            </p>
+        </div>
+
+        <div class="perfil-tabs">
+            <div class="perfil-tab-buttons">
+                <button class="perfil-tab-button active" data-tab="formacion">Formación</button>
+                <button class="perfil-tab-button" data-tab="proyectos">Proyectos</button>
+                <button class="perfil-tab-button" data-tab="actividades">Otras actividades</button>
+            </div>
+
+            <div class="perfil-tab-content">
+                <div class="perfil-tab-pane active" id="formacion">
+                    <div class="actividad-item">
+                        <h4>Formación Académica</h4>
+                        <p><strong>Pregrado:</strong> Universidad, Año (en curso)</p>
+                    </div>
+                </div>
+
+                <div class="perfil-tab-pane" id="proyectos">
+                    <div class="proyecto-item">
+                        <h4>Legitimidad Institucional en Chile 2020-2025</h4>
+                        <p>Colabora en el análisis de datos y procesamiento de información para el proyecto de legitimidad institucional.</p>
+                        <div class="proyecto-meta">
+                            <span><strong>Rol:</strong> Asistente de Investigación</span>
+                            <span><strong>Período:</strong> 2024 - Presente</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="perfil-tab-pane" id="actividades">
+                    <div class="actividad-item">
+                        <h4>Actividades en el Observatorio</h4>
+                        <p>Asistente de investigación en proyectos del Observatorio de Legitimidad.</p>
+                    </div>
+                    <div class="actividad-item">
+                        <h4>Participación Académica</h4>
+                        <p>Participación en actividades académicas y eventos del Observatorio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="../index.html#inicio">Inicio</a></li>
+                        <li><a href="../index.html#noticias">Noticias</a></li>
+                        <li><a href="../index.html#proyectos">Proyectos</a></li>
+                        <li><a href="../index.html#nosotros">Nosotros</a></li>
+                        <li><a href="../index.html#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>Email: observatorio@universidad.cl</p>
+                    <p>Teléfono: +56 2 2676 8479</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Observatorio de Legitimidad. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tabs functionality
+        const perfilTabButtons = document.querySelectorAll('.perfil-tab-button');
+        const perfilTabPanes = document.querySelectorAll('.perfil-tab-pane');
+
+        perfilTabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetTab = button.getAttribute('data-tab');
+                
+                perfilTabButtons.forEach(btn => btn.classList.remove('active'));
+                perfilTabPanes.forEach(pane => pane.classList.remove('active'));
+                
+                button.classList.add('active');
+                document.getElementById(targetTab).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
+
