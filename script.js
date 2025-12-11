@@ -215,3 +215,22 @@ if (document.getElementById('publicaciones-container')) {
     loadPublications();
 }
 
+// Load destacados
+async function loadDestacados() {
+    try {
+        const response = await fetch('content/destacados-generated.html');
+        const html = await response.text();
+        const container = document.getElementById('destacados-container');
+        if (container) {
+            container.innerHTML = html;
+        }
+    } catch (error) {
+        console.error('Error loading destacados:', error);
+    }
+}
+
+// Load destacados when page loads
+if (document.getElementById('destacados-container')) {
+    loadDestacados();
+}
+

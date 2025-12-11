@@ -164,6 +164,81 @@ generate_proyectos_index <- function() {
   cat("✓ Índice de proyectos generado\n")
 }
 
+# Generar destacados (noticias y eventos marcados como destacados)
+generate_destacados <- function() {
+  # Leer noticias
+  noticias_qmd <- list.files("content/noticias", pattern = "\\.qmd$", full.names = TRUE)
+  eventos_qmd <- list.files("content/eventos", pattern = "\\.qmd$", full.names = TRUE)
+  
+  destacados <- list()
+  
+  # Procesar noticias
+  for (file in noticias_qmd) {
+    meta <- read_qmd_metadata(file)
+    if (!is.null(meta) && isTRUE(meta$destacado)) {
+      destacados[[length(destacados) + 1]] <- list(
+        title = meta$title %||% "Sin título",
+        date = meta$date %||% "",
+        image = meta$image %||% "",
+        tipo = meta$tipo %||% "noticia",
+        file = basename(file),
+        source = "noticias"
+      )
+    }
+  }
+  
+  # Procesar eventos
+  for (file in eventos_qmd) {
+    meta <- read_qmd_metadata(file)
+    if (!is.null(meta) && isTRUE(meta$destacado)) {
+      destacados[[length(destacados) + 1]] <- list(
+        title = meta$title %||% "Sin título",
+        date = meta$date %||% "",
+        image = meta$image %||% "",
+        tipo = meta$tipo %||% "evento",
+        file = basename(file),
+        source = "eventos"
+      )
+    }
+  }
+  
+  # Ordenar por fecha (más recientes primero) y limitar a 4
+  destacados <- destacados[order(sapply(destacados, function(x) x$date), decreasing = TRUE)]
+  destacados <- destacados[1:min(4, length(destacados))]
+  
+  # Generar HTML
+  html <- c(
+    '<div class="destacados-grid">',
+    map_chr(destacados, function(item) {
+      slug <- gsub("\\.qmd$", "", item$file)
+      sprintf(
+        '<article class="destacado-card %s">
+          <a href="content/%s/%s.html" style="text-decoration: none; color: inherit;">
+            <div class="destacado-imagen">
+              <img src="%s" alt="%s">
+            </div>
+            <div class="destacado-tipo">%s</div>
+            <h3>%s</h3>
+            <div class="destacado-fecha">%s</div>
+          </a>
+        </article>',
+        item$tipo,
+        item$source,
+        slug,
+        item$image,
+        item$title,
+        if (item$tipo == "evento") "Evento" else "Noticia",
+        item$title,
+        item$date
+      )
+    }),
+    '</div>'
+  )
+  
+  writeLines(html, "content/destacados-generated.html")
+  cat("✓ Destacados generados\n")
+}
+
 # Generar índice de equipo
 generate_equipo_index <- function() {
   qmd_files <- list.files("content/equipo", pattern = "\\.qmd$", full.names = TRUE)
@@ -208,6 +283,7 @@ generate_equipo_index <- function() {
 
 # Ejecutar generación
 cat("=== Generando índices ===\n")
+generate_destacados()
 generate_noticias_index()
 generate_eventos_index()
 generate_proyectos_index()
