@@ -292,9 +292,18 @@ generate_destacados <- function() {
     '<div class="destacados-grid">',
     map_chr(destacados, function(item) {
       slug <- gsub("\\.qmd$", "", item$file)
+      # Determinar la ruta correcta según el tipo
+      # Las noticias están en noticias/ y los eventos también están en noticias/ (ya que se generan con generate-news-html.R)
+      if (item$source == "noticias") {
+        href <- paste0("noticias/", slug, ".html")
+      } else {
+        # Los eventos también se generan en noticias/ si tienen tag [Evento]
+        href <- paste0("noticias/", slug, ".html")
+      }
+      
       sprintf(
         '<article class="destacado-card %s">
-          <a href="content/%s/%s.html" style="text-decoration: none; color: inherit;">
+          <a href="%s" style="text-decoration: none; color: inherit; display: block;">
             <div class="destacado-imagen">
               <img src="%s" alt="%s">
             </div>
@@ -304,8 +313,7 @@ generate_destacados <- function() {
           </a>
         </article>',
         item$tipo,
-        item$source,
-        slug,
+        href,
         item$image,
         item$title,
         if (item$tipo == "evento") "Evento" else "Noticia",
