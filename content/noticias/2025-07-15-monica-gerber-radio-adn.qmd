@@ -3,7 +3,7 @@ title: "Mónica Gerber en Radio ADN: El Estado de Excepción no puede ser la nor
 date: "15 Julio 2025"
 image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&h=600&fit=crop"
 author: "Matías Deneken, Monica M. Gerber"
-tags: "[Noticia]"
+tags: [Noticia]
 destacado: false
 tipo: "noticia"
 ---
@@ -25,4 +25,6 @@ La académica valoró la **Comisión para la Paz y Entendimiento**, pero advirti
 ## Enlace a la Entrevista
 
 🔗 [Escucha la entrevista completa](https://www.litoralpress.cl/sitio/RadioTV_Detalles.cshtml?lpkey=5ANW3IEH3ZCMXT4F75UFI6T75OSUYMA4SD7NGGSFR7366BQMEW6AIWLNDBASUPU3RNDAT56LVLUQO)
+
+
 

@@ -155,7 +155,8 @@ authors:
   - "J. Bahamondes"
   - "A. Figueiredo"
   - "M.M. Gerber"
-journal: "Journal of Community & Applied Social Psychology"
+journal:
+  name: "Journal of Community & Applied Social Psychology"
 status: "En publicación"
 doi: "10.xxxx/xxxxx"
 abstract: |
@@ -193,7 +194,11 @@ quarto render content/publicaciones/gerber-2025-police-fairness.qmd
 
 - `title`: Título de la publicación (obligatorio)
 - `authors`: Lista de autores (obligatorio)
-- `journal`: Nombre de la revista (opcional)
+- `journal`: Nombre de la revista (opcional, debe ser un objeto con campo `name`):
+  ```yaml
+  journal:
+    name: "Journal of Community & Applied Social Psychology"
+  ```
 - `date`: Año de publicación (obligatorio)
 - `doi`: DOI de la publicación (opcional)
 - `status`: Estado (En publicación, Publicado, etc.) (opcional)
@@ -478,4 +483,6 @@ Ver: `content/equipo/perfil-template.qmd`
 ---
 
 **Última actualización**: Diciembre 2025
+
+
 

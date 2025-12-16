@@ -174,3 +174,5 @@ create_profile_html "Camila Rojas" "Asistente de Investigación" "camila.rojas@u
 
 echo "Perfiles HTML generados exitosamente"
 
+
+

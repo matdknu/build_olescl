@@ -19,6 +19,39 @@ read_qmd_metadata <- function(qmd_file) {
   yaml::yaml.load(yaml_content)
 }
 
+# Función para convertir fecha legible a Date para ordenamiento
+parse_date_for_sort <- function(date_str) {
+  if (is.null(date_str) || date_str == "") {
+    return(as.Date("1900-01-01"))  # Fecha muy antigua para ordenar al final
+  }
+  
+  # Mapeo de meses en español
+  months_map <- c(
+    "enero" = "01", "febrero" = "02", "marzo" = "03", "abril" = "04",
+    "mayo" = "05", "junio" = "06", "julio" = "07", "agosto" = "08",
+    "septiembre" = "09", "octubre" = "10", "noviembre" = "11", "diciembre" = "12"
+  )
+  
+  # Intentar parsear formato "DD Mes AAAA"
+  date_parts <- strsplit(tolower(trimws(date_str)), "\\s+")[[1]]
+  if (length(date_parts) >= 3) {
+    day <- date_parts[1]
+    month_name <- date_parts[2]
+    year <- date_parts[3]
+    
+    month_num <- months_map[month_name]
+    if (!is.null(month_num) && !is.na(month_num)) {
+      date_iso <- paste(year, month_num, sprintf("%02d", as.numeric(day)), sep = "-")
+      result <- tryCatch(as.Date(date_iso), error = function(e) as.Date("1900-01-01"))
+      return(result)
+    }
+  }
+  
+  # Si no se puede parsear, intentar como fecha ISO
+  result <- tryCatch(as.Date(date_str), error = function(e) as.Date("1900-01-01"))
+  return(result)
+}
+
 # Generar índice de noticias
 generate_noticias_index <- function() {
   qmd_files <- list.files("content/noticias", pattern = "\\.qmd$", full.names = TRUE)
@@ -28,16 +61,28 @@ generate_noticias_index <- function() {
     if (!is.null(meta)) {
       # Determinar tipo desde tags
       tags <- meta$tags %||% ""
-      tipo <- if (grepl("\\[Evento\\]", tags, ignore.case = TRUE)) {
+      # Convertir tags a string si es array
+      tags_str <- if (is.character(tags) && length(tags) > 1) {
+        paste(tags, collapse = ", ")
+      } else if (is.character(tags)) {
+        tags
+      } else {
+        ""
+      }
+      
+      # Verificar si contiene los tags (sin corchetes, ya que ahora son arrays)
+      tipo <- if (any(grepl("Evento", tags, ignore.case = TRUE)) || grepl("Evento", tags_str, ignore.case = TRUE)) {
         "evento"
-      } else if (grepl("\\[Noticia\\]", tags, ignore.case = TRUE)) {
+      } else if (any(grepl("Noticia", tags, ignore.case = TRUE)) || grepl("Noticia", tags_str, ignore.case = TRUE)) {
         "noticia"
       } else {
         meta$tipo %||% "noticia"
       }
       
       # Verificar si es destacado
-      es_destacado <- isTRUE(meta$destacado) || grepl("\\[Destacado\\]", tags, ignore.case = TRUE)
+      es_destacado <- isTRUE(meta$destacado) || 
+                     any(grepl("Destacado", tags, ignore.case = TRUE)) ||
+                     grepl("Destacado", tags_str, ignore.case = TRUE)
       
       list(
         title = meta$title %||% "Sin título",
@@ -53,8 +98,8 @@ generate_noticias_index <- function() {
   # Filtrar solo las que tienen título válido (no son plantillas vacías)
   noticias <- Filter(function(x) !grepl("^Título de", x$title), noticias)
   
-  # Ordenar por fecha (más recientes primero)
-  noticias <- noticias[order(sapply(noticias, function(x) x$date), decreasing = TRUE)]
+  # Ordenar por fecha (más recientes primero) - usando parse_date_for_sort
+  noticias <- noticias[order(sapply(noticias, function(x) parse_date_for_sort(x$date)), decreasing = TRUE)]
   
   # Generar HTML
   html <- c(
@@ -143,8 +188,8 @@ generate_eventos_index <- function() {
     }
   }) %>% compact()
   
-  # Ordenar por fecha (más recientes primero)
-  eventos <- eventos[order(sapply(eventos, function(x) x$date), decreasing = TRUE)]
+  # Ordenar por fecha (más recientes primero) - usando parse_date_for_sort
+  eventos <- eventos[order(sapply(eventos, function(x) parse_date_for_sort(x$date)), decreasing = TRUE)]
   
   # Generar HTML
   html <- c(
@@ -236,15 +281,26 @@ generate_destacados <- function() {
   for (file in noticias_qmd) {
     meta <- read_qmd_metadata(file)
     if (!is.null(meta)) {
+      # Convertir tags a formato manejable
+      tags <- meta$tags %||% ""
+      tags_str <- if (is.character(tags) && length(tags) > 1) {
+        paste(tags, collapse = ", ")
+      } else if (is.character(tags)) {
+        tags
+      } else {
+        ""
+      }
+      
       # Verificar si es destacado por el campo destacado o por tags
       es_destacado <- isTRUE(meta$destacado) || 
-                     (grepl("\\[Destacado\\]", meta$tags %||% "", ignore.case = TRUE))
+                     any(grepl("Destacado", tags, ignore.case = TRUE)) ||
+                     grepl("Destacado", tags_str, ignore.case = TRUE)
       
       if (es_destacado) {
         # Determinar tipo desde tags o tipo
-        tipo <- if (grepl("\\[Evento\\]", meta$tags %||% "", ignore.case = TRUE)) {
+        tipo <- if (any(grepl("Evento", tags, ignore.case = TRUE)) || grepl("Evento", tags_str, ignore.case = TRUE)) {
           "evento"
-        } else if (grepl("\\[Noticia\\]", meta$tags %||% "", ignore.case = TRUE)) {
+        } else if (any(grepl("Noticia", tags, ignore.case = TRUE)) || grepl("Noticia", tags_str, ignore.case = TRUE)) {
           "noticia"
         } else {
           meta$tipo %||% "noticia"
@@ -266,9 +322,20 @@ generate_destacados <- function() {
   for (file in eventos_qmd) {
     meta <- read_qmd_metadata(file)
     if (!is.null(meta)) {
+      # Convertir tags a formato manejable
+      tags <- meta$tags %||% ""
+      tags_str <- if (is.character(tags) && length(tags) > 1) {
+        paste(tags, collapse = ", ")
+      } else if (is.character(tags)) {
+        tags
+      } else {
+        ""
+      }
+      
       # Verificar si es destacado por el campo destacado o por tags
       es_destacado <- isTRUE(meta$destacado) || 
-                     (grepl("\\[Destacado\\]", meta$tags %||% "", ignore.case = TRUE))
+                     any(grepl("Destacado", tags, ignore.case = TRUE)) ||
+                     grepl("Destacado", tags_str, ignore.case = TRUE)
       
       if (es_destacado) {
         destacados[[length(destacados) + 1]] <- list(
@@ -283,8 +350,8 @@ generate_destacados <- function() {
     }
   }
   
-  # Ordenar por fecha (más recientes primero) y limitar a 4
-  destacados <- destacados[order(sapply(destacados, function(x) x$date), decreasing = TRUE)]
+  # Ordenar por fecha (más recientes primero) y limitar a 4 - usando parse_date_for_sort
+  destacados <- destacados[order(sapply(destacados, function(x) parse_date_for_sort(x$date)), decreasing = TRUE)]
   destacados <- destacados[1:min(4, length(destacados))]
   
   # Generar HTML

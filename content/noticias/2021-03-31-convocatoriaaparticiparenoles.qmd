@@ -1,0 +1,13 @@
+---
+title: "Convocatoria a participar en OLES"
+date: "31 Marzo 2021"
+image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&h=600&fit=crop"
+author: "OLES"
+tags: ["Noticias", "Violencia", "Protesta"]
+destacado: false
+tipo: "noticia"
+---
+
+<p class = "cta-btns" align="right">
+<a href="https://socialesehistoria.udp.cl/macaren-orchard-participo-en-foro-sobre-violencias-en-la-movilizacion-social-y-la-protesta/" style="text-decoration:none" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Ir a la noticia</a></p>nnTe invitamos a conocer OLES “Observatorio de Violencia y Legitimidad Social” un proyecto a cargo de [Macarena Orchard](/author/macarena-orchard/), [Monica Gerber](/author/monica-gerber/) y [Ana Figuereido](/author/ana-figuereido/).
+

@@ -114,3 +114,5 @@ Si tienes problemas con la instalación:
 4. Verifica que el CSS no esté siendo sobrescrito por el tema activo
 
 
+
+

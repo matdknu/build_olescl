@@ -54,3 +54,5 @@ done
 
 echo "✓ Logo agregado a todos los headers"
 
+
+

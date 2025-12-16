@@ -1,0 +1,12 @@
+---
+title: "Macarena Orchard participó en el capítulo del programa Sanamente: ¿Cómo lograr una vida sin estereotipos? de CNN Chile."
+date: "13 Octubre 2022"
+image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&h=600&fit=crop"
+author: "macarena"
+tags: ["Noticias"]
+destacado: false
+tipo: "noticia"
+---
+
+Puedes revisar el vídeo de su participación en el siguiente **[enlace](https://twitter.com/i/status/1580617905045000192).**
+

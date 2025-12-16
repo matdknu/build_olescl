@@ -363,3 +363,5 @@ brew install quarto  # macOS
 
 **¿Necesitas ayuda?** Revisa los ejemplos en las carpetas `content/`
 
+
+

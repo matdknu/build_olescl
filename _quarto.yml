@@ -22,4 +22,9 @@ format:
     css: style.css
     toc: false
     code-fold: false
+    embed-resources: true
+    standalone: true
+    navbar: false
+    sidebar: false
+    footer: false
 

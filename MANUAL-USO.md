@@ -584,3 +584,5 @@ git checkout main
 **Última actualización**: Diciembre 2025
 
 
+
+

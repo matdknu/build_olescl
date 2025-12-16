@@ -3,7 +3,7 @@ title: "Título del evento"
 date: "15 Enero 2026"
 image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&h=600&fit=crop"
 author: "Equipo Observatorio"
-tags: "[Evento]"
+tags: [Evento]
 destacado: false
 hora: "9:00 hrs"
 lugar: "Lugar del evento"
@@ -27,4 +27,6 @@ Escribe aquí la descripción del evento.
 ## Programa
 
 Escribe aquí el programa del evento si aplica.
+
+
 

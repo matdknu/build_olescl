@@ -24,7 +24,7 @@ render_folder <- function(folder, output_format = "html") {
   }
 }
 
-# Renderizar todas las carpetas
+# Renderizar todas las carpetas (excepto equipo, que usa script personalizado)
 cat("=== Renderizando Noticias ===\n")
 render_folder("content/noticias")
 
@@ -33,6 +33,11 @@ render_folder("content/eventos")
 
 cat("\n=== Renderizando Proyectos ===\n")
 render_folder("content/proyectos")
+
+cat("\n=== Renderizando Publicaciones ===\n")
+render_folder("content/publicaciones")
+
+cat("\n=== NOTA: Los perfiles del equipo se generan con scripts/generate-profiles-from-qmd.R ===\n")
 
 # Generar HTMLs simples para noticias
 cat("\n=== Generando HTMLs simples de noticias ===\n")

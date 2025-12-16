@@ -17,7 +17,7 @@ extract_sections <- function(md_content) {
   current_content <- character()
   
   for (line in lines) {
-    # Detectar secciones
+    # Detectar secciones principales
     if (grepl("^## Descripción", line, ignore.case = TRUE)) {
       if (length(current_content) > 0) {
         sections[[current_section]] <- paste(current_content, collapse = "\n")
@@ -43,6 +43,7 @@ extract_sections <- function(md_content) {
       current_section <- "actividades"
       current_content <- character()
     } else {
+      # Incluir todas las demás líneas (incluyendo ## Formación, etc.) en la sección actual
       current_content <- c(current_content, line)
     }
   }
@@ -59,15 +60,6 @@ extract_sections <- function(md_content) {
 markdown_to_html <- function(md_text) {
   if (nchar(trimws(md_text)) == 0) return("")
   
-  # Convertir encabezados
-  md_text <- gsub("^### (.+)$", "<h4>\\1</h4>", md_text, perl = TRUE, useBytes = TRUE)
-  # Convertir negritas
-  md_text <- gsub("\\*\\*([^*]+)\\*\\*", "<strong>\\1</strong>", md_text, perl = TRUE)
-  # Convertir listas
-  md_text <- gsub("^\\- (.+)$", "<li>\\1</li>", md_text, perl = TRUE, useBytes = TRUE)
-  # Convertir enlaces
-  md_text <- gsub("\\[([^\\]]+)\\]\\(([^)]+)\\)", "<a href=\"\\2\" target=\"_blank\">\\1</a>", md_text, perl = TRUE)
-  
   # Procesar líneas
   lines <- strsplit(md_text, "\n")[[1]]
   html_lines <- character()
@@ -77,25 +69,49 @@ markdown_to_html <- function(md_text) {
   for (line in lines) {
     trimmed <- trimws(line)
     
-    if (grepl("^<h4>", line) || grepl("^<li>", line)) {
+    # Detectar encabezados ## (h2) y convertirlos a h3
+    if (grepl("^## ", trimmed)) {
       if (in_paragraph) {
         html_lines <- c(html_lines, "</p>")
         in_paragraph <- FALSE
       }
-      if (grepl("^<li>", line)) {
-        if (!in_list) {
-          html_lines <- c(html_lines, "<ul>")
-          in_list <- TRUE
-        }
-        html_lines <- c(html_lines, line)
-      } else {
-        if (in_list) {
-          html_lines <- c(html_lines, "</ul>")
-          in_list <- FALSE
-        }
-        html_lines <- c(html_lines, line)
+      if (in_list) {
+        html_lines <- c(html_lines, "</ul>")
+        in_list <- FALSE
       }
-    } else if (nchar(trimmed) > 0) {
+      title <- gsub("^## ", "", trimmed)
+      html_lines <- c(html_lines, paste0("<h3>", title, "</h3>"))
+    }
+    # Detectar encabezados ### (h3) y convertirlos a h4
+    else if (grepl("^### ", trimmed)) {
+      if (in_paragraph) {
+        html_lines <- c(html_lines, "</p>")
+        in_paragraph <- FALSE
+      }
+      if (in_list) {
+        html_lines <- c(html_lines, "</ul>")
+        in_list <- FALSE
+      }
+      title <- gsub("^### ", "", trimmed)
+      html_lines <- c(html_lines, paste0("<h4>", title, "</h4>"))
+    }
+    # Detectar listas
+    else if (grepl("^\\- ", trimmed)) {
+      if (in_paragraph) {
+        html_lines <- c(html_lines, "</p>")
+        in_paragraph <- FALSE
+      }
+      if (!in_list) {
+        html_lines <- c(html_lines, "<ul>")
+        in_list <- TRUE
+      }
+      # Convertir negritas en listas
+      list_item <- gsub("^\\- ", "", trimmed)
+      list_item <- gsub("\\*\\*([^*]+)\\*\\*", "<strong>\\1</strong>", list_item, perl = TRUE)
+      html_lines <- c(html_lines, paste0("<li>", list_item, "</li>"))
+    }
+    # Líneas de texto normal
+    else if (nchar(trimmed) > 0) {
       if (in_list) {
         html_lines <- c(html_lines, "</ul>")
         in_list <- FALSE
@@ -104,6 +120,10 @@ markdown_to_html <- function(md_text) {
         html_lines <- c(html_lines, "<p>")
         in_paragraph <- TRUE
       }
+      # Convertir negritas
+      trimmed <- gsub("\\*\\*([^*]+)\\*\\*", "<strong>\\1</strong>", trimmed, perl = TRUE)
+      # Convertir enlaces
+      trimmed <- gsub("\\[([^\\]]+)\\]\\(([^)]+)\\)", "<a href=\"\\2\" target=\"_blank\">\\1</a>", trimmed, perl = TRUE)
       html_lines <- c(html_lines, trimmed)
     }
   }
@@ -581,3 +601,7 @@ for (qmd_file in qmd_files) {
 }
 
 cat("\n✓ Proceso completado!\n")
+
+# Generar índice del equipo automáticamente
+cat("\n=== Generando índice del equipo ===\n")
+system("Rscript scripts/generate-equipo-index.R")

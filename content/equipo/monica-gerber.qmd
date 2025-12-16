@@ -1,0 +1,94 @@
+---
+title: "Mónica Gerber"
+cargo: "Directora"
+email: "mgerber@uc.cl"
+pagina-personal: ""
+google-scholar: ""
+image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop"
+areas-interes: 
+  - "Justicia social, violencias, policías"
+  - "Legitimidad y justicia procedimental de las autoridades"
+  - "Seguridad, delincuencia y castigo"
+  - "Psicología política y social"
+  - "Metodologías cuantitativas y experimentales de investigación"
+---
+
+## Descripción
+
+Profesora de la Escuela de Gobierno UC. Socióloga de la Universidad de Chile, Magíster y Doctora en Métodos de Investigación Social de la London School of Economics and Political Science, Reino Unido. Fue profesora titular de la Facultad de Psicología de la Universidad Diego Portales. Es directora del Observatorio de Violencia y Legitimidad Social (OLES) e investigadora asociada del Centro de Estudios de Conflicto y Cohesión Social (COES). Desde el año 2025 asumió como directora de la ISPP Academy de International Society of Political Psychology. Es Senior Research Fellow de la London School of Economics and Political Science (2023-2026).
+
+## Últimas Publicaciones
+
+### Varela, M., Bilali, R., Godfrey, E., Bahamondes, J., Figueiredo, A. & Gerber, M.M. (en publicación).
+
+Police Fairness, Anger, and Support for Violent and Non-Violent Disruptive Actions in Chile.
+
+*Journal of Community & Applied Social Psychology.*
+
+### Gerber, M. M., Sáez-Fuentealba, L., Bahamondes, J., Figueiredo, A., Moya, C., Rojas, B., Orchard, M., & Tobar Jorquera, N. (2025).
+
+How do individuals interact with the police? Validation of a scale of motivational postures toward the police in Spanish.
+
+*Peace and Conflict: Journal of Peace Psychology, 31*(3), 285–298. [DOI: 10.1037/pac0000797](https://doi.org/10.1037/pac0000797)
+
+### Gerber, M. M. (2025).
+
+Acción colectiva violenta en Chile (Violent collective action in Chile).
+
+En A. Mascareño, R. Vergara & N. Gardella (Eds.), *Violencia en Chile. La Fragilidad del Orden Social*. Editorial CEP.
+
+### Frei, R., Castillo, A., Gerber, M., Puga, I., & Moya, C. (2025).
+
+El Trabajo por Cuenta Propia como Repertorio de Acción: Recuperando el Tiempo Propio en Santiago de Chile.
+
+*Revista Austral de Ciencias Sociales,* (48), 179-199.
+
+### Gerber, M. M. (2024).
+
+Justificación de la Violencia en el Conflicto entre el Estado Chileno y el Pueblo Mapuche (The Justification of Violence in the Conflict between the Chilean State and the Mapuche People).
+
+In A. Mascareño & C. Le Foulon (Eds.), *Mapuche en el sur de Chile. Sociedad e Identidad* (pp. 283 – 306). Editorial CEP.
+
+### Gerber, M.M., Figueiredo, A., Sáez, L. & Orchard, M. (2023).
+
+Legitimidad, Justicia y la Justificación de la Violencia Intergrupal entre Carabineros y Manifestantes en Chile.
+
+*Revista Psykhe,* 32(1), 1-15. [DOI: 10.7764/psykhe.2021.31721](http://dx.doi.org/10.7764/psykhe.2021.31721)
+
+## Proyectos en Curso
+
+### Observatorio de Violencia y Legitimidad Social (OLES)
+
+**Rol**: Directora  
+**Período**: 2023 - Presente  
+**Financiamiento**: Fondos ANID, UDP, COES y EASP
+
+[www.oles.cl](https://www.oles.cl)
+
+### Centro de Estudio de Conflicto y Cohesión Social (COES)
+
+**Rol**: Investigadora Asociada  
+**Período**: 2014 - Presente  
+**Financiamiento**: Proyecto ANID/FONDAP/1523A0005
+
+[www.coes.cl](https://www.coes.cl)
+
+### Police Legitimacy in Chile: The Causal Effect of Violence and Corruption from a Multi-Actor, Longitudinal, and Multi-Methods Perspective
+
+**Rol**: Directora  
+**Período**: 2023 - 2025  
+**Financiamiento**: Proyecto FONDECYT Exploración N. 13220187
+
+### From Compliance to Resistance: How do citizens in Chile Relate to and Position themselves towards the Police?
+
+**Rol**: Investigadora Principal  
+**Período**: 2022 - 2025  
+**Financiamiento**: Proyecto ANID/FONDECYT Regular N. 1221805
+
+## Otras Actividades
+
+- **London School of Economics and Political Science**: Senior Research Fellow (2022 – 2026)
+- **International Society of Political Psychology**: Academy Director (2025 – 2028)
+- **Pontificia Universidad Católica de Chile**: Profesora de la Escuela de Gobierno
+
+

@@ -1,0 +1,33 @@
+---
+title: "Amparo Feller"
+cargo: "Asistente de Investigación"
+email: "amparo.feller@universidad.cl"
+image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop"
+areas-interes: 
+  - "Sociología de la memoria"
+  - "Desigualdades de género"
+  - "Cosificación de la mujer"
+  - "Masculinidades"
+  - "Metodologías digitales y narrativas en la investigación social"
+---
+
+## Descripción
+
+Amparo Feller es Socióloga y Magíster en Métodos para la Investigación Social por la Universidad Diego Portales. Actualmente se desempeña como Coordinadora del Observatorio de Desigualdades de la misma universidad.
+
+Su trayectoria de investigación ha estado vinculada al análisis y la visibilización de las experiencias de mujeres durante la dictadura militar en Chile. En la actualidad, su interés investigativo se orienta al estudio de la machosfera y sus implicancias socioculturales, con especial atención al contexto latinoamericano.
+
+## Formación
+
+- **Magíster en Métodos de Investigación Social**: Universidad Diego Portales
+- **Socióloga**: Universidad Diego Portales
+
+## Proyectos en los que Participa
+
+Colabora en proyectos de investigación sobre legitimidad institucional, con especial enfoque en desigualdades de género y metodologías digitales.
+
+## Otras Actividades
+
+Coordinadora del Observatorio de Desigualdades, Universidad Diego Portales.
+
+

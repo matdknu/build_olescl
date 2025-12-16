@@ -127,3 +127,5 @@ for (qmd_file in qmd_files) {
 
 cat("\n✓ Proceso completado!\n")
 
+
+

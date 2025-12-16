@@ -3,7 +3,7 @@ title: "Título de la noticia"
 date: "20 Diciembre 2025"
 image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=600&fit=crop"
 author: "Equipo Observatorio"
-tags: "[Noticia]"
+tags: [Noticia]
 destacado: false
 ---
 
@@ -24,4 +24,6 @@ Escribe aquí el contenido principal de la noticia.
 ## Conclusión
 
 Escribe aquí las conclusiones o implicaciones de la noticia.
+
+
 

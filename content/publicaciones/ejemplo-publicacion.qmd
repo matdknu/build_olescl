@@ -8,7 +8,8 @@ authors:
   - "J. Bahamondes"
   - "A. Figueiredo"
   - "M.M. Gerber"
-journal: "Journal of Community & Applied Social Psychology"
+journal:
+  name: "Journal of Community & Applied Social Psychology"
 status: "En publicación"
 doi: ""
 abstract: |
@@ -34,4 +35,6 @@ Los resultados indican que:
 ## Conclusiones
 
 Estos hallazgos contribuyen a la comprensión de los factores que influyen en la legitimidad institucional y las respuestas ciudadanas.
+
+
 

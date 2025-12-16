@@ -24,3 +24,5 @@ Estudiante de pregrado en Psicología. Participa como pasante en proyectos de in
 ### Sebastián Gutiérrez
 Estudiante de pregrado en Ciencia Política. Colabora como pasante en el Observatorio, apoyando en la revisión bibliográfica y organización de eventos académicos.
 
+
+

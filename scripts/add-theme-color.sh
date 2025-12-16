@@ -54,3 +54,5 @@ done
 
 echo "✓ Theme-color agregado a todas las páginas"
 
+
+

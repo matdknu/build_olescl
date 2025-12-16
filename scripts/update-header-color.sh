@@ -18,3 +18,5 @@ done
 
 echo "✓ Headers actualizados"
 
+
+
