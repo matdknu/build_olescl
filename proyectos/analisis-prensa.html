@@ -153,7 +153,7 @@
                 <div class="shiny-iframe-container">
                     <div class="loading-message" id="loading-message">
                         <p>Cargando aplicación...</p>
-                        <p style="font-size: 0.85rem; margin-top: 0.5rem;">Si no carga, verifica que la aplicación Shiny esté ejecutándose</p>
+                        <p style="font-size: 0.85rem; margin-top: 0.5rem;">La aplicación está alojada en shinyapps.io</p>
                     </div>
                     <iframe 
                         id="shiny-app-frame"
@@ -165,14 +165,14 @@
                 </div>
                 
                 <div class="info-box">
-                    <strong>ℹ️ Información:</strong> Esta aplicación requiere que el servidor Shiny esté ejecutándose localmente en el puerto 3838.
+                    <strong>ℹ️ Información:</strong> Esta aplicación está alojada en shinyapps.io y está disponible públicamente.
                     <br><br>
-                    <strong>Para ejecutar la aplicación:</strong>
-                    <code style="background: white; padding: 0.25rem 0.5rem; border-radius: 0.25rem; display: inline-block; margin-top: 0.5rem;">
-                        cd shiny-app && Rscript run-app.R
-                    </code>
+                    <strong>URL de la aplicación:</strong>
+                    <a href="https://matdknu.shinyapps.io/analisis-prensa-carabineros/" target="_blank" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">
+                        https://matdknu.shinyapps.io/analisis-prensa-carabineros/
+                    </a>
                     <br><br>
-                    <strong>Nota:</strong> Para producción, actualiza la URL del iframe con la dirección de tu servidor Shiny desplegado (ej: shinyapps.io).
+                    <strong>Nota:</strong> Si la aplicación no carga, puede estar en proceso de inicio. Espera unos segundos y recarga la página.
                 </div>
             </div>
         </div>
@@ -215,8 +215,9 @@
     <script src="../script.js"></script>
     <script>
         // URL de la aplicación Shiny
-        const SHINY_APP_URL = "http://localhost:3838";
-        // Para producción, cambia a: "https://tu-usuario.shinyapps.io/analisis-prensa-carabineros/"
+        // Producción: shinyapps.io
+        const SHINY_APP_URL = "https://matdknu.shinyapps.io/analisis-prensa-carabineros/";
+        // Para desarrollo local, cambia a: "http://localhost:3838"
         
         document.addEventListener('DOMContentLoaded', function() {
             const iframe = document.getElementById('shiny-app-frame');
@@ -232,12 +233,14 @@
             iframe.onerror = function() {
                 console.warn('No se pudo cargar la aplicación Shiny.');
                 loadingMessage.innerHTML = `
-                    <p style="color: #dc3545;">⚠️ No se pudo conectar con la aplicación Shiny</p>
+                    <p style="color: #dc3545;">⚠️ No se pudo cargar la aplicación</p>
                     <p style="font-size: 0.85rem; margin-top: 0.5rem;">
-                        Por favor, ejecuta la aplicación localmente:<br>
-                        <code style="background: white; padding: 0.5rem; border-radius: 0.25rem; display: inline-block; margin-top: 0.5rem;">
-                            cd shiny-app && Rscript run-app.R
-                        </code>
+                        La aplicación puede estar iniciando. Intenta:
+                        <br>1. Esperar unos segundos y recargar la página
+                        <br>2. Abrir directamente: 
+                        <a href="https://matdknu.shinyapps.io/analisis-prensa-carabineros/" target="_blank" style="color: var(--primary-color);">
+                            https://matdknu.shinyapps.io/analisis-prensa-carabineros/
+                        </a>
                     </p>
                 `;
             };
@@ -250,4 +253,5 @@
     </script>
 </body>
 </html>
+
 

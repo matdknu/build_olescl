@@ -2,29 +2,14 @@ project:
   type: website
   output-dir: _site
 
-website:
-  title: "Observatorio de Legitimidad"
-  navbar:
-    left:
-      - href: index.html
-        text: Inicio
-      - href: content/noticias/index.html
-        text: Noticias
-      - href: content/eventos/index.html
-        text: Eventos
-      - href: content/proyectos/index.html
-        text: Proyectos
+execute:
+  echo: false
+  warning: false
+  message: false
 
 format:
   html:
-    theme: 
-      - default
+    theme: default
     css: style.css
-    toc: false
-    code-fold: false
-    embed-resources: true
-    standalone: true
-    navbar: false
-    sidebar: false
-    footer: false
-
+    # Nota: Los scripts se agregan manualmente en los archivos HTML
+    # No usar include-in-header aquí porque causa errores con archivos .md
