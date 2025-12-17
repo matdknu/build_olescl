@@ -62,14 +62,18 @@
             </p>
             
             <div class="proyectos-grid">
-                <div class="proyecto-card">
+                <!-- Tarjeta clickeable para Análisis de Prensa -->
+                <a href="analisis-prensa.html" class="proyecto-card" style="text-decoration: none; color: inherit; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; display: block;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 16px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow=''">
                     <h3>Análisis de Prensa: Cobertura de Legitimidad Institucional</h3>
                     <p>Estudio del tratamiento mediático de temas relacionados con legitimidad institucional en la prensa chilena.</p>
                     <div class="proyecto-meta">
                         <span class="proyecto-estado estado-en-curso">En curso</span>
                         <span class="proyecto-fecha">2022 - Presente</span>
                     </div>
-                </div>
+                    <div style="margin-top: 1rem; color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">
+                        👆 Haz clic para explorar los datos →
+                    </div>
+                </a>
                 <div class="proyecto-card">
                     <h3>Análisis de Redes Sociales: Discursos sobre Instituciones</h3>
                     <p>Investigación sobre los discursos en redes sociales respecto a la legitimidad de las instituciones públicas.</p>
@@ -97,6 +101,8 @@
             </div>
         </div>
     </footer>
+
+    <script src="../script.js"></script>
 </body>
 </html>
 

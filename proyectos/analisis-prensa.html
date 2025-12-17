@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="msapplication-navbutton-color" content="#ffffff">
+    <link rel="icon" type="image/png" href="../logos/icon.png">
+    <title>Análisis de Prensa: Cobertura de Legitimidad Institucional - Observatorio de Legitimidad</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .shiny-container {
+            margin: 2rem auto;
+            max-width: 1400px;
+            padding: 0 20px;
+        }
+        
+        .shiny-header {
+            background: linear-gradient(135deg, #4E4976 0%, #3F3351 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .shiny-header h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2rem;
+        }
+        
+        .shiny-header p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            transition: color 0.2s;
+        }
+        
+        .back-link:hover {
+            color: var(--secondary-color);
+        }
+        
+        .back-link::before {
+            content: "← ";
+            margin-right: 0.5rem;
+        }
+        
+        .shiny-iframe-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 75%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            background: #f8f9fa;
+        }
+        
+        .shiny-iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .loading-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: var(--text-light);
+        }
+        
+        .info-box {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            border-left: 4px solid var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html" style="display: flex; align-items: center; text-decoration: none;">
+                    <img src="../logos/logo.png" alt="Observatorio de Legitimidad" style="height: 60px; width: auto; object-fit: contain; filter: brightness(1.1);">
+                </a>
+            </div>
+            <nav class="nav">
+                <ul class="nav-menu">
+                    <li><a href="../index.html#inicio">Inicio</a></li>
+                    <li class="dropdown">
+                        <a href="../index.html#nosotros" class="dropdown-toggle">Acerca del Observatorio <span class="arrow">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../index.html#mision">Misión</a></li>
+                            <li><a href="../index.html#equipo">Equipo</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../index.html#proyectos" class="dropdown-toggle">Investigación <span class="arrow">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../index.html#proyectos">Proyectos</a></li>
+                            <li><a href="../publicaciones/index.html">Publicaciones</a></li>
+                            <li><a href="../index.html#tesis">Tesis y Prácticas</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../index.html#noticias">Noticias</a></li>
+                    <li class="dropdown">
+                        <a href="../index.html#biblioteca" class="dropdown-toggle">Biblioteca <span class="arrow">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../index.html#videos">Videos</a></li>
+                            <li><a href="../index.html#entrevistas">Entrevistas</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../index.html#blog">Blog</a></li>
+                    <li><a href="../index.html#contacto">Contacto</a></li>
+                </ul>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="proyectos-section" style="padding-top: 2rem;">
+        <div class="container">
+            <div class="shiny-container">
+                <a href="prensa-redes.html" class="back-link">Volver a Estudios de Prensa y Redes Sociales</a>
+                
+                <div class="shiny-header">
+                    <h1>Análisis de Prensa: Cobertura de Legitimidad Institucional</h1>
+                    <p>Explorador interactivo de datos sobre cobertura mediática de Carabineros de Chile</p>
+                </div>
+                
+                <div class="shiny-iframe-container">
+                    <div class="loading-message" id="loading-message">
+                        <p>Cargando aplicación...</p>
+                        <p style="font-size: 0.85rem; margin-top: 0.5rem;">Si no carga, verifica que la aplicación Shiny esté ejecutándose</p>
+                    </div>
+                    <iframe 
+                        id="shiny-app-frame"
+                        src="http://localhost:3838" 
+                        title="Aplicación Shiny - Análisis de Prensa"
+                        allowfullscreen
+                        style="display: none;">
+                    </iframe>
+                </div>
+                
+                <div class="info-box">
+                    <strong>ℹ️ Información:</strong> Esta aplicación requiere que el servidor Shiny esté ejecutándose localmente en el puerto 3838.
+                    <br><br>
+                    <strong>Para ejecutar la aplicación:</strong>
+                    <code style="background: white; padding: 0.25rem 0.5rem; border-radius: 0.25rem; display: inline-block; margin-top: 0.5rem;">
+                        cd shiny-app && Rscript run-app.R
+                    </code>
+                    <br><br>
+                    <strong>Nota:</strong> Para producción, actualiza la URL del iframe con la dirección de tu servidor Shiny desplegado (ej: shinyapps.io).
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="../index.html#inicio">Inicio</a></li>
+                        <li><a href="prensa-redes.html">Estudios de Prensa</a></li>
+                        <li><a href="../index.html#proyectos">Proyectos</a></li>
+                        <li><a href="../index.html#nosotros">Nosotros</a></li>
+                        <li><a href="../index.html#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section" id="contacto">
+                    <h4>Contacto</h4>
+                    <p>Email: observatorio@universidad.cl</p>
+                    <p>Teléfono: +56 2 2676 8479</p>
+                    <p>Dirección: Avenida Ejército #333, Santiago, Chile</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Investigación</h4>
+                    <ul>
+                        <li><a href="../index.html#proyectos">Proyectos</a></li>
+                        <li><a href="../publicaciones/index.html">Publicaciones</a></li>
+                        <li><a href="../index.html#tesis">Tesis y Prácticas</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Observatorio de Legitimidad. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // URL de la aplicación Shiny
+        const SHINY_APP_URL = "http://localhost:3838";
+        // Para producción, cambia a: "https://tu-usuario.shinyapps.io/analisis-prensa-carabineros/"
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const iframe = document.getElementById('shiny-app-frame');
+            const loadingMessage = document.getElementById('loading-message');
+            
+            // Función para verificar si la app está disponible
+            iframe.onload = function() {
+                console.log('Shiny app cargada correctamente');
+                loadingMessage.style.display = 'none';
+                iframe.style.display = 'block';
+            };
+            
+            iframe.onerror = function() {
+                console.warn('No se pudo cargar la aplicación Shiny.');
+                loadingMessage.innerHTML = `
+                    <p style="color: #dc3545;">⚠️ No se pudo conectar con la aplicación Shiny</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">
+                        Por favor, ejecuta la aplicación localmente:<br>
+                        <code style="background: white; padding: 0.5rem; border-radius: 0.25rem; display: inline-block; margin-top: 0.5rem;">
+                            cd shiny-app && Rscript run-app.R
+                        </code>
+                    </p>
+                `;
+            };
+            
+            // Intentar cargar después de un breve delay
+            setTimeout(function() {
+                iframe.src = SHINY_APP_URL;
+            }, 100);
+        });
+    </script>
+</body>
+</html>
+
