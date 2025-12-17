@@ -52,3 +52,4 @@ echo "✓ Tamaño del logo actualizado a 70px"
 
 
 
+

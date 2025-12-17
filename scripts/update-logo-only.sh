@@ -56,3 +56,4 @@ echo "✓ Logo actualizado (solo logo, más grande)"
 
 
 
+

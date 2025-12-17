@@ -5,6 +5,6 @@ account: matdknu
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 16327769
-bundleId: 11336002
+bundleId: 11336632
 url: https://matdknu.shinyapps.io/analisis-prensa-carabineros/
 version: 1

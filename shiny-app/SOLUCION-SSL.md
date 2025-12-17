@@ -120,3 +120,4 @@ Si nada funciona, puedes:
 Si el problema persiste, contacta al soporte de shinyapps.io o revisa:
 - https://support.rstudio.com/hc/en-us/articles/200488488-Configuring-RStudio-Connect-and-Shiny-Apps-io
 
+

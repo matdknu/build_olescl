@@ -98,3 +98,4 @@ Para problemas o preguntas, consulta:
 - Logs de la aplicación en la consola de R
 
 
+

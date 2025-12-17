@@ -105,8 +105,8 @@ ui <- fluidPage(
       dateRangeInput(
         "fecha_range",
         "Rango de fechas:",
-        start = min(noticias$fecha),
-        end = max(noticias$fecha),
+        start = as.Date("2016-01-01"),
+        end = as.Date("2025-03-03"),
         min = min(noticias$fecha),
         max = max(noticias$fecha),
         language = "es",
@@ -122,7 +122,7 @@ ui <- fluidPage(
       
       selectInput(
         "delito_select",
-        "Tipo de delito:",
+        "Tipo de delito (filtro):",
         choices = c(
           "Todos" = "all",
           "Delitos Comunes" = "delitos_comunes",
@@ -147,6 +147,33 @@ ui <- fluidPage(
       
       hr(),
       
+      h4("Comparación de Delitos"),
+      p("Selecciona los delitos a comparar:"),
+      checkboxGroupInput(
+        "delitos_comparar",
+        "",
+        choices = c(
+          "Homicidio" = "homicidio",
+          "Robo" = "robo",
+          "Lesiones" = "lesiones",
+          "Violencia Intrafamiliar" = "violencia_intrafamiliar",
+          "Narcotráfico" = "narcotrafico",
+          "Asalto" = "asalto",
+          "Hurto" = "hurto",
+          "Portonazo" = "portonazo",
+          "Abuso Sexual" = "abuso_sexual",
+          "Femicidio" = "femicidio",
+          "Violación" = "violacion",
+          "Encerrona" = "encerrona",
+          "Riña" = "riña",
+          "Microtráfico" = "microtrafico",
+          "Tráfico de Drogas" = "trafico_drogas"
+        ),
+        selected = c("homicidio", "robo", "lesiones", "violencia_intrafamiliar", "narcotrafico")
+      ),
+      
+      hr(),
+      
       h4("Información"),
       p(strong("Total de noticias:"), textOutput("total_noticias", inline = TRUE)),
       p(strong("Período:"), textOutput("periodo", inline = TRUE)),
@@ -163,19 +190,9 @@ ui <- fluidPage(
               h3("Tendencias Temporales"),
               plotlyOutput("tendencia_temporal", height = "400px")
           ),
-          fluidRow(
-            column(6,
-                   div(class = "content-box",
-                       h3("Noticias por Medio"),
-                       plotlyOutput("noticias_medio", height = "300px")
-                   )
-            ),
-            column(6,
-                   div(class = "content-box",
-                       h3("Distribución de Delitos"),
-                       plotlyOutput("delitos_pie", height = "300px")
-                   )
-            )
+          div(class = "content-box",
+              h3("Noticias por Medio"),
+              plotlyOutput("noticias_medio", height = "400px")
           )
         ),
         
@@ -319,64 +336,27 @@ server <- function(input, output, session) {
     ggplotly(p, tooltip = c("y"))
   })
   
-  # Distribución de delitos
-  output$delitos_pie <- renderPlotly({
-    delitos_totales <- datos_filtrados() %>%
-      summarise(
-        abuso_sexual = sum(abuso_sexual),
-        asalto = sum(asalto),
-        encerrona = sum(encerrona),
-        femicidio = sum(femicidio),
-        homicidio = sum(homicidio),
-        hurto = sum(hurto),
-        lesiones = sum(lesiones),
-        microtrafico = sum(microtrafico),
-        narcotrafico = sum(narcotrafico),
-        portonazo = sum(portonazo),
-        riña = sum(riña),
-        robo = sum(robo),
-        trafico_drogas = sum(trafico_drogas),
-        violencia_intrafamiliar = sum(violencia_intrafamiliar),
-        violacion = sum(violacion)
-      ) %>%
-      tidyr::pivot_longer(everything(), names_to = "delito", values_to = "total") %>%
-      filter(total > 0) %>%
-      arrange(desc(total))
-    
-    if (nrow(delitos_totales) == 0) {
-      return(plotly_empty() %>% 
-             layout(title = "No hay datos de delitos en el período seleccionado"))
-    }
-    
-    p <- plot_ly(
-      delitos_totales,
-      labels = ~delito,
-      values = ~total,
-      type = "pie",
-      textinfo = "label+percent",
-      textposition = "outside"
-    ) %>%
-      layout(
-        title = "Distribución de Delitos",
-        showlegend = TRUE
-      )
-    
-    p
-  })
-  
   # Evolución de delitos en el tiempo
   output$delitos_tiempo <- renderPlotly({
+    if (is.null(input$delitos_comparar) || length(input$delitos_comparar) == 0) {
+      return(plotly_empty() %>% 
+             layout(title = "Selecciona al menos un delito para comparar"))
+    }
+    
+    delitos_seleccionados <- input$delitos_comparar
+    
     delitos_mensual <- datos_filtrados() %>%
       group_by(año_mes) %>%
       summarise(
-        homicidio = sum(homicidio),
-        robo = sum(robo),
-        lesiones = sum(lesiones),
-        violencia_intrafamiliar = sum(violencia_intrafamiliar),
-        narcotrafico = sum(narcotrafico),
+        across(all_of(delitos_seleccionados), sum),
         .groups = "drop"
       ) %>%
       tidyr::pivot_longer(-año_mes, names_to = "delito", values_to = "total")
+    
+    if (nrow(delitos_mensual) == 0 || sum(delitos_mensual$total) == 0) {
+      return(plotly_empty() %>% 
+             layout(title = "No hay datos para los delitos seleccionados"))
+    }
     
     p <- ggplot(delitos_mensual, aes(x = año_mes, y = total, color = delito)) +
       geom_line(size = 1) +
@@ -399,20 +379,25 @@ server <- function(input, output, session) {
   
   # Comparación de delitos
   output$delitos_comparacion <- renderPlotly({
+    if (is.null(input$delitos_comparar) || length(input$delitos_comparar) == 0) {
+      return(plotly_empty() %>% 
+             layout(title = "Selecciona al menos un delito para comparar"))
+    }
+    
+    delitos_seleccionados <- input$delitos_comparar
+    
     delitos_totales <- datos_filtrados() %>%
       summarise(
-        homicidio = sum(homicidio),
-        robo = sum(robo),
-        lesiones = sum(lesiones),
-        violencia_intrafamiliar = sum(violencia_intrafamiliar),
-        narcotrafico = sum(narcotrafico),
-        asalto = sum(asalto),
-        hurto = sum(hurto),
-        portonazo = sum(portonazo)
+        across(all_of(delitos_seleccionados), sum)
       ) %>%
       tidyr::pivot_longer(everything(), names_to = "delito", values_to = "total") %>%
       filter(total > 0) %>%
       arrange(desc(total))
+    
+    if (nrow(delitos_totales) == 0) {
+      return(plotly_empty() %>% 
+             layout(title = "No hay datos para los delitos seleccionados"))
+    }
     
     p <- ggplot(delitos_totales, aes(x = reorder(delito, total), y = total, fill = delito)) +
       geom_bar(stat = "identity", fill = "#4E4976") +

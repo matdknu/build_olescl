@@ -78,7 +78,7 @@ update_profile_html <- function(qmd_file, html_file) {
 }
 
 # Mapeo de archivos
-qmd_files <- list.files("content/equipo", pattern = "\\.qmd$", full.names = TRUE)
+qmd_files <- list.files("content/equipo", pattern = "\\.qmd$", full.names = TRUE, recursive = TRUE)
 
 for (qmd_file in qmd_files) {
   # Obtener nombre base

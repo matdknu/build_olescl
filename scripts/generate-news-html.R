@@ -110,7 +110,28 @@ generate_news_html <- function(qmd_file) {
   
   # Generar nombre de archivo
   name_slug <- gsub("\\.qmd$", "", basename(qmd_file))
-  output_file <- paste0("noticias/", name_slug, ".html")
+  
+  # Determinar ruta relativa basada en la estructura
+  # Si está en content/noticias/YYYY/MM/, mantener estructura YYYY/MM/
+  rel_path <- dirname(qmd_file)
+  if (grepl("content/noticias/\\d{4}/\\d{2}", rel_path)) {
+    # Estructura año/mes
+    path_parts <- strsplit(rel_path, "/")[[1]]
+    year_idx <- which(grepl("^\\d{4}$", path_parts))
+    if (length(year_idx) > 0 && year_idx[1] < length(path_parts)) {
+      year <- path_parts[year_idx[1]]
+      month <- path_parts[year_idx[1] + 1]
+      output_file <- paste0("noticias/", year, "/", month, "/", name_slug, ".html")
+    } else {
+      output_file <- paste0("noticias/", name_slug, ".html")
+    }
+  } else if (grepl("content/noticias/\\d{4}", rel_path)) {
+    # Estructura solo año (legacy)
+    year <- regmatches(rel_path, regexpr("\\d{4}", rel_path))
+    output_file <- paste0("noticias/", year, "/", name_slug, ".html")
+  } else {
+    output_file <- paste0("noticias/", name_slug, ".html")
+  }
   
   # Convertir markdown a HTML
   html_content <- markdown_to_html(md_content)
@@ -123,6 +144,19 @@ generate_news_html <- function(qmd_file) {
     "Noticia"
   }
   
+  # Función helper para calcular ruta relativa
+  get_relative_path <- function() {
+    if (grepl("/\\d{4}/\\d{2}/", output_file)) {
+      return("../../../")
+    } else if (grepl("/\\d{4}/", output_file)) {
+      return("../../")
+    } else {
+      return("../")
+    }
+  }
+  
+  rel_path_base <- get_relative_path()
+  
   # Generar HTML completo
   html_template <- paste0('<!DOCTYPE html>
 <html lang="es">
@@ -133,8 +167,8 @@ generate_news_html <- function(qmd_file) {
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="msapplication-navbutton-color" content="#ffffff">
     <title>', metadata$title, ' - Observatorio de Legitimidad</title>
-    <link rel="icon" type="image/png" href="../logos/icon.png">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/png" href="', rel_path_base, 'logos/icon.png">
+    <link rel="stylesheet" href="', rel_path_base, 'style.css">
     <style>
         .noticia-detalle {
             max-width: 900px;
@@ -229,38 +263,38 @@ generate_news_html <- function(qmd_file) {
     <header class="header">
         <div class="container">
             <div class="logo">
-                <a href="../index.html" style="display: flex; align-items: center; text-decoration: none;">
-                    <img src="../logos/logo.png" alt="Observatorio de Legitimidad" style="height: 70px; width: auto; object-fit: contain; filter: brightness(1.1);">
+                <a href="', rel_path_base, 'index.html" style="display: flex; align-items: center; text-decoration: none;">
+                    <img src="', rel_path_base, 'logos/logo.png" alt="Observatorio de Legitimidad" style="height: 70px; width: auto; object-fit: contain; filter: brightness(1.1);">
                 </a>
             </div>
             <nav class="nav">
                 <ul class="nav-menu">
-                    <li><a href="../index.html#inicio">Inicio</a></li>
+                    <li><a href="', rel_path_base, 'index.html#inicio">Inicio</a></li>
                     <li class="dropdown">
-                        <a href="../index.html#nosotros" class="dropdown-toggle">Acerca del Observatorio <span class="arrow">▼</span></a>
+                        <a href="', rel_path_base, 'index.html#nosotros" class="dropdown-toggle">Acerca del Observatorio <span class="arrow">▼</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="../index.html#mision">Misión</a></li>
-                            <li><a href="../index.html#equipo">Equipo</a></li>
+                            <li><a href="', rel_path_base, 'index.html#mision">Misión</a></li>
+                            <li><a href="', rel_path_base, 'index.html#equipo">Equipo</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="../index.html#proyectos" class="dropdown-toggle">Investigación <span class="arrow">▼</span></a>
+                        <a href="', rel_path_base, 'index.html#proyectos" class="dropdown-toggle">Investigación <span class="arrow">▼</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="../index.html#proyectos">Proyectos</a></li>
-                            <li><a href="../publicaciones/index.html">Publicaciones</a></li>
-                            <li><a href="../index.html#tesis">Tesis y Prácticas</a></li>
+                            <li><a href="', rel_path_base, 'index.html#proyectos">Proyectos</a></li>
+                            <li><a href="', rel_path_base, 'publicaciones/index.html">Publicaciones</a></li>
+                            <li><a href="', rel_path_base, 'index.html#tesis">Tesis y Prácticas</a></li>
                         </ul>
                     </li>
-                    <li><a href="index.html">Noticias</a></li>
+                    <li><a href="', if (grepl("/\\d{4}/", output_file)) "../" else "", 'index.html">Noticias</a></li>
                     <li class="dropdown">
-                        <a href="../index.html#biblioteca" class="dropdown-toggle">Biblioteca <span class="arrow">▼</span></a>
+                        <a href="', rel_path_base, 'index.html#biblioteca" class="dropdown-toggle">Biblioteca <span class="arrow">▼</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="../index.html#videos">Videos</a></li>
-                            <li><a href="../index.html#entrevistas">Entrevistas</a></li>
+                            <li><a href="', rel_path_base, 'index.html#videos">Videos</a></li>
+                            <li><a href="', rel_path_base, 'index.html#entrevistas">Entrevistas</a></li>
                         </ul>
                     </li>
-                    <li><a href="../index.html#blog">Blog</a></li>
-                    <li><a href="../index.html#contacto">Contacto</a></li>
+                    <li><a href="', rel_path_base, 'index.html#blog">Blog</a></li>
+                    <li><a href="', rel_path_base, 'index.html#contacto">Contacto</a></li>
                 </ul>
                 <div class="mobile-menu-toggle">
                     <span></span>
@@ -273,7 +307,7 @@ generate_news_html <- function(qmd_file) {
 
     <section class="noticia-detalle" style="padding-top: 4rem;">
         <div class="container">
-            <a href="index.html" class="volver-link">← Volver a Noticias</a>
+            <a href="', if (grepl("/\\d{4}/", output_file)) "../" else "", 'index.html" class="volver-link">← Volver a Noticias</a>
             
             <div class="noticia-header">
                 <span class="noticia-tipo">', tipo, '</span>
@@ -298,11 +332,11 @@ generate_news_html <- function(qmd_file) {
                 <div class="footer-section">
                     <h4>Enlaces</h4>
                     <ul>
-                        <li><a href="../index.html#inicio">Inicio</a></li>
-                        <li><a href="index.html">Noticias</a></li>
-                        <li><a href="../index.html#proyectos">Proyectos</a></li>
-                        <li><a href="../index.html#nosotros">Nosotros</a></li>
-                        <li><a href="../index.html#contacto">Contacto</a></li>
+                        <li><a href="', rel_path_base, 'index.html#inicio">Inicio</a></li>
+                        <li><a href="', if (grepl("/\\d{4}/", output_file)) "../" else "", 'index.html">Noticias</a></li>
+                        <li><a href="', rel_path_base, 'index.html#proyectos">Proyectos</a></li>
+                        <li><a href="', rel_path_base, 'index.html#nosotros">Nosotros</a></li>
+                        <li><a href="', rel_path_base, 'index.html#contacto">Contacto</a></li>
                     </ul>
                 </div>
                 <div class="footer-section" id="contacto">
@@ -314,9 +348,9 @@ generate_news_html <- function(qmd_file) {
                 <div class="footer-section">
                     <h4>Investigación</h4>
                     <ul>
-                        <li><a href="../index.html#proyectos">Proyectos</a></li>
-                        <li><a href="../publicaciones/index.html">Publicaciones</a></li>
-                        <li><a href="../index.html#tesis">Tesis y Prácticas</a></li>
+                        <li><a href="', rel_path_base, 'index.html#proyectos">Proyectos</a></li>
+                        <li><a href="', rel_path_base, 'publicaciones/index.html">Publicaciones</a></li>
+                        <li><a href="', rel_path_base, 'index.html#tesis">Tesis y Prácticas</a></li>
                     </ul>
                 </div>
             </div>
@@ -326,7 +360,7 @@ generate_news_html <- function(qmd_file) {
         </div>
     </footer>
 
-    <script src="../script.js"></script>
+    <script src="', rel_path_base, 'script.js"></script>
 </body>
 </html>')
   
@@ -334,8 +368,8 @@ generate_news_html <- function(qmd_file) {
   cat("✓ Generado:", output_file, "\n")
 }
 
-# Procesar todos los QMD en content/noticias
-qmd_files <- list.files("content/noticias", pattern = "\\.qmd$", full.names = TRUE)
+# Procesar todos los QMD en content/noticias (incluyendo subdirectorios por año)
+qmd_files <- list.files("content/noticias", pattern = "\\.qmd$", full.names = TRUE, recursive = TRUE)
 
 cat("Generando HTMLs de noticias...\n\n")
 for (qmd_file in qmd_files) {

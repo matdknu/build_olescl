@@ -116,3 +116,4 @@ cat("✓ Destacados insertados:", destacados_inserted, "\n")
 cat("✓ Noticias recientes insertadas:", noticias_inserted, "\n")
 cat("✓ El archivo ahora funciona con file:// sin problemas de CORS\n")
 
+

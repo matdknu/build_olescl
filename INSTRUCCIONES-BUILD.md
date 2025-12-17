@@ -64,3 +64,4 @@ Debería tener aproximadamente 100KB y contener todas las noticias.
 
 **Siempre ejecuta `post-render-news-index.R` después de `quarto render`** para que las noticias se vean correctamente en `_site/noticias/index.html`.
 
+

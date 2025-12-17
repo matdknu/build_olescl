@@ -104,3 +104,4 @@ cat("\n✓ Generado: index.html con contenido incluido\n")
 cat("✓ Total de líneas:", length(output), "\n")
 cat("✓ El archivo ahora funciona con file:// sin problemas de CORS\n")
 
+
