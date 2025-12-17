@@ -1,2 +1,4 @@
 /.quarto/
 .Rproj.user
+data/noticias_carabineros.rds
+shiny-app/data/noticias_carabineros.rds

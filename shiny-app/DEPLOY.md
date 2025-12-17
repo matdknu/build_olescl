@@ -29,15 +29,49 @@ rsconnect::setAccountInfo(
 
 ### Paso 4: Desplegar
 
+#### Opción A: Usar script de despliegue (Recomendado - soluciona errores SSL)
+
 Desde la carpeta `shiny-app`:
 
+```bash
+# Método 1: Script bash (recomendado para macOS)
+./deploy-fix-ssl.sh
+
+# Método 2: Script R
+Rscript deploy.R
+```
+
+#### Opción B: Desplegar manualmente
+
 ```r
+# Configurar opciones SSL primero (importante para evitar errores)
+options(rsconnect.check.certificate = FALSE)
+options(RCurlOptions = list(ssl.verifypeer = TRUE, ssl.verifyhost = TRUE))
+
+# Desplegar
 rsconnect::deployApp(
   appDir = ".",
   appName = "analisis-prensa-carabineros",
-  account = "tu-nombre-usuario"
+  account = "tu-nombre-usuario",
+  forceUpdate = TRUE
 )
 ```
+
+#### ⚠️ Solución de Error SSL
+
+Si obtienes el error:
+```
+SSL connect error: cert already in hash table
+```
+
+**Solución rápida:**
+1. Usa el script `deploy.R` o `deploy-fix-ssl.sh` (ya incluye el fix)
+2. O ejecuta antes de desplegar:
+   ```r
+   options(rsconnect.check.certificate = FALSE)
+   ```
+
+Para más soluciones, ver `SOLUCION-SSL.md`
 
 ### Paso 5: Actualizar URL en HTML
 
@@ -91,4 +125,5 @@ Luego actualiza el iframe en `prensa-redes.html` para usar:
 - **Permisos**: En shinyapps.io, el plan gratuito tiene límites de uso
 - **Rendimiento**: Para datasets grandes, considera optimizar la carga de datos
 - **Seguridad**: No subas datos sensibles a repositorios públicos
+
 

@@ -25,3 +25,5 @@ echo "✓ Color actualizado a #453958 en todas las páginas"
 
 
 
+
+

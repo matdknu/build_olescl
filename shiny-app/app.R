@@ -10,12 +10,12 @@ library(plotly)
 library(shinythemes)
 
 # Cargar datos
-# Intentar diferentes rutas posibles
+# Priorizar data/ local (para shinyapps.io), luego buscar en directorio padre
 data_paths <- c(
-  file.path("..", "data", "noticias_carabineros.rds"),
-  file.path("data", "noticias_carabineros.rds"),
-  file.path(getwd(), "..", "data", "noticias_carabineros.rds"),
-  file.path(getwd(), "data", "noticias_carabineros.rds")
+  file.path("data", "noticias_carabineros.rds"),  # Primero buscar localmente
+  file.path("..", "data", "noticias_carabineros.rds"),  # Luego en directorio padre
+  file.path(getwd(), "data", "noticias_carabineros.rds"),
+  file.path(getwd(), "..", "data", "noticias_carabineros.rds")
 )
 
 data_path <- NULL
@@ -28,7 +28,7 @@ for (path in data_paths) {
 
 if (is.null(data_path)) {
   stop("No se encontró el archivo de datos noticias_carabineros.rds. 
-       Asegúrate de que el archivo esté en la carpeta data/ del proyecto.")
+       Asegúrate de que el archivo esté en shiny-app/data/ para el despliegue.")
 }
 
 noticias <- readRDS(data_path)

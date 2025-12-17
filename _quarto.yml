@@ -13,3 +13,8 @@ format:
     css: style.css
     # Nota: Los scripts se agregan manualmente en los archivos HTML
     # No usar include-in-header aquí porque causa errores con archivos .md
+
+# Ejecutar scripts después del render
+post-render:
+  - Rscript scripts/post-render-news-index.R
+  - Rscript scripts/post-render-index.R

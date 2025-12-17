@@ -97,3 +97,4 @@ Para problemas o preguntas, consulta:
 - `DEPLOY.md` - Guía de despliegue
 - Logs de la aplicación en la consola de R
 
+

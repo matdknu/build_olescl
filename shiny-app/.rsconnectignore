@@ -1,0 +1,17 @@
+# Archivos a ignorar en el despliegue
+.RData
+.Rhistory
+*.Rproj
+.Rproj.user
+.DS_Store
+*.log
+README.md
+DEPLOY.md
+SOLUCION-SSL.md
+INSTRUCCIONES.md
+INSTRUCCION-DEPLOY.md
+deploy.R
+deploy-fix-ssl.sh
+deploy-correcto.R
+# NO ignorar data/ - los datos deben estar en el bundle
+

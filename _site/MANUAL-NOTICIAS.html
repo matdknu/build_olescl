@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>manual-noticias</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+
+<section id="manual-cómo-crear-y-publicar-noticias" class="level1">
+<h1>Manual: Cómo Crear y Publicar Noticias</h1>
+<p>Este manual te guía paso a paso para crear una noticia y que aparezca en el sitio web del Observatorio de Legitimidad.</p>
+<hr>
+<section id="índice" class="level2">
+<h2 class="anchored" data-anchor-id="índice">📋 Índice</h2>
+<ol type="1">
+<li><a href="#requisitos-previos">Requisitos Previos</a></li>
+<li><a href="#paso-1-crear-el-archivo-de-noticia">Paso 1: Crear el archivo de noticia</a></li>
+<li><a href="#paso-2-escribir-el-contenido">Paso 2: Escribir el contenido</a></li>
+<li><a href="#paso-3-generar-el-html">Paso 3: Generar el HTML</a></li>
+<li><a href="#paso-4-actualizar-el-índice-de-noticias">Paso 4: Actualizar el índice de noticias</a></li>
+<li><a href="#paso-5-verificar-que-se-vea-correctamente">Paso 5: Verificar que se vea correctamente</a></li>
+<li><a href="#ejemplos-completos">Ejemplos Completos</a></li>
+<li><a href="#solución-de-problemas">Solución de Problemas</a></li>
+</ol>
+<hr>
+</section>
+<section id="requisitos-previos" class="level2">
+<h2 class="anchored" data-anchor-id="requisitos-previos">🔧 Requisitos Previos</h2>
+<p>Antes de comenzar, asegúrate de tener:</p>
+<ul>
+<li>✅ Acceso a la carpeta del proyecto <code>build_olescl</code></li>
+<li>✅ R instalado en tu computador (para ejecutar los scripts)</li>
+<li>✅ Un editor de texto (VS Code, RStudio, o cualquier editor)</li>
+<li>✅ Terminal o línea de comandos</li>
+</ul>
+<hr>
+</section>
+<section id="paso-1-crear-el-archivo-de-noticia" class="level2">
+<h2 class="anchored" data-anchor-id="paso-1-crear-el-archivo-de-noticia">📝 Paso 1: Crear el archivo de noticia</h2>
+<section id="ubicación-del-archivo" class="level3">
+<h3 class="anchored" data-anchor-id="ubicación-del-archivo">1.1. Ubicación del archivo</h3>
+<p>Las noticias se crean en la carpeta:</p>
+<pre><code>content/noticias/</code></pre>
+</section>
+<section id="nombre-del-archivo" class="level3">
+<h3 class="anchored" data-anchor-id="nombre-del-archivo">1.2. Nombre del archivo</h3>
+<p>El nombre del archivo debe seguir este formato:</p>
+<pre><code>AAAA-MM-DD-titulo-de-la-noticia.qmd</code></pre>
+<p><strong>Reglas importantes:</strong> - ✅ Fecha en formato: <code>AAAA-MM-DD</code> (año-mes-día) - ✅ Título en minúsculas - ✅ Sin espacios, usar guiones (<code>-</code>) en lugar de espacios - ✅ Sin acentos ni caracteres especiales - ✅ Extensión: <code>.qmd</code></p>
+<p><strong>Ejemplos de nombres correctos:</strong> - ✅ <code>2025-12-20-nueva-publicacion-oles.qmd</code> - ✅ <code>2026-01-15-seminario-legitimidad-policial.qmd</code> - ✅ <code>2025-11-06-investigador-asistente-editor-libro.qmd</code></p>
+<p><strong>Ejemplos de nombres incorrectos:</strong> - ❌ <code>noticia nueva.qmd</code> (tiene espacios) - ❌ <code>2025/12/20-noticia.qmd</code> (usa barras en lugar de guiones) - ❌ <code>Noticia Importante.qmd</code> (tiene mayúsculas y espacios)</p>
+</section>
+<section id="crear-el-archivo" class="level3">
+<h3 class="anchored" data-anchor-id="crear-el-archivo">1.3. Crear el archivo</h3>
+<ol type="1">
+<li>Abre tu editor de texto</li>
+<li>Crea un nuevo archivo en <code>content/noticias/</code></li>
+<li>Guárdalo con el nombre que elegiste (ej: <code>2025-12-20-mi-nueva-noticia.qmd</code>)</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="paso-2-escribir-el-contenido" class="level2">
+<h2 class="anchored" data-anchor-id="paso-2-escribir-el-contenido">✍️ Paso 2: Escribir el contenido</h2>
+<section id="estructura-básica" class="level3">
+<h3 class="anchored" data-anchor-id="estructura-básica">2.1. Estructura básica</h3>
+<p>Cada noticia tiene dos partes: 1. <strong>Encabezado YAML</strong> (metadata) 2. <strong>Contenido</strong> (texto de la noticia en Markdown)</p>
+</section>
+<section id="encabezado-yaml" class="level3">
+<h3 class="anchored" data-anchor-id="encabezado-yaml">2.2. Encabezado YAML</h3>
+<p>Al inicio del archivo, escribe el encabezado YAML entre líneas con <code>---</code>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Título de la noticia"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"DD Mes AAAA"</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span><span class="kw">:</span><span class="at"> </span><span class="st">"URL_de_la_imagen"</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Nombre del autor"</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tags</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">"Noticias"</span><span class="kw">,</span><span class="at"> </span><span class="st">"Categoría"</span><span class="kw">]</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">destacado</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">tipo</span><span class="kw">:</span><span class="at"> </span><span class="st">"noticia"</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Explicación de cada campo:</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 32%">
+<col style="width: 22%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Campo</th>
+<th>Descripción</th>
+<th>Ejemplo</th>
+<th>Requerido</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>title</code></td>
+<td>Título completo de la noticia</td>
+<td><code>"Nueva investigación publicada"</code></td>
+<td>✅ Sí</td>
+</tr>
+<tr class="even">
+<td><code>date</code></td>
+<td>Fecha en formato legible</td>
+<td><code>"20 Diciembre 2025"</code></td>
+<td>✅ Sí</td>
+</tr>
+<tr class="odd">
+<td><code>image</code></td>
+<td>URL de la imagen principal</td>
+<td><code>"https://images.unsplash.com/..."</code></td>
+<td>✅ Sí</td>
+</tr>
+<tr class="even">
+<td><code>author</code></td>
+<td>Nombre del autor</td>
+<td><code>"Equipo OLES"</code></td>
+<td>⚠️ Opcional</td>
+</tr>
+<tr class="odd">
+<td><code>tags</code></td>
+<td>Lista de etiquetas</td>
+<td><code>["Noticias", "Investigación"]</code></td>
+<td>⚠️ Opcional</td>
+</tr>
+<tr class="even">
+<td><code>destacado</code></td>
+<td>Si aparece como destacada</td>
+<td><code>true</code> o <code>false</code></td>
+<td>⚠️ Opcional</td>
+</tr>
+<tr class="odd">
+<td><code>tipo</code></td>
+<td>Tipo: “noticia” o “evento”</td>
+<td><code>"noticia"</code></td>
+<td>⚠️ Opcional</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Nota sobre eventos:</strong> Si es un evento, puedes agregar <code>tags: ["Evento"]</code> o <code>tipo: "evento"</code> para que se marque como tal.</p>
+</section>
+<section id="contenido-de-la-noticia" class="level3">
+<h3 class="anchored" data-anchor-id="contenido-de-la-noticia">2.3. Contenido de la noticia</h3>
+<p>Después del encabezado YAML, escribe el contenido usando <strong>Markdown</strong>.</p>
+<p><strong>Elementos de Markdown que puedes usar:</strong></p>
+<section id="títulos" class="level4">
+<h4 class="anchored" data-anchor-id="títulos">Títulos</h4>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Título Principal</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">### Subtítulo</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Sub-subtítulo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="texto-en-negrita" class="level4">
+<h4 class="anchored" data-anchor-id="texto-en-negrita">Texto en negrita</h4>
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>**texto en negrita**</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="texto-en-cursiva" class="level4">
+<h4 class="anchored" data-anchor-id="texto-en-cursiva">Texto en cursiva</h4>
+<div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>*texto en cursiva*</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="listas" class="level4">
+<h4 class="anchored" data-anchor-id="listas">Listas</h4>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Item 1</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Item 2</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Item 3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="enlaces" class="level4">
+<h4 class="anchored" data-anchor-id="enlaces">Enlaces</h4>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Texto del enlace</span><span class="co">](https://url.com)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="párrafos" class="level4">
+<h4 class="anchored" data-anchor-id="párrafos">Párrafos</h4>
+<p>Simplemente escribe el texto. Los párrafos se separan con una línea en blanco.</p>
+</section>
+</section>
+<section id="ejemplo-completo-de-archivo" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-completo-de-archivo">2.4. Ejemplo completo de archivo</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Nueva investigación sobre legitimidad institucional publicada"</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"20 Diciembre 2025"</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span><span class="kw">:</span><span class="at"> </span><span class="st">"https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&amp;h=600&amp;fit=crop"</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Equipo Observatorio"</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tags</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">"Noticias"</span><span class="kw">,</span><span class="at"> </span><span class="st">"Investigación"</span><span class="kw">,</span><span class="at"> </span><span class="st">"Destacado"</span><span class="kw">]</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">destacado</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">tipo</span><span class="kw">:</span><span class="at"> </span><span class="st">"noticia"</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">## Resumen</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="at">El Observatorio de Legitimidad se complace en anunciar la publicación de una nueva investigación sobre legitimidad institucional en Chile.</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">## Contenido Principal</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="at">Esta investigación analiza las percepciones ciudadanas sobre la legitimidad de las instituciones públicas durante el período post-estallido social. Los resultados muestran patrones interesantes que contribuyen al debate público sobre confianza institucional.</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co">### Hallazgos Principales</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="ot">**Confianza</span><span class="at"> </span><span class="fu">en instituciones**</span><span class="kw">:</span><span class="at"> Se observa una variación significativa según el tipo de institución</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="ot">**Factores</span><span class="at"> </span><span class="fu">influyentes**</span><span class="kw">:</span><span class="at"> La justicia procedimental emerge como factor clave</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="ot">**Diferencias</span><span class="at"> </span><span class="fu">generacionales**</span><span class="kw">:</span><span class="at"> Los jóvenes muestran patrones distintos a generaciones anteriores</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="co">## Implicaciones</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="at">Estos hallazgos tienen importantes implicaciones para la formulación de políticas públicas basadas en evidencia.</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="at">Para más información, consulta el [artículo completo](https://ejemplo.com/articulo).</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+</section>
+<section id="paso-3-generar-el-html" class="level2">
+<h2 class="anchored" data-anchor-id="paso-3-generar-el-html">🔨 Paso 3: Generar el HTML</h2>
+<p>Una vez que guardaste tu archivo <code>.qmd</code>, necesitas convertirlo a HTML para que se vea en el sitio web.</p>
+<section id="abrir-la-terminal" class="level3">
+<h3 class="anchored" data-anchor-id="abrir-la-terminal">3.1. Abrir la terminal</h3>
+<ol type="1">
+<li><p>Abre la terminal (Terminal en Mac, PowerShell en Windows, Terminal en Linux)</p></li>
+<li><p>Navega a la carpeta del proyecto:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /ruta/a/build_olescl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>O si estás en la carpeta del proyecto:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build_olescl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+</section>
+<section id="ejecutar-el-script-de-generación" class="level3">
+<h3 class="anchored" data-anchor-id="ejecutar-el-script-de-generación">3.2. Ejecutar el script de generación</h3>
+<p>Ejecuta el script que convierte los archivos <code>.qmd</code> a HTML:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> scripts/generate-news-html.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>¿Qué hace este script?</strong> - ✅ Lee todos los archivos <code>.qmd</code> en <code>content/noticias/</code> - ✅ Convierte cada uno a HTML - ✅ Guarda los HTMLs en la carpeta <code>noticias/</code> - ✅ Crea páginas completas con header, footer y estilos</p>
+<p><strong>Salida esperada:</strong></p>
+<pre><code>Generando HTMLs de noticias...
+
+✓ Generado: noticias/2025-12-20-mi-nueva-noticia.html
+✓ Generado: noticias/otra-noticia.html
+...
+
+✓ Proceso completado!</code></pre>
+</section>
+<section id="verificar-que-se-generó" class="level3">
+<h3 class="anchored" data-anchor-id="verificar-que-se-generó">3.3. Verificar que se generó</h3>
+<p>Verifica que el archivo HTML se creó correctamente:</p>
+<ol type="1">
+<li>Ve a la carpeta <code>noticias/</code></li>
+<li>Busca tu archivo: <code>2025-12-20-mi-nueva-noticia.html</code> (o el nombre que usaste)</li>
+<li>Si está ahí, ¡perfecto! ✅</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="paso-4-actualizar-el-índice-de-noticias" class="level2">
+<h2 class="anchored" data-anchor-id="paso-4-actualizar-el-índice-de-noticias">📑 Paso 4: Actualizar el índice de noticias</h2>
+<p>Para que tu noticia aparezca en la lista de noticias del sitio, necesitas actualizar el índice.</p>
+<section id="verificar-si-existe-el-script" class="level3">
+<h3 class="anchored" data-anchor-id="verificar-si-existe-el-script">4.1. Verificar si existe el script</h3>
+<p>Primero, verifica si existe el script <code>scripts/generate-index.R</code>:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> scripts/generate-index.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="opción-a-si-existe-el-script" class="level3">
+<h3 class="anchored" data-anchor-id="opción-a-si-existe-el-script">4.2. Opción A: Si existe el script</h3>
+<p>Ejecuta el script en la terminal:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> scripts/generate-index.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>¿Qué hace este script?</strong> - ✅ Lee todos los archivos <code>.qmd</code> en <code>content/noticias/</code> - ✅ Extrae la información (título, fecha, imagen, etc.) - ✅ Genera el archivo <code>content/noticias/index-generated.html</code> - ✅ Este archivo contiene todas las noticias en formato HTML</p>
+</section>
+<section id="opción-b-si-no-existe-el-script" class="level3">
+<h3 class="anchored" data-anchor-id="opción-b-si-no-existe-el-script">4.3. Opción B: Si NO existe el script</h3>
+<p>Si el script no existe o está vacío, el índice se actualiza automáticamente cuando ejecutas <code>generate-news-html.R</code>, o puedes actualizarlo manualmente (ver sección de solución de problemas más abajo).</p>
+<p><strong>Nota importante:</strong> El archivo <code>index-generated.html</code> se carga dinámicamente en <code>noticias/index.html</code>, por lo que si tu noticia ya tiene su HTML generado en <code>noticias/</code>, debería aparecer automáticamente. Si no aparece, verifica que: 1. El HTML de tu noticia existe en <code>noticias/</code> 2. El nombre del archivo sigue el formato correcto 3. La fecha en el YAML es correcta</p>
+<hr>
+</section>
+</section>
+<section id="paso-5-verificar-que-se-vea-correctamente" class="level2">
+<h2 class="anchored" data-anchor-id="paso-5-verificar-que-se-vea-correctamente">👀 Paso 5: Verificar que se vea correctamente</h2>
+<section id="abrir-el-sitio-localmente" class="level3">
+<h3 class="anchored" data-anchor-id="abrir-el-sitio-localmente">5.1. Abrir el sitio localmente</h3>
+<ol type="1">
+<li><p>Abre tu navegador</p></li>
+<li><p>Ve a la página de noticias:</p>
+<pre><code>file:///ruta/completa/a/build_olescl/noticias/index.html</code></pre>
+<p>O si tienes un servidor local:</p>
+<pre><code>http://localhost:8000/noticias/index.html</code></pre></li>
+</ol>
+</section>
+<section id="verificar-la-noticia-individual" class="level3">
+<h3 class="anchored" data-anchor-id="verificar-la-noticia-individual">5.2. Verificar la noticia individual</h3>
+<ol type="1">
+<li>Haz clic en tu noticia en la lista</li>
+<li>Verifica que:
+<ul>
+<li>✅ El título se ve correctamente</li>
+<li>✅ La fecha aparece bien</li>
+<li>✅ La imagen se carga</li>
+<li>✅ El contenido se muestra bien formateado</li>
+<li>✅ Los enlaces funcionan</li>
+</ul></li>
+</ol>
+</section>
+<section id="verificar-en-la-página-principal" class="level3">
+<h3 class="anchored" data-anchor-id="verificar-en-la-página-principal">5.3. Verificar en la página principal</h3>
+<ol type="1">
+<li>Abre <code>index.html</code> en el navegador</li>
+<li>Ve a la sección de noticias</li>
+<li>Verifica que tu noticia aparece (si está marcada como destacada)</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="ejemplos-completos" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplos-completos">📚 Ejemplos Completos</h2>
+<section id="ejemplo-1-noticia-simple" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-1-noticia-simple">Ejemplo 1: Noticia simple</h3>
+<p><strong>Archivo:</strong> <code>content/noticias/2025-12-20-nueva-publicacion.qmd</code></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Nueva publicación del equipo OLES"</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"20 Diciembre 2025"</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span><span class="kw">:</span><span class="at"> </span><span class="st">"https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&amp;h=600&amp;fit=crop"</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Equipo OLES"</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tags</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">"Noticias"</span><span class="kw">,</span><span class="at"> </span><span class="st">"Publicaciones"</span><span class="kw">]</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">destacado</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">tipo</span><span class="kw">:</span><span class="at"> </span><span class="st">"noticia"</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="at">El equipo del Observatorio de Legitimidad se complace en anunciar la publicación de un nuevo artículo en la revista [Pensamiento Educativo](https://ejemplo.com).</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co">## Contenido</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="at">Este artículo analiza los significados atribuidos a la investigación en estudiantes de pregrado que participan en observatorios de investigación universitarios.</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="co">### Hallazgos principales</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> Los estudiantes valoran positivamente la experiencia</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> Se observan cambios en la percepción sobre la investigación</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> La práctica investigativa genera conocimiento y cambio social</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a><span class="at">Para más información, puedes leer el artículo completo [aquí](https://ejemplo.com/articulo).</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ejemplo-2-evento" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-2-evento">Ejemplo 2: Evento</h3>
+<p><strong>Archivo:</strong> <code>content/noticias/2026-01-15-seminario-legitimidad.qmd</code></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Seminario: ¿Por qué obedecemos e invocamos la ley?"</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"15 Enero 2026"</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span><span class="kw">:</span><span class="at"> </span><span class="st">"https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&amp;h=600&amp;fit=crop"</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Equipo OLES"</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tags</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">"Evento"</span><span class="kw">,</span><span class="at"> </span><span class="st">"Seminario"</span><span class="kw">]</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">destacado</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="fu">tipo</span><span class="kw">:</span><span class="at"> </span><span class="st">"evento"</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co">## Invitación</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="at">El Observatorio de Legitimidad invita a participar en el seminario "¿Por qué obedecemos e invocamos la ley?".</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="co">## Detalles del evento</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="ot">**Fecha:**</span><span class="at"> 15 de Enero de 2026</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="ot">**Hora:**</span><span class="at"> 10:00 a 13:00 hrs</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="ot">**Lugar:**</span><span class="at"> Auditorio Principal, Universidad Diego Portales</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="ot">**Modalidad:**</span><span class="at"> Presencial y online</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a><span class="co">## Expositores</span></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> Dra. Mónica Gerber</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> Dr. Claudio Fuentes</span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> Dra. Macarena Orchard</span></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a><span class="co">## Inscripciones</span></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a><span class="at">Para inscribirte, envía un correo a observatorio@universidad.cl</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ejemplo-3-noticia-con-enlaces-y-formato" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-3-noticia-con-enlaces-y-formato">Ejemplo 3: Noticia con enlaces y formato</h3>
+<p><strong>Archivo:</strong> <code>content/noticias/2025-11-06-investigador-editor.qmd</code></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Investigador asistente es editor de libro sobre relaciones interculturales"</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"6 Noviembre 2025"</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span><span class="kw">:</span><span class="at"> </span><span class="st">"https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&amp;h=600&amp;fit=crop"</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Equipo OLES"</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tags</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">"Noticias"</span><span class="kw">,</span><span class="at"> </span><span class="st">"Publicaciones"</span><span class="kw">,</span><span class="at"> </span><span class="st">"Destacado"</span><span class="kw">]</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">destacado</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="fu">tipo</span><span class="kw">:</span><span class="at"> </span><span class="st">"noticia"</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co">## Anuncio</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="at">Felicitamos a nuestro investigador asistente por su participación como editor en un nuevo libro sobre relaciones interculturales.</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="co">## Sobre el libro</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="fu">El libro **"Relaciones Interculturales</span><span class="kw">:</span><span class="at"> Perspectivas y Desafíos"** reúne contribuciones de destacados investigadores en el campo de las relaciones intergrupales y la legitimidad institucional.</span></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="co">### Contenido</span></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a><span class="fu">El libro incluye capítulos sobre</span><span class="kw">:</span></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> Legitimidad policial en contextos multiculturales</span></span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> Percepciones ciudadanas sobre instituciones</span></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> Metodologías de investigación en legitimidad</span></span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a><span class="co">## Más información</span></span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a><span class="at">Puedes encontrar más detalles sobre el libro en [este enlace](https://ejemplo.com/libro).</span></span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a><span class="ot">**¡Felicitaciones</span><span class="at"> al equipo!** 🎉</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+</section>
+<section id="consejos-sobre-imágenes" class="level2">
+<h2 class="anchored" data-anchor-id="consejos-sobre-imágenes">🖼️ Consejos sobre Imágenes</h2>
+<section id="opción-1-usar-unsplash-recomendado" class="level3">
+<h3 class="anchored" data-anchor-id="opción-1-usar-unsplash-recomendado">Opción 1: Usar Unsplash (Recomendado)</h3>
+<ol type="1">
+<li>Ve a https://unsplash.com</li>
+<li>Busca una imagen relacionada con tu noticia</li>
+<li>Haz clic en la imagen</li>
+<li>Haz clic en “Download”</li>
+<li>Copia la URL de la imagen</li>
+<li>Agrega parámetros para el tamaño: <code>?w=1200&amp;h=600&amp;fit=crop</code></li>
+</ol>
+<p><strong>Ejemplo:</strong></p>
+<pre><code>https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&amp;h=600&amp;fit=crop</code></pre>
+</section>
+<section id="opción-2-usar-tus-propias-imágenes" class="level3">
+<h3 class="anchored" data-anchor-id="opción-2-usar-tus-propias-imágenes">Opción 2: Usar tus propias imágenes</h3>
+<ol type="1">
+<li><p>Guarda tu imagen en una carpeta <code>images/</code> dentro del proyecto</p></li>
+<li><p>Usa la ruta relativa en el YAML:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span><span class="kw">:</span><span class="at"> </span><span class="st">"../images/mi-imagen.jpg"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+<p><strong>Tamaños recomendados:</strong> - Ancho: 1200px - Alto: 600px - Formato: JPG o PNG</p>
+<hr>
+</section>
+</section>
+<section id="solución-de-problemas" class="level2">
+<h2 class="anchored" data-anchor-id="solución-de-problemas">⚠️ Solución de Problemas</h2>
+<section id="problema-1-el-script-no-funciona" class="level3">
+<h3 class="anchored" data-anchor-id="problema-1-el-script-no-funciona">Problema 1: El script no funciona</h3>
+<p><strong>Error:</strong> <code>Rscript: command not found</code></p>
+<p><strong>Solución:</strong> 1. Verifica que R está instalado: <code>R --version</code> 2. Si no está instalado, instálalo desde https://cran.r-project.org 3. Asegúrate de que <code>Rscript</code> esté en tu PATH</p>
+</section>
+<section id="problema-2-la-noticia-no-aparece-en-el-índice" class="level3">
+<h3 class="anchored" data-anchor-id="problema-2-la-noticia-no-aparece-en-el-índice">Problema 2: La noticia no aparece en el índice</h3>
+<p><strong>Posibles causas:</strong> 1. No ejecutaste <code>generate-news-html.R</code> (esto es lo más importante) 2. El nombre del archivo no sigue el formato correcto 3. Hay un error en el YAML 4. El script <code>generate-index.R</code> no existe o no funciona</p>
+<p><strong>Solución paso a paso:</strong></p>
+<ol type="1">
+<li><p><strong>Primero, verifica que el HTML se generó:</strong></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> noticias/ <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"tu-noticia"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Si no está, ejecuta: <code>Rscript scripts/generate-news-html.R</code></p></li>
+<li><p><strong>Verifica el nombre del archivo:</strong></p>
+<ul>
+<li>Debe ser: <code>AAAA-MM-DD-titulo.qmd</code></li>
+<li>Sin espacios, sin acentos, solo guiones</li>
+</ul></li>
+<li><p><strong>Revisa el YAML:</strong></p>
+<ul>
+<li>Asegúrate de que <code>title</code>, <code>date</code> e <code>image</code> estén correctos</li>
+<li>Verifica que no haya errores de sintaxis</li>
+</ul></li>
+<li><p><strong>Si el script <code>generate-index.R</code> no existe:</strong></p>
+<ul>
+<li>El índice puede actualizarse automáticamente</li>
+<li>O puedes actualizarlo manualmente editando <code>content/noticias/index-generated.html</code></li>
+<li>Agrega una entrada similar a las existentes con el formato correcto</li>
+</ul></li>
+</ol>
+</section>
+<section id="problema-3-la-imagen-no-se-ve" class="level3">
+<h3 class="anchored" data-anchor-id="problema-3-la-imagen-no-se-ve">Problema 3: La imagen no se ve</h3>
+<p><strong>Posibles causas:</strong> 1. La URL de la imagen es incorrecta 2. La imagen está en una ubicación incorrecta 3. Problemas de conexión a internet (si es URL externa)</p>
+<p><strong>Solución:</strong> 1. Verifica que la URL sea correcta abriéndola en el navegador 2. Si usas imagen local, verifica la ruta relativa 3. Prueba con una imagen de Unsplash primero</p>
+</section>
+<section id="problema-4-el-contenido-no-se-formatea-correctamente" class="level3">
+<h3 class="anchored" data-anchor-id="problema-4-el-contenido-no-se-formatea-correctamente">Problema 4: El contenido no se formatea correctamente</h3>
+<p><strong>Posibles causas:</strong> 1. Errores en el Markdown 2. Caracteres especiales sin escapar</p>
+<p><strong>Solución:</strong> 1. Revisa la sintaxis de Markdown 2. Asegúrate de que los títulos usen <code>##</code> o <code>###</code> 3. Verifica que las listas usen <code>-</code> al inicio</p>
+</section>
+<section id="problema-5-la-fecha-no-se-muestra-correctamente" class="level3">
+<h3 class="anchored" data-anchor-id="problema-5-la-fecha-no-se-muestra-correctamente">Problema 5: La fecha no se muestra correctamente</h3>
+<p><strong>Solución:</strong> - Usa el formato: <code>"DD Mes AAAA"</code> (ej: <code>"20 Diciembre 2025"</code>) - No uses números para el mes (ej: no <code>"20/12/2025"</code>)</p>
+<hr>
+</section>
+</section>
+<section id="checklist-final" class="level2">
+<h2 class="anchored" data-anchor-id="checklist-final">✅ Checklist Final</h2>
+<p>Antes de considerar que tu noticia está lista:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">El archivo <code>.qmd</code> está en <code>content/noticias/</code></label></li>
+<li><label><input type="checkbox">El nombre del archivo sigue el formato <code>AAAA-MM-DD-titulo.qmd</code></label></li>
+<li><label><input type="checkbox">El encabezado YAML está completo y correcto</label></li>
+<li><label><input type="checkbox">El contenido está escrito en Markdown</label></li>
+<li><label><input type="checkbox">Ejecuté <code>Rscript scripts/generate-news-html.R</code></label></li>
+<li><label><input type="checkbox">El archivo HTML se generó en <code>noticias/</code></label></li>
+<li><label><input type="checkbox">Ejecuté <code>Rscript scripts/generate-index.R</code></label></li>
+<li><label><input type="checkbox">La noticia aparece en <code>noticias/index.html</code></label></li>
+<li><label><input type="checkbox">La noticia individual se ve correctamente</label></li>
+<li><label><input type="checkbox">Las imágenes se cargan bien</label></li>
+<li><label><input type="checkbox">Los enlaces funcionan</label></li>
+</ul>
+<hr>
+</section>
+<section id="recursos-adicionales" class="level2">
+<h2 class="anchored" data-anchor-id="recursos-adicionales">📞 Recursos Adicionales</h2>
+<ul>
+<li><strong>Documentación Markdown:</strong> https://www.markdownguide.org</li>
+<li><strong>Unsplash (imágenes):</strong> https://unsplash.com</li>
+<li><strong>R Project:</strong> https://www.r-project.org</li>
+</ul>
+<hr>
+</section>
+<section id="resumen-rápido" class="level2">
+<h2 class="anchored" data-anchor-id="resumen-rápido">🎯 Resumen Rápido</h2>
+<ol type="1">
+<li><strong>Crear archivo</strong> en <code>content/noticias/</code> con nombre <code>AAAA-MM-DD-titulo.qmd</code></li>
+<li><strong>Escribir YAML</strong> con título, fecha, imagen, etc.</li>
+<li><strong>Escribir contenido</strong> en Markdown</li>
+<li><strong>Ejecutar:</strong> <code>Rscript scripts/generate-news-html.R</code> (esto es lo más importante)</li>
+<li><strong>Opcional:</strong> Ejecutar <code>Rscript scripts/generate-index.R</code> si existe</li>
+<li><strong>Verificar</strong> en el navegador que la noticia aparece</li>
+</ol>
+<p><strong>Nota:</strong> El paso 4 (generar HTML) es el más importante. Si tu noticia tiene su HTML en <code>noticias/</code>, debería aparecer automáticamente en el sitio.</p>
+<hr>
+<p><strong>¡Listo!</strong> Ahora ya sabes cómo crear y publicar noticias en el sitio del Observatorio de Legitimidad. 🎉</p>
+<p>Si tienes dudas, revisa los ejemplos o consulta la sección de solución de problemas.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

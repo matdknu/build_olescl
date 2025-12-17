@@ -22,3 +22,5 @@ echo "✓ Theme-color actualizado a blanco en todas las páginas"
 
 
 
+
+

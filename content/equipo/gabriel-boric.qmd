@@ -1,7 +1,7 @@
 ---
 title: "Gabriel Boric"
 cargo: "Asistente de Investigación"
-email: "gabriel.boric@universidad.cl"
+email: "bruno.rojas@universidad.cl"
 image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
 areas-interes: 
   - "Análisis de datos"
@@ -10,7 +10,7 @@ areas-interes:
 
 ## Descripción
 
-Gabriel Boric es Asistente de Investigación en el Observatorio de Legitimidad. Colabora activamente en proyectos de investigación, apoyando en el análisis de datos y procesamiento de información sobre legitimidad institucional. Ha desarrollado habilidades en análisis estadístico y contribuye a la preparación de reportes y visualizaciones de datos para los proyectos del Observatorio.
+Bruno Rojas es Asistente de Investigación en el Observatorio de Legitimidad. Colabora activamente en proyectos de investigación, apoyando en el análisis de datos y procesamiento de información sobre legitimidad institucional. Ha desarrollado habilidades en análisis estadístico y contribuye a la preparación de reportes y visualizaciones de datos para los proyectos del Observatorio.
 
 ## Proyectos en los que Participa
 
@@ -19,3 +19,4 @@ Colabora en proyectos de análisis de datos y visualización.
 ## Otras Actividades
 
 Asistente de Investigación desde 2024.
+
