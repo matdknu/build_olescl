@@ -72,28 +72,7 @@
         <div class="container">
             <h2 class="section-title">Destacados</h2>
             <div id="destacados-container">
-<div class="destacados-grid">
-<article class="destacado-card noticia">
-          <a href="noticias/2025/12/2025-12-18-matias-deneken-intermedio-podcast.html" style="text-decoration: none; color: inherit; display: block;">
-            <div class="destacado-imagen">
-              <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=1200&h=600&fit=crop" alt="Matías Deneken conversa sobre interculturalidad en Intermedio Podcast">
-            </div>
-            <div class="destacado-tipo">Noticia</div>
-            <h3>Matías Deneken conversa sobre interculturalidad en Intermedio Podcast</h3>
-            <div class="destacado-fecha">18 Diciembre 2025</div>
-          </a>
-        </article>
-<article class="destacado-card noticia">
-          <a href="noticias/2025/12/2025-12-10-nuevapublicacionenoleshowdopeoplerelatetothepolice.html" style="text-decoration: none; color: inherit; display: block;">
-            <div class="destacado-imagen">
-              <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&h=600&fit=crop" alt="Nueva publicación en OLES. How do people relate to the police?">
-            </div>
-            <div class="destacado-tipo">Noticia</div>
-            <h3>Nueva publicación en OLES. How do people relate to the police?</h3>
-            <div class="destacado-fecha">10 Diciembre 2025</div>
-          </a>
-        </article>
-</div>
+                <!-- Los destacados se cargarán dinámicamente aquí -->
             </div>
             </div>
         </div>
@@ -107,35 +86,7 @@
                 <a href="noticias/index.html" class="ver-mas-link">Más noticias →</a>
             </div>
             <div id="noticias-recientes-container" class="noticias-grid">
-<article class="noticia-card">
-          <div class="noticia-imagen">
-            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&h=600&fit=crop" alt="Investigador asistente es editor de libro sobre las relaciones interculturales">
-          </div>
-          <div class="noticia-fecha">6 Noviembre 2025</div>
-          <h3><a href="noticias/2025/11/2025-11-06-investigadorasistenteeseditordelibrosobrelasrelaci.html" style="text-decoration: none; color: inherit;">Investigador asistente es editor de libro sobre las relaciones interculturales</a></h3>
-        </article>
-<article class="noticia-card">
-          <div class="noticia-imagen">
-            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&h=600&fit=crop" alt="Investigador OLES Claudio Fuentes asiste a CNN Chile">
-          </div>
-          <div class="noticia-fecha">10 Octubre 2025</div>
-          <h3><a href="noticias/2025/10/2025-10-10-investigadorolesclaudiofuentesasisteacnnchile.html" style="text-decoration: none; color: inherit;">Investigador OLES Claudio Fuentes asiste a CNN Chile</a></h3>
-        </article>
-<article class="noticia-card">
-          <div class="noticia-imagen">
-            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&h=600&fit=crop" alt="Seminario: ¿Por qué obecemos e invocamos la ley?">
-          </div>
-          <div class="noticia-fecha">2 Septiembre 2025</div>
-          <h3><a href="noticias/2025/09/2025-09-02-seminarioporqueobecemoseinvocamoslaley.html" style="text-decoration: none; color: inherit;">Seminario: ¿Por qué obecemos e invocamos la ley?</a></h3>
-        </article>
-<article class="noticia-card">
-          <div class="noticia-imagen">
-            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&h=600&fit=crop" alt="OLES en el Congreso ISPP 2025">
-          </div>
-          <div class="noticia-fecha">10 Julio 2025</div>
-          <h3><a href="noticias/2025/07/2025-07-10-olesenelcongresoispp2025.html" style="text-decoration: none; color: inherit;">OLES en el Congreso ISPP 2025</a></h3>
-        </article>
-
+                <!-- Las noticias se cargarán dinámicamente aquí -->
             </div>
         </div>
     </section>

@@ -5,12 +5,13 @@
 
 cat("=== Generando index.html completo para uso local ===\n")
 
-# Leer el template base
-template_path <- "index.html"
+# Leer el template base (usar index.html.backup si existe, sino index.html)
+template_path <- if (file.exists("index.html.backup")) "index.html.backup" else "index.html"
 if (!file.exists(template_path)) {
-  stop("No se encontró index.html")
+  stop("No se encontró index.html ni index.html.backup")
 }
 
+cat("Usando template:", template_path, "\n")
 template <- readLines(template_path, warn = FALSE, encoding = "UTF-8")
 
 # Leer contenido de destacados
@@ -26,8 +27,23 @@ if (file.exists(destacados_path)) {
   cat("⚠️  No se encontró content/destacados-generated.html\n")
 }
 
-# No cargar noticias recientes - solo destacados
-cat("ℹ️  Noticias recientes omitidas - solo se muestran destacados\n")
+# Leer contenido de noticias recientes
+recientes_path <- "content/noticias/recientes-generated.html"
+recientes_html <- ""
+if (file.exists(recientes_path)) {
+  recientes <- readLines(recientes_path, warn = FALSE, encoding = "UTF-8")
+  recientes_html <- paste(recientes, collapse = "\n")
+  n_recientes <- length(grep("noticia-card", recientes))
+  cat("✓ Noticias recientes cargadas (", n_recientes, " items)\n", sep = "")
+} else {
+  cat("⚠️  No se encontró content/noticias/recientes-generated.html\n")
+  cat("Ejecutando generate-recientes.R primero...\n")
+  source("scripts/generate-recientes.R")
+  if (file.exists(recientes_path)) {
+    recientes <- readLines(recientes_path, warn = FALSE, encoding = "UTF-8")
+    recientes_html <- paste(recientes, collapse = "\n")
+  }
+}
 
 # Leer publicaciones JSON
 publicaciones_path <- "data/publicaciones.json"
@@ -45,6 +61,7 @@ output_lines <- character()
 skip_script_section <- FALSE
 in_script_tag <- FALSE
 destacados_inserted <- FALSE
+noticias_inserted <- FALSE
 i <- 1
 
 while (i <= length(template)) {
@@ -83,11 +100,31 @@ while (i <= length(template)) {
       i <- i + 1
     }
     
-    # Insertar contenido de destacados (solo si no se ha insertado ya)
+    # Saltar TODO el contenido existente dentro del contenedor hasta encontrar el cierre
+    depth <- 1
+    closing_line <- i
+    while (closing_line <= length(template) && depth > 0) {
+      if (grepl("<div", template[closing_line])) {
+        depth <- depth + 1
+      }
+      if (grepl("</div>", template[closing_line])) {
+        depth <- depth - 1
+        if (depth == 0) {
+          # Encontramos el cierre
+          break
+        }
+      }
+      closing_line <- closing_line + 1
+    }
+    
+    # Insertar contenido de destacados ANTES del cierre
     if (nchar(destacados_html) > 0) {
       output_lines <- c(output_lines, destacados_html)
       destacados_inserted <- TRUE
     }
+    
+    # Saltar todas las líneas hasta el cierre
+    i <- closing_line
     
     # Incluir línea de cierre del div
     if (i <= length(template) && grepl("</div>", template[i])) {
@@ -97,25 +134,63 @@ while (i <= length(template)) {
     next
   }
   
-  # Saltar el contenedor de noticias recientes (ya no se usa)
-  if (grepl('id="noticias-recientes-container"', line)) {
-    # Saltar esta línea y el comentario siguiente
-    i <- i + 1
-    if (i <= length(template) && grepl("<!--.*dinámicamente|<!--.*cargarán", template[i])) {
+  # Saltar cualquier contenido de destacados que quede (evitar duplicados)
+  if (grepl("destacado-card|destacados-grid", line) && destacados_inserted) {
+    # Saltar hasta encontrar el cierre
+    while (i <= length(template) && !grepl("</div>|</article>", template[i])) {
       i <- i + 1
     }
-    # Saltar el cierre del div también
-    if (i <= length(template) && grepl("</div>", template[i])) {
+    if (i <= length(template)) {
       i <- i + 1
     }
     next
   }
   
-  # Saltar líneas que ya contienen contenido insertado (evitar duplicados)
-  if (grepl("destacados-grid", line) && destacados_inserted) {
+  # Insertar noticias recientes
+  if (grepl('id="noticias-recientes-container"', line) && !noticias_inserted) {
+    output_lines <- c(output_lines, line)
     i <- i + 1
+    
+    # Saltar comentario si existe
+    if (i <= length(template) && grepl("<!--.*dinámicamente|<!--.*cargarán", template[i])) {
+      i <- i + 1
+    }
+    
+    # Saltar TODO el contenido existente dentro del contenedor hasta encontrar el cierre
+    # Buscar el siguiente </div> que cierra el contenedor
+    depth <- 1
+    closing_line <- i
+    while (closing_line <= length(template) && depth > 0) {
+      if (grepl("<div", template[closing_line])) {
+        depth <- depth + 1
+      }
+      if (grepl("</div>", template[closing_line])) {
+        depth <- depth - 1
+        if (depth == 0) {
+          # Encontramos el cierre
+          break
+        }
+      }
+      closing_line <- closing_line + 1
+    }
+    
+    # Insertar contenido de noticias recientes (solo 4) ANTES del cierre
+    if (nchar(recientes_html) > 0) {
+      output_lines <- c(output_lines, recientes_html)
+      noticias_inserted <- TRUE
+    }
+    
+    # Saltar todas las líneas hasta el cierre
+    i <- closing_line
+    
+    # Incluir línea de cierre del div
+    if (i <= length(template) && grepl("</div>", template[i])) {
+      output_lines <- c(output_lines, template[i])
+      i <- i + 1
+    }
     next
   }
+  
   
   # Saltar comentarios sobre carga dinámica
   if (grepl("<!--.*dinámicamente|<!--.*cargarán", line)) {
@@ -158,8 +233,9 @@ while (i <= length(template)) {
   i <- i + 1
 }
 
-# Escribir el archivo completo
-writeLines(output_lines, template_path)
-cat("\n✓ Generado:", template_path, "con contenido incluido\n")
+# Escribir el archivo completo (siempre a index.html, no a _site/index.html)
+output_path <- "index.html"
+writeLines(output_lines, output_path)
+cat("\n✓ Generado:", output_path, "con contenido incluido\n")
 cat("✓ El archivo ahora funciona con file:// sin problemas de CORS\n")
 
