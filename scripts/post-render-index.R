@@ -155,10 +155,22 @@ while (i <= length(template)) {
 dir.create(dirname(output_path), showWarnings = FALSE, recursive = TRUE)
 
 # Escribir el archivo completo
-writeLines(output_lines, output_path)
+writeLines(output_lines, output_path, useBytes = TRUE)
 cat("\n✓ Generado:", output_path, "con contenido incluido\n")
 cat("✓ Total de líneas:", length(output_lines), "\n")
 cat("✓ Destacados insertados:", destacados_inserted, "\n")
 cat("✓ Solo destacados mostrados (sin noticias recientes)\n")
 cat("✓ El archivo ahora funciona con file:// sin problemas de CORS\n")
+
+# IMPORTANTE: Asegurar que el index.html correcto siempre sobrescriba cualquier versión problemática
+# Esto es crítico porque Quarto puede generar un index.html que redirige
+if (file.exists("index.html")) {
+  # Leer el index.html de la raíz (que es el correcto)
+  index_correcto <- readLines("index.html", warn = FALSE, encoding = "UTF-8")
+  # Escribirlo directamente a _site/index.html, sobrescribiendo cualquier cosa
+  writeLines(index_correcto, "_site/index.html", useBytes = TRUE)
+  cat("✓ index.html CORRECTO copiado a _site/ (sobrescribe cualquier versión problemática de Quarto)\n")
+} else {
+  cat("⚠️  index.html no encontrado en la raíz para copiar a _site/\n")
+}
 
