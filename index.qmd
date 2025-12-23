@@ -1,0 +1,18 @@
+---
+title: "Observatorio de Legitimidad"
+format: 
+  html:
+    theme: default
+    css: style.css
+    toc: false
+---
+
+```{r, echo=FALSE, results='asis'}
+# Leer el index.html correcto y mostrarlo directamente
+if (file.exists("index.html")) {
+  index_content <- readLines("index.html", warn = FALSE, encoding = "UTF-8")
+  cat(paste(index_content, collapse = "\n"))
+} else {
+  cat("Error: index.html no encontrado")
+}
+```

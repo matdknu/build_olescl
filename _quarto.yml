@@ -1,15 +1,11 @@
 project:
   type: website
   output-dir: _site
-  # Excluir archivos que no deben ser procesados por Quarto
-  # Especialmente equipo/tesistas-pasantes-data.md que causa problemas
-  exclude:
-    - "equipo/tesistas-pasantes-data.md"
-    - "index.html"
-    - "index.html.backup"
-    - "*.html"
-    - "_site/**"
-    - "site_libs/**"
+  # Especificar que index.qmd es la página principal
+  navbar:
+    left:
+      - href: index.qmd
+        text: Inicio
 
 execute:
   echo: false
