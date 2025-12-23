@@ -1,7 +1,10 @@
 # Archivos que Quarto debe ignorar
 equipo/tesistas-pasantes-data.md
+equipo/tesistas-pasantes-data.md.bak
+equipo/tesistas-pasantes-data.html
 index.html
 index.html.backup
+index.php
 *.html
 _site/**
 site_libs/**
