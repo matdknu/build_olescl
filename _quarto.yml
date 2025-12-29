@@ -1,11 +1,6 @@
 project:
   type: website
   output-dir: _site
-  # Especificar que index.qmd es la página principal
-  navbar:
-    left:
-      - href: index.qmd
-        text: Inicio
 
 execute:
   echo: false

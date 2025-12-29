@@ -7,12 +7,34 @@ format:
     toc: false
 ---
 
-```{r, echo=FALSE, results='asis'}
+```{=html}
+<!-- Este archivo se genera automáticamente desde index.html -->
+<!-- Para editar, modifica index.html y ejecuta: Rscript scripts/generate-index-local.R -->
+```
+
+```{r, echo=FALSE, results='asis', eval=TRUE}
 # Leer el index.html correcto y mostrarlo directamente
 if (file.exists("index.html")) {
   index_content <- readLines("index.html", warn = FALSE, encoding = "UTF-8")
-  cat(paste(index_content, collapse = "\n"))
+  # Remover DOCTYPE y html/head/body tags si existen (Quarto los agrega)
+  content_str <- paste(index_content, collapse = "\n")
+  # Extraer solo el contenido del body usando regex
+  body_start <- regexpr("<body[^>]*>", content_str)
+  body_end <- regexpr("</body>", content_str)
+  
+  if (body_start > 0 && body_end > 0) {
+    # Extraer contenido entre <body> y </body>
+    body_content <- substr(content_str, body_start + attr(body_start, "match.length"), body_end - 1)
+    cat(body_content)
+  } else {
+    # Si no encuentra body tags, mostrar todo excepto DOCTYPE y html/head
+    content_str <- gsub("^<!DOCTYPE[^>]*>\\s*", "", content_str)
+    content_str <- gsub("<html[^>]*>", "", content_str)
+    content_str <- gsub("</html>", "", content_str)
+    content_str <- gsub("<head>.*?</head>", "", content_str)
+    cat(content_str)
+  }
 } else {
-  cat("Error: index.html no encontrado")
+  cat("Error: index.html no encontrado. Ejecuta: Rscript scripts/generate-index-local.R")
 }
 ```

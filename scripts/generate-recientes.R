@@ -8,12 +8,26 @@ library(lubridate)
 cat("=== Generando noticias recientes (no destacadas) ===\n\n")
 
 noticias_dir <- "content/noticias"
-qmd_files <- list.files(noticias_dir, pattern = "\\.qmd$", recursive = TRUE, full.names = TRUE)
-qmd_files <- qmd_files[!grepl("ejemplo|template", basename(qmd_files), ignore.case = TRUE)]
+# Buscar carpetas de noticias (estructura nueva: content/noticias/NOMBRE-NOTICIA/)
+carpetas_noticias <- list.dirs(noticias_dir, recursive = FALSE)
+carpetas_noticias <- carpetas_noticias[!grepl("ejemplo|template|_site|site_libs", basename(carpetas_noticias), ignore.case = TRUE)]
 
 noticias_data <- list()
 
-for (qmd_file in qmd_files) {
+for (carpeta in carpetas_noticias) {
+  # Buscar index.qmd en la carpeta
+  qmd_file <- file.path(carpeta, "index.qmd")
+  
+  # Si no existe index.qmd, buscar cualquier .qmd en la carpeta
+  if (!file.exists(qmd_file)) {
+    qmd_files_in_carpeta <- list.files(carpeta, pattern = "\\.qmd$", full.names = TRUE)
+    if (length(qmd_files_in_carpeta) > 0) {
+      qmd_file <- qmd_files_in_carpeta[1]
+    } else {
+      next
+    }
+  }
+  
   content <- readLines(qmd_file, warn = FALSE, encoding = "UTF-8")
   
   yaml_start <- which(grepl("^---$", content))[1]
@@ -54,22 +68,9 @@ for (qmd_file in qmd_files) {
   
   if (is.na(fecha)) next
   
-  # Calcular ruta del HTML
-  name_slug <- gsub("\\.qmd$", "", basename(qmd_file))
-  rel_path <- dirname(qmd_file)
-  
-  if (grepl("content/noticias/\\d{4}/\\d{2}", rel_path)) {
-    path_parts <- strsplit(rel_path, "/")[[1]]
-    year_idx <- which(grepl("^\\d{4}$", path_parts))
-    year <- path_parts[year_idx[1]]
-    month <- path_parts[year_idx[1] + 1]
-    url <- paste0("noticias/", year, "/", month, "/", name_slug, ".html")
-  } else if (grepl("content/noticias/\\d{4}", rel_path)) {
-    year <- regmatches(rel_path, regexpr("\\d{4}", rel_path))
-    url <- paste0("noticias/", year, "/", name_slug, ".html")
-  } else {
-    url <- paste0("noticias/", name_slug, ".html")
-  }
+  # Calcular ruta del HTML (nueva estructura: noticias/NOMBRE-NOTICIA.html)
+  nombre_noticia <- basename(carpeta)
+  url <- paste0("noticias/", nombre_noticia, ".html")
 
   noticias_data[[length(noticias_data) + 1]] <- list(
     title = metadata$title,

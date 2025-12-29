@@ -92,7 +92,22 @@ markdown_to_html <- function(md_text) {
 }
 
 # Función para generar HTML de noticia
-generate_news_html <- function(qmd_file) {
+# Ahora trabaja con estructura de carpetas: content/noticias/NOMBRE-NOTICIA/index.qmd
+generate_news_html <- function(noticia_carpeta) {
+  # Buscar index.qmd en la carpeta
+  qmd_file <- file.path(noticia_carpeta, "index.qmd")
+  
+  # Si no existe index.qmd, buscar cualquier .qmd en la carpeta
+  if (!file.exists(qmd_file)) {
+    qmd_files_in_carpeta <- list.files(noticia_carpeta, pattern = "\\.qmd$", full.names = TRUE)
+    if (length(qmd_files_in_carpeta) > 0) {
+      qmd_file <- qmd_files_in_carpeta[1]
+    } else {
+      cat("⚠️  No se encontró archivo .qmd en", noticia_carpeta, "\n")
+      return(NULL)
+    }
+  }
+  
   content <- readLines(qmd_file, warn = FALSE, encoding = "UTF-8")
   
   yaml_start <- which(grepl("^---$", content))[1]
@@ -108,54 +123,38 @@ generate_news_html <- function(qmd_file) {
   
   metadata <- yaml.load(yaml_content)
   
-  # Generar nombre de archivo
-  name_slug <- gsub("\\.qmd$", "", basename(qmd_file))
+  # Obtener el nombre de la carpeta (nombre de la noticia)
+  nombre_noticia <- basename(noticia_carpeta)
   
-  # Determinar ruta relativa basada en la estructura
-  # Si está en content/noticias/YYYY/MM/, mantener estructura YYYY/MM/
-  rel_path <- dirname(qmd_file)
-  if (grepl("content/noticias/\\d{4}/\\d{2}", rel_path)) {
-    # Estructura año/mes
-    path_parts <- strsplit(rel_path, "/")[[1]]
-    year_idx <- which(grepl("^\\d{4}$", path_parts))
-    if (length(year_idx) > 0 && year_idx[1] < length(path_parts)) {
-      year <- path_parts[year_idx[1]]
-      month <- path_parts[year_idx[1] + 1]
-      output_file <- paste0("noticias/", year, "/", month, "/", name_slug, ".html")
-    } else {
-      output_file <- paste0("noticias/", name_slug, ".html")
-    }
-  } else if (grepl("content/noticias/\\d{4}", rel_path)) {
-    # Estructura solo año (legacy)
-    year <- regmatches(rel_path, regexpr("\\d{4}", rel_path))
-    output_file <- paste0("noticias/", year, "/", name_slug, ".html")
-  } else {
-    output_file <- paste0("noticias/", name_slug, ".html")
+  # Generar ruta de salida: noticias/NOMBRE-NOTICIA.html (archivo directo, no carpeta)
+  output_dir <- "noticias"
+  if (!dir.exists(output_dir)) {
+    dir.create(output_dir, recursive = TRUE)
   }
+  output_file <- file.path(output_dir, paste0(nombre_noticia, ".html"))
   
   # Convertir markdown a HTML
   html_content <- markdown_to_html(md_content)
   
   # Determinar tipo
   tags <- metadata$tags %||% ""
-  tipo <- if (grepl("\\[Evento\\]", tags, ignore.case = TRUE)) {
+  # Convertir tags a string si es un vector
+  tags_str <- if (is.character(tags) && length(tags) > 1) {
+    paste(tags, collapse = " ")
+  } else if (is.character(tags)) {
+    as.character(tags)
+  } else {
+    ""
+  }
+  tipo <- if (grepl("\\[Evento\\]|Evento", tags_str, ignore.case = TRUE)) {
     "Evento"
   } else {
     "Noticia"
   }
   
-  # Función helper para calcular ruta relativa
-  get_relative_path <- function() {
-    if (grepl("/\\d{4}/\\d{2}/", output_file)) {
-      return("../../../")
-    } else if (grepl("/\\d{4}/", output_file)) {
-      return("../../")
-    } else {
-      return("../")
-    }
-  }
-  
-  rel_path_base <- get_relative_path()
+  # Calcular ruta relativa desde noticias/ hacia la raíz
+  # Desde noticias/ necesitamos subir 1 nivel
+  rel_path_base <- "../"
   
   # Generar HTML completo
   html_template <- paste0('<!DOCTYPE html>
@@ -307,7 +306,7 @@ generate_news_html <- function(qmd_file) {
 
     <section class="noticia-detalle" style="padding-top: 4rem;">
         <div class="container">
-            <a href="', if (grepl("/\\d{4}/", output_file)) "../" else "", 'index.html" class="volver-link">← Volver a Noticias</a>
+            <a href="', rel_path_base, 'noticias/index.html" class="volver-link">← Volver a Noticias</a>
             
             <div class="noticia-header">
                 <span class="noticia-tipo">', tipo, '</span>
@@ -333,7 +332,7 @@ generate_news_html <- function(qmd_file) {
                     <h4>Enlaces</h4>
                     <ul>
                         <li><a href="', rel_path_base, 'index.html#inicio">Inicio</a></li>
-                        <li><a href="', if (grepl("/\\d{4}/", output_file)) "../" else "", 'index.html">Noticias</a></li>
+                        <li><a href="', rel_path_base, 'noticias/index.html">Noticias</a></li>
                         <li><a href="', rel_path_base, 'index.html#proyectos">Proyectos</a></li>
                         <li><a href="', rel_path_base, 'index.html#nosotros">Nosotros</a></li>
                         <li><a href="', rel_path_base, 'index.html#contacto">Contacto</a></li>
@@ -368,16 +367,22 @@ generate_news_html <- function(qmd_file) {
   cat("✓ Generado:", output_file, "\n")
 }
 
-# Procesar todos los QMD en content/noticias (incluyendo subdirectorios por año)
-qmd_files <- list.files("content/noticias", pattern = "\\.qmd$", full.names = TRUE, recursive = TRUE)
+# Procesar todas las carpetas de noticias en content/noticias/
+# Estructura nueva: content/noticias/NOMBRE-NOTICIA/index.qmd
+noticias_dir <- "content/noticias"
+carpetas_noticias <- list.dirs(noticias_dir, recursive = FALSE)
+# Filtrar solo carpetas que no sean archivos especiales
+carpetas_noticias <- carpetas_noticias[!grepl("ejemplo|template|_site|site_libs", basename(carpetas_noticias), ignore.case = TRUE)]
 
-cat("Generando HTMLs de noticias...\n\n")
-for (qmd_file in qmd_files) {
-  if (!grepl("ejemplo|template", basename(qmd_file), ignore.case = TRUE)) {
+cat("Generando HTMLs de noticias desde carpetas...\n\n")
+for (carpeta in carpetas_noticias) {
+  # Verificar que la carpeta tenga un archivo .qmd
+  qmd_files <- list.files(carpeta, pattern = "\\.qmd$", full.names = TRUE)
+  if (length(qmd_files) > 0) {
     tryCatch({
-      generate_news_html(qmd_file)
+      generate_news_html(carpeta)
     }, error = function(e) {
-      cat("✗ Error procesando", qmd_file, ":", e$message, "\n")
+      cat("✗ Error procesando", carpeta, ":", e$message, "\n")
     })
   }
 }

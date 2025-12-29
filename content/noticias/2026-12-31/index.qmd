@@ -1,0 +1,9 @@
+---
+title: "FELIZ AÑO NUEVO"
+date: "15 Enero 2026"
+image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&h=600&fit=crop"
+author: "Equipo OLES"
+tags: ["Evento"]
+destacado: false
+tipo: "evento"
+---
