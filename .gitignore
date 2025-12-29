@@ -1,27 +1,32 @@
+# Carpetas y archivos de desarrollo (no necesarios para WordPress)
 /.quarto/
 .Rproj.user
-data/noticias_carabineros.rds
-shiny-app/data/noticias_carabineros.rds
-
-# Carpetas generadas por Quarto (se regeneran automáticamente)
-# Estas carpetas contienen librerías de Bootstrap/Quarto que no son necesarias
-**/*_files/
-content/**/*_files/
-equipo/**/*_files/
-GUIA-QMD-PASO-A-PASO_files/
-MANUAL-NOTICIAS_files/
-MANUAL-QMD_files/
-MANUAL-USO_files/
-wordpress-install_files/
-shiny-app/**/*_files/
-
-# Archivos temporales
+_site/
+rsconnect/
 *.RData
 *.Rhistory
 .DS_Store
+**/.DS_Store
 
-# Archivos de build (se regeneran)
-_site/
+# Archivos grandes de datos
+# shiny-app/data/noticias_carabineros.rds - necesario para shiny-app (puede estar en .gitignore del shiny-app)
+
+# Archivos de backup y temporales
+*.bak
+*.backup
+index.html.backup
+
+# Archivos generados (se regeneran automáticamente)
 content/destacados-generated.html
 content/noticias/index-generated.html
 content/noticias/recientes-generated.html
+
+# Carpetas de Quarto (librerías generadas)
+**/*_files/
+**/site_libs/
+
+# Archivos de documentación de desarrollo (mantener solo README.md)
+GUIA-*.md
+INSTRUCCIONES-*.md
+MANUAL-*.md
+wordpress-install.md
